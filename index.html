@@ -362,7 +362,7 @@
         date once we're ready.
       */
 
-      countdownDays: 25
+       eventDate: "2026-10-21T17:00:00-04:00"
 
     };
 
@@ -378,9 +378,7 @@
     } else {
 
       const targetDate =
-        new Date().getTime() +
-        eventSettings.countdownDays * 24 * 60 * 60 * 1000;
-
+  new Date(eventSettings.eventDate).getTime();
 
       function updateCountdown() {
 
