@@ -3,11 +3,448 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MeHeartMe</title>
+
+  <title>MeHeartMe | Play. Discover. Experience.</title>
+
+  <style>
+    :root {
+      /* Permanent MeHeartMe site colors */
+      --heart: #d83a56;
+      --cream: #fffaf4;
+      --ink: #241c2b;
+
+      /* Current featured-event colors */
+      --event-purple: #4d326f;
+      --event-gold: #efa94a;
+      --event-orange: #f46d00;
+      --event-night: #130f1b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    /* ---------- MEHEARTME HEADER ---------- */
+
+    .site-header {
+      padding: 18px 20px;
+      text-align: center;
+      background: white;
+      border-bottom: 1px solid #eee;
+    }
+
+    .brand {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .brand-heart {
+      color: var(--heart);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .navigation a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* ---------- INTRO ---------- */
+
+    .welcome {
+      text-align: center;
+      padding: 40px 20px 30px;
+    }
+
+    .welcome h2 {
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      margin: 0 0 12px;
+    }
+
+    .welcome p {
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    /* ---------- FEATURED EVENT ---------- */
+
+    .featured-event {
+      background: var(--event-night);
+      color: white;
+      text-align: center;
+      padding: 36px 16px 45px;
+    }
+
+    .eyebrow {
+      color: var(--event-gold);
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .event-banner {
+      display: block;
+      width: min(100%, 1000px);
+      height: auto;
+      margin: 0 auto;
+      border-radius: 12px;
+    }
+
+    .event-message {
+      margin: 28px auto 10px;
+      max-width: 650px;
+    }
+
+    .event-message h2 {
+      font-size: clamp(1.6rem, 6vw, 2.6rem);
+      margin-bottom: 10px;
+    }
+
+    .event-message p {
+      line-height: 1.6;
+      color: #eee6f5;
+    }
+
+    /* ---------- COUNTDOWN ---------- */
+
+    .countdown-title {
+      margin-top: 30px;
+      color: var(--event-gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      max-width: 620px;
+      margin: 16px auto 26px;
+    }
+
+    .time-box {
+      background: var(--event-purple);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 16px 6px;
+    }
+
+    .time-number {
+      display: block;
+      font-size: clamp(1.5rem, 7vw, 2.7rem);
+      font-weight: bold;
+    }
+
+    .time-label {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ---------- BUTTON ---------- */
+
+    .event-button {
+      display: inline-block;
+      background: var(--event-orange);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 14px 26px;
+      border-radius: 999px;
+    }
+
+    .event-button:hover {
+      opacity: 0.9;
+    }
+
+    /* ---------- COMING NEXT ---------- */
+
+    .coming-next {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .coming-next h2 {
+      margin-bottom: 12px;
+    }
+
+    .coming-next p {
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 0.8rem;
+      background: white;
+    }
+
+    @media (max-width: 480px) {
+      .navigation {
+        gap: 12px;
+      }
+
+      .countdown {
+        gap: 5px;
+      }
+
+      .time-box {
+        padding: 13px 3px;
+      }
+    }
+  </style>
 </head>
 
+
 <body>
-  <h1>Welcome to MeHeartMe ❤️</h1>
-  <p>Something fun is coming...</p>
+
+  <header class="site-header">
+
+    <h1 class="brand">
+      MeHeartMe <span class="brand-heart">♥</span>
+    </h1>
+
+    <nav class="navigation">
+      <a href="#">Play</a>
+      <a href="#">Watch</a>
+      <a href="#events">Events</a>
+      <a href="#">Join</a>
+      <a href="#">Shop</a>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <section class="welcome">
+
+      <h2>Come Experience What We've Been Creating.</h2>
+
+      <p>
+        Stories, games, events and experiences made for curious minds,
+        big imaginations and families ready to have some fun.
+      </p>
+
+    </section>
+
+
+    <section class="featured-event" id="events">
+
+      <div class="eyebrow">
+        Featured Event
+      </div>
+
+      <img
+        class="event-banner"
+        src="assets/images/majestic-ghostly-banner.jpeg"
+        alt="The Majestic Ghostly Trick-or-Treat Event"
+      >
+
+      <div class="event-message">
+
+        <h2>Something Ghostly Is Coming...</h2>
+
+        <p>
+          MeHeartMe is joining The Majestic Ghostly Trick-or-Treat Event.
+          Come discover what we've prepared for the adventure.
+        </p>
+
+      </div>
+
+
+      <div id="countdown-container">
+
+        <div class="countdown-title">
+          THE ADVENTURE BEGINS IN
+        </div>
+
+        <div class="countdown">
+
+          <div class="time-box">
+            <span class="time-number" id="days">21</span>
+            <span class="time-label">DAYS</span>
+          </div>
+
+          <div class="time-box">
+            <span class="time-number" id="hours">00</span>
+            <span class="time-label">HOURS</span>
+          </div>
+
+          <div class="time-box">
+            <span class="time-number" id="minutes">00</span>
+            <span class="time-label">MIN</span>
+          </div>
+
+          <div class="time-box">
+            <span class="time-number" id="seconds">00</span>
+            <span class="time-label">SEC</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <a class="event-button" href="#">
+        Explore the Event
+      </a>
+
+    </section>
+
+
+    <section class="coming-next">
+
+      <h2>There's More to Explore ♥</h2>
+
+      <p>
+        MeHeartMe is growing into a home for interactive games,
+        original shows, special events and member experiences.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 MeHeartMe. All rights reserved.
+  </footer>
+
+
+  <script>
+
+    /*
+      ==========================================
+      EVENT SETTINGS
+      ==========================================
+
+      This is the section we'll edit for future
+      events.
+
+      Set countdownEnabled to false if you want
+      the countdown completely removed.
+    */
+
+    const eventSettings = {
+
+      countdownEnabled: true,
+
+      /*
+        For our first test, the countdown starts
+        at 3 weeks and 4 days from the moment
+        this version loads.
+
+        We'll replace this with the actual event
+        date once we're ready.
+      */
+
+      countdownDays: 25
+
+    };
+
+
+    const countdownContainer =
+      document.getElementById("countdown-container");
+
+
+    if (!eventSettings.countdownEnabled) {
+
+      countdownContainer.style.display = "none";
+
+    } else {
+
+      const targetDate =
+        new Date().getTime() +
+        eventSettings.countdownDays * 24 * 60 * 60 * 1000;
+
+
+      function updateCountdown() {
+
+        const now = new Date().getTime();
+
+        const distance = targetDate - now;
+
+
+        if (distance <= 0) {
+
+          document.getElementById("days").textContent = "00";
+          document.getElementById("hours").textContent = "00";
+          document.getElementById("minutes").textContent = "00";
+          document.getElementById("seconds").textContent = "00";
+
+          return;
+
+        }
+
+
+        const days =
+          Math.floor(distance / (1000 * 60 * 60 * 24));
+
+        const hours =
+          Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+          );
+
+        const minutes =
+          Math.floor(
+            (distance % (1000 * 60 * 60)) /
+            (1000 * 60)
+          );
+
+        const seconds =
+          Math.floor(
+            (distance % (1000 * 60)) /
+            1000
+          );
+
+
+        document.getElementById("days").textContent =
+          String(days).padStart(2, "0");
+
+        document.getElementById("hours").textContent =
+          String(hours).padStart(2, "0");
+
+        document.getElementById("minutes").textContent =
+          String(minutes).padStart(2, "0");
+
+        document.getElementById("seconds").textContent =
+          String(seconds).padStart(2, "0");
+
+      }
+
+
+      updateCountdown();
+
+      setInterval(updateCountdown, 1000);
+
+    }
+
+  </script>
+
 </body>
-</html> 
+</html>
