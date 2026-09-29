@@ -43,10 +43,10 @@
     /* ---------- MEHEARTME HEADER ---------- */
 
     .site-header {
-      padding: 18px 20px;
+      padding: 18px 20px 16px;
       text-align: center;
-      background: white;
-      border-bottom: 1px solid #eee;
+      background: var(--meheart-yellow);
+      border-bottom: 3px solid var(--ink);
       overflow: hidden;
     }
 
@@ -76,10 +76,15 @@
 
     /* ---------- INTRO ---------- */
 
-    .welcome {
-      text-align: center;
-      padding: 40px 20px 30px;
-    }
+      .welcome {
+  text-align: center;
+  padding: 42px 20px 38px;
+  background: linear-gradient(
+    180deg,
+    var(--meheart-yellow) 0%,
+    #ffe985 100%
+  );
+}
 
     .welcome h2 {
       font-size: clamp(1.8rem, 6vw, 3rem);
