@@ -181,6 +181,76 @@
     .event-button:hover {
       opacity: 0.9;
     }
+    
+    /* ---------- EVENT SIGNAL TRACKER ---------- */
+
+.signal-tracker {
+  padding: 48px 20px;
+  text-align: center;
+  background: #1b1324;
+  color: white;
+}
+
+.tracker-label {
+  color: var(--event-gold);
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.18em;
+  margin-bottom: 12px;
+}
+
+.signal-tracker h2 {
+  margin: 0 0 18px;
+  font-size: clamp(1.7rem, 6vw, 2.4rem);
+}
+
+.signal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px;
+  margin-bottom: 28px;
+  border: 1px solid var(--event-gold);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+}
+
+.signal-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--event-orange);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--event-orange);
+}
+
+.tracker-grid {
+  display: grid;
+  gap: 12px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.tracker-card {
+  padding: 20px 16px;
+  background: var(--event-purple);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+}
+
+.tracker-heading {
+  display: block;
+  color: var(--event-gold);
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.14em;
+}
+
+.tracker-card p {
+  margin: 9px 0 0;
+  line-height: 1.5;
+}
 
     /* ---------- COMING NEXT ---------- */
 
@@ -387,7 +457,25 @@
       Set countdownEnabled to false if you want
       the countdown completely removed.
     */
+const trackerSettings = {
+  signalStatus: "SIGNAL ACTIVE",
+  latestDetection: "Something has made contact...",
+  visitorsDetected: 3,
+  nextTransmission: "Awaiting signal..."
+};
 
+document.getElementById("signal-status").textContent =
+  trackerSettings.signalStatus;
+
+document.getElementById("latest-detection").textContent =
+  trackerSettings.latestDetection;
+
+document.getElementById("visitors-detected").textContent =
+  trackerSettings.visitorsDetected;
+
+document.getElementById("next-transmission").textContent =
+  trackerSettings.nextTransmission;
+  
     const eventSettings = {
 
       countdownEnabled: true,
