@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Latest Transmission | MeHeartMe</title>
+
+  <style>
+    :root {
+      --meheart-yellow: #ffd83d;
+      --heart: #d83a56;
+      --ink: #241c2b;
+
+      --event-purple: #4d326f;
+      --event-gold: #efa94a;
+      --event-orange: #f46d00;
+      --event-night: #130f1b;
+      --transmission-bg: #1b1324;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--event-night);
+      color: white;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    .site-header {
+      padding: 16px 20px;
+      text-align: center;
+      background: var(--meheart-yellow);
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .brand-logo {
+      display: block;
+      width: 100%;
+      max-width: 220px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+
+    /* ---------- TRANSMISSION HEADER ---------- */
+
+    .transmission-hero {
+      padding: 42px 20px 30px;
+      text-align: center;
+      background: var(--transmission-bg);
+    }
+
+    .eyebrow {
+      color: var(--event-gold);
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .transmission-hero h1 {
+      margin: 12px 0 10px;
+      font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+
+    .transmission-hero p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #eee6f5;
+      line-height: 1.6;
+    }
+
+    .signal-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 9px 15px;
+      border: 1px solid var(--event-gold);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+    }
+
+    .signal-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--event-orange);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--event-orange);
+    }
+
+    /* ---------- LATEST UPDATE ---------- */
+
+    .latest {
+      padding: 40px 20px;
+    }
+
+    .latest-card {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px;
+      background: var(--event-purple);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+    }
+
+    .update-type {
+      color: var(--event-gold);
+      font-size: 0.72rem;
+      font-weight: bold;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .update-date {
+      display: block;
+      margin-top: 7px;
+      color: #d9cee4;
+      font-size: 0.78rem;
+    }
+
+    .latest-card h2 {
+      margin: 16px 0 10px;
+      font-size: clamp(1.6rem, 6vw, 2.4rem);
+    }
+
+    .latest-card p {
+      margin: 0;
+      line-height: 1.65;
+      color: #f4eef8;
+    }
+
+    /* ---------- MEDIA AREA ---------- */
+
+    .media-window {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      margin: 22px 0;
+      padding: 20px;
+      background: #0d0a11;
+      border: 1px solid rgba(239,169,74,0.45);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .media-placeholder {
+      color: #b9aebf;
+      line-height: 1.6;
+    }
+
+    .media-placeholder strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--event-gold);
+      letter-spacing: 0.08em;
+    }
+
+    /* ---------- ARCHIVE ---------- */
+
+    .archive {
+      padding: 10px 20px 50px;
+      background: var(--transmission-bg);
+    }
+
+    .archive-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .archive-title {
+      margin-bottom: 20px;
+      color: var(--event-gold);
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .archive-card {
+      margin-bottom: 12px;
+      padding: 18px;
+      background: rgba(77,50,111,0.55);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+    }
+
+    .archive-card h3 {
+      margin: 7px 0;
+    }
+
+    .archive-card p {
+      margin: 0;
+      color: #d9cee4;
+      line-height: 1.5;
+    }
+
+    /* ---------- WHAT WE KNOW ---------- */
+
+    .known {
+      padding: 42px 20px;
+      text-align: center;
+      background: var(--event-night);
+    }
+
+    .known-inner {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .known h2 {
+      color: var(--event-gold);
+    }
+
+    .known-list {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .known-item {
+      margin-bottom: 10px;
+      padding: 14px 16px;
+      background: var(--event-purple);
+      border-radius: 10px;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      padding: 24px 15px;
+      text-align: center;
+      background: var(--meheart-yellow);
+      color: var(--ink);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <img
+      class="brand-logo"
+      src="../assets/images/MeHeartMe.png"
+      alt="MeHeartMe"
+    >
+
+    <a class="back-link" href="../">
+      ← Return to Event
+    </a>
+
+  </header>
+
+
+  <main>
+
+    <section class="transmission-hero">
+
+      <div class="eyebrow">
+        Majestic Ghostly Event
+      </div>
+
+      <h1>Transmission Center</h1>
+
+      <p>
+        Signals, clues and unusual activity connected to
+        The Majestic Ghostly Trick-or-Treat Event are being
+        collected here.
+      </p>
+
+      <div class="signal-status">
+        <span class="signal-dot"></span>
+        SIGNAL ACTIVE
+      </div>
+
+    </section>
+
+
+    <section class="latest">
+
+      <article class="latest-card">
+
+        <span class="update-type">
+          Latest Transmission
+        </span>
+
+        <span class="update-date">
+          September 29, 2026
+        </span>
+
+        <h2>Something Has Made Contact...</h2>
+
+        <div class="media-window">
+
+          <div class="media-placeholder">
+            <strong>TRANSMISSION INCOMING</strong>
+            Video, image, clue or signal evidence will appear here.
+          </div>
+
+        </div>
+
+        <p>
+          We've detected unusual activity connected to the event.
+          The signal is active, but we don't know everything that's
+          on the other side yet.
+        </p>
+
+      </article>
+
+    </section>
+
+
+    <section class="archive">
+
+      <div class="archive-inner">
+
+        <div class="archive-title">
+          Recently Detected
+        </div>
+
+
+        <article class="archive-card">
+
+          <span class="update-type">
+            Detection 003
+          </span>
+
+          <h3>Visitor Signals Identified</h3>
+
+          <p>
+            Three unidentified visitor signals have appeared
+            on the tracker.
+          </p>
+
+        </article>
+
+
+        <article class="archive-card">
+
+          <span class="update-type">
+            Detection 002
+          </span>
+
+          <h3>Signal Activity Increasing</h3>
+
+          <p>
+            Something appears to be getting closer.
+          </p>
+
+        </article>
+
+
+        <article class="archive-card">
+
+          <span class="update-type">
+            Detection 001
+          </span>
+
+          <h3>Initial Contact</h3>
+
+          <p>
+            The first unexplained signal was detected.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section class="known">
+
+      <div class="known-inner">
+
+        <h2>What We Know</h2>
+
+        <div class="known-list">
+
+          <div class="known-item">
+            ✓ The signal is active.
+          </div>
+
+          <div class="known-item">
+            ✓ Three visitor signals have been identified.
+          </div>
+
+          <div class="known-item">
+            ? Their identities remain unknown.
+          </div>
+
+          <div class="known-item">
+            ? More transmissions may be coming.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 MeHeartMe. All rights reserved.
+  </footer>
+
+</body>
+</html>
