@@ -1,1 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Majestically Ghostly Trick-or-Treat | MeHeartMe</title>
+
+  <style>
+    :root {
+      --meheart-yellow: #ffd83d;
+      --heart: #d83a56;
+      --cream: #fffaf4;
+      --ink: #241c2b;
+
+      --event-purple: #4d326f;
+      --event-gold: #efa94a;
+      --event-orange: #f46d00;
+      --event-night: #130f1b;
+      --event-soft: #eee6f5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--event-night);
+      color: white;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    .site-header {
+      padding: 18px 20px 16px;
+      text-align: center;
+      background: var(--meheart-yellow);
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .brand-logo {
+      display: block;
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    .navigation a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      text-align: center;
+      padding: 44px 18px 34px;
+      background:
+        radial-gradient(circle at top, #3d2853 0%, var(--event-night) 58%);
+    }
+
+    .eyebrow {
+      color: var(--event-gold);
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      margin: 0 auto 16px;
+      max-width: 850px;
+      font-size: clamp(2rem, 7vw, 4rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--event-soft);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .event-banner {
+      display: block;
+      width: min(100%, 950px);
+      height: auto;
+      margin: 34px auto 0;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+
+    /* ---------- EVENT DETAILS ---------- */
+
+    .details {
+      padding: 46px 20px;
+      text-align: center;
+      background: #1b1324;
+    }
+
+    .details h2 {
+      margin-top: 0;
+      font-size: clamp(1.7rem, 6vw, 2.6rem);
+    }
+
+    .details-intro {
+      max-width: 720px;
+      margin: 0 auto 30px;
+      color: var(--event-soft);
+      line-height: 1.7;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .detail-card {
+      padding: 22px 16px;
+      background: var(--event-purple);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+    }
+
+    .detail-card strong {
+      display: block;
+      color: var(--event-gold);
+      margin-bottom: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .detail-card span {
+      line-height: 1.5;
+    }
+
+    /* ---------- TWO-WAY EXPERIENCE ---------- */
+
+    .experience {
+      padding: 52px 20px;
+      background: var(--cream);
+      color: var(--ink);
+      text-align: center;
+    }
+
+    .experience h2 {
+      margin-top: 0;
+      font-size: clamp(1.8rem, 6vw, 2.7rem);
+    }
+
+    .experience > p {
+      max-width: 720px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .experience-card {
+      padding: 28px 22px;
+      text-align: left;
+      background: white;
+      border: 2px solid var(--event-gold);
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(36,28,43,0.08);
+    }
+
+    .experience-card h3 {
+      margin-top: 0;
+      color: var(--event-purple);
+      font-size: 1.4rem;
+    }
+
+    .experience-card p {
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    /* ---------- WHAT TO EXPECT ---------- */
+
+    .expect {
+      padding: 50px 20px;
+      text-align: center;
+      background: var(--event-night);
+    }
+
+    .expect h2 {
+      margin-top: 0;
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+    }
+
+    .expect-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 850px;
+      margin: 26px auto 0;
+    }
+
+    .expect-card {
+      padding: 22px 18px;
+      background: #21172c;
+      border-left: 4px solid var(--event-orange);
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .expect-card strong {
+      color: var(--event-gold);
+    }
+
+    .expect-card p {
+      margin-bottom: 0;
+      line-height: 1.6;
+      color: var(--event-soft);
+    }
+
+    /* ---------- CTA ---------- */
+
+    .cta {
+      padding: 54px 20px;
+      text-align: center;
+      background: linear-gradient(
+        180deg,
+        var(--event-purple) 0%,
+        #281936 100%
+      );
+    }
+
+    .cta h2 {
+      margin-top: 0;
+      font-size: clamp(1.8rem, 6vw, 2.7rem);
+    }
+
+    .cta p {
+      max-width: 650px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+      color: var(--event-soft);
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .rsvp-button {
+      background: var(--event-orange);
+      color: white;
+    }
+
+    .transmission-button {
+      background: var(--event-gold);
+      color: var(--event-night);
+    }
+
+    .home-button {
+      margin-top: 20px;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: transparent;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      text-align: center;
+      padding: 26px 15px;
+      font-size: 0.8rem;
+      background: #0d0912;
+      color: #cfc6d5;
+    }
+
+    @media (max-width: 700px) {
+      .detail-grid,
+      .experience-grid,
+      .expect-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <img
+      class="brand-logo"
+      src="../../assets/images/MeHeartMe.png"
+      alt="MeHeartMe"
+    >
+
+    <nav class="navigation">
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#events">Events</a>
+      <a href="../../updates/">Transmissions</a>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="eyebrow">
+        Featured Halloween Experience
+      </div>
+
+      <h1>Majestic Ghostly Trick-or-Treat</h1>
+
+      <p>
+        Something unusual is making contact. Follow the signals,
+        uncover the clues, and join MeHeartMe for a Halloween experience
+        that connects a developing virtual world with local Trick-or-Treat
+        adventures.
+      </p>
+
+      <img
+        class="event-banner"
+        src="../../assets/images/majestic-ghostly-banner.jpeg.png"
+        alt="Majestic Ghostly Trick-or-Treat"
+      >
+
+    </section>
+
+
+    <!-- EVENT DETAILS -->
+
+    <section class="details">
+
+      <h2>The Adventure Is Taking Shape</h2>
+
+      <p class="details-intro">
+        The Majestic Ghostly experience unfolds online and through
+        participating local locations. Follow the transmissions as new
+        discoveries, clues, visitors, and event information are revealed.
+      </p>
+
+      <div class="detail-grid">
+
+        <div class="detail-card">
+          <strong>Featured Event</strong>
+          <span>Majestic Ghostly Trick-or-Treat</span>
+        </div>
+
+        <div class="detail-card">
+          <strong>Event Date</strong>
+          <span>October 21, 2026</span>
+        </div>
+
+        <div class="detail-card">
+          <strong>Signal Time</strong>
+          <span>5:00 PM Eastern</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- VIRTUAL + LOCAL -->
+
+    <section class="experience">
+
+      <h2>One Experience. Two Ways to Join.</h2>
+
+      <p>
+        Whether you're following the adventure online or discovering
+        something mysterious at a participating location, everyone can
+        become part of the Majestic Ghostly experience.
+      </p>
+
+      <div class="experience-grid">
+
+        <div class="experience-card">
+          <h3>👻 Join Virtually</h3>
+
+          <p>
+            Follow the developing story, watch for strange transmissions,
+            uncover clues, receive event updates, and experience the
+            Majestic Ghostly world from wherever you are.
+          </p>
+        </div>
+
+        <div class="experience-card">
+          <h3>🎃 Discover It Locally</h3>
+
+          <p>
+            Participating locations may host pop-up activities, clues,
+            treats, giveaways, QR discoveries, and other surprises connected
+            to the unfolding Halloween experience.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- WHAT TO EXPECT -->
+
+    <section class="expect">
+
+      <h2>What Might You Discover?</h2>
+
+      <div class="expect-grid">
+
+        <div class="expect-card">
+          <strong>Signals & Transmissions</strong>
+          <p>
+            Follow mysterious updates as contact with another world becomes
+            stronger.
+          </p>
+        </div>
+
+        <div class="expect-card">
+          <strong>Clues & Discoveries</strong>
+          <p>
+            Watch for digital and local clues that reveal more of the story.
+          </p>
+        </div>
+
+        <div class="expect-card">
+          <strong>Trick-or-Treat Experiences</strong>
+          <p>
+            Participating locations may feature treats, giveaways, activities,
+            and family-friendly Halloween fun.
+          </p>
+        </div>
+
+        <div class="expect-card">
+          <strong>Unexpected Visitors</strong>
+          <p>
+            Keep watching the signal tracker. Something—or someone—may be
+            trying to make contact.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+      <h2>Ready to Follow the Signal?</h2>
+
+      <p>
+        RSVP to join the experience and stay connected as new transmissions,
+        local opportunities, and Majestic Ghostly discoveries are
+        revealed.
+      </p>
+
+      <div class="button-row">
+
+        <!-- Replace this RSVP URL only if your WordPress RSVP permalink differs -->
+        <a
+          class="button rsvp-button"
+          href="https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp"
+          target="_blank"
+          rel="noopener"
+        >
+          RSVP NOW
+        </a>
+
+        <a
+          class="button transmission-button"
+          href="../../updates/"
+        >
+          ACCESS LATEST TRANSMISSIONS
+        </a>
+
+      </div>
+
+      <a
+        class="button home-button"
+        href="../../index.html#events"
+      >
+        ← Back to MeHeartMe Events
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 MeHeartMe. All rights reserved.
+  </footer>
+
+</body>
+</html>
