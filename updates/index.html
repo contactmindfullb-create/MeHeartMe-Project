@@ -352,63 +352,56 @@
           Latest Transmission
         </span>
 
-        <span class="update-date">
-          September 29, 2026
+        <span class="update-date" id="latestDate">
         </span>
 
-        <h2>Something Has Made Contact...</h2>
+       <h2 id="latestTitle">What did we discover?</h2>
 
-        <div class="media-window">
-
-          <div class="media-placeholder">
-            <strong>TRANSMISSION INCOMING</strong>
-            Video, image, clue or signal evidence will appear here.
-          </div>
-
-        </div>
-
-        <p>
-          We've detected unusual activity connected to the event.
-          The signal is active, but we don't know everything that's
-          on the other side yet.
-        </p>
-
-      </article>
-
-    </section>
-
-    <!-- DYNAMIC MEDIA SECTION: Update this area with the newest transmission -->
-<section class="latest">
-    
-<div class="media-window" id="dynamicMedia">
-  <!-- DYNAMIC MEDIA: YouTube video -->
-<div class="media-window">
+      <!-- DYNAMIC MEDIA: YouTube video -->
+          <div class="media-window" id="dynamicMedia">
 
   <iframe
     width="100%"
     height="420"
-    src="https://www.youtube.com/embed/IFAinEpZ28Q"
+    src="https://www.youtube.com/embed/hGNGKZ9V59E"
     title="Majestic Ghostly Transmission"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen>
   </iframe>
 
-</div>
-  </div>
-</div>
 
+        </div>
 
+        <p id="latestMessage">
+
+      </article>
+
+    </section>
+
+   
     <!-- Recently Detected Section -->
   <section class="archive">
-    <section class="archive">
-
+   
       <div class="archive-inner">
 
         <div class="archive-title">
           Recently Detected
         </div>
 
+        <article class="archive-card">
+
+  <span class="update-type">
+    Detection 004
+  </span>
+
+  <h3>What did we discover?</h3>
+
+  <p id="latestMessage">
+    Reconnection from last interrupted transmission shares classified information.
+  </p>
+
+</article>
 
         <article class="archive-card">
 
@@ -468,15 +461,15 @@
 
         <div class="known-list">
 
-          <div class="known-item">
+        <div class="known-item" id="clue1">
             ✓ The signal is active.
           </div>
 
-          <div class="known-item">
+         <div class="known-item" id="clue2">
             ✓ Three visitor signals have been identified.
           </div>
 
-          <div class="known-item">
+          <div class="known-item" id="clue3">
             ? Their identities remain unknown.
           </div>
 
@@ -522,5 +515,76 @@
     © 2026 MeHeartMe. All rights reserved.
   </footer>
 
+  <!-- CCdA → MeHeartMe Transmission Sync -->
+<script>
+fetch("https://celestinecodeamor.com/wp-json/wp/v2/pages/2495953")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("CCdA transmission data could not be reached.");
+    }
+    return response.json();
+  })
+  .then(page => {
+
+    // Read the HTML stored inside the CCdA Events page
+    const parser = new DOMParser();
+    const ccdaPage = parser.parseFromString(
+      page.content.rendered,
+      "text/html"
+    );
+
+    // Find the hidden transmission data
+    const getData = (id) => {
+      const item = ccdaPage.getElementById(id);
+      return item ? item.textContent.trim() : "";
+    };
+
+    const date = getData("transmission-date");
+    const title = getData("transmission-title");
+    const message = getData("transmission-message");
+    const media = getData("transmission-media");
+    const clue1 = getData("transmission-clue-1");
+    const clue2 = getData("transmission-clue-2");
+    const clue3 = getData("transmission-clue-3");
+
+    // Update MeHeartMe
+    if (date) {
+      document.getElementById("latestDate").textContent = date;
+    }
+
+    if (title) {
+      document.getElementById("latestTitle").textContent = title;
+    }
+
+    if (message) {
+      document.getElementById("latestMessage").textContent = message;
+    }
+
+    if (media) {
+      const iframe = document.querySelector("#dynamicMedia iframe");
+
+      if (iframe) {
+        iframe.src = media;
+      }
+    }
+
+    if (clue1) {
+      document.getElementById("clue1").textContent = "✓ " + clue1;
+    }
+
+    if (clue2) {
+      document.getElementById("clue2").textContent = "✓ " + clue2;
+    }
+
+    if (clue3) {
+      document.getElementById("clue3").textContent = "? " + clue3;
+    }
+
+  })
+  .catch(error => {
+    console.error("Transmission sync error:", error);
+  });
+</script>
+  
 </body>
 </html>
