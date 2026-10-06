@@ -1,1 +1,1918 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Portal Protocol | MeHeartMe
+  </title>
+
+  <style>
+
+    /* =========================================================
+       MEHEARTME // PORTAL PROTOCOL
+       SIGNAL DECIPHER ARCHIVE
+    ========================================================= */
+
+    :root {
+      --bg: #020706;
+      --panel: #06110e;
+      --panel-2: #0a1a16;
+
+      --green: #72e6be;
+      --green-bright: #b9ffe7;
+
+      --gold: #e3bd68;
+      --violet: #a987ff;
+      --danger: #dc7890;
+
+      --text: #effff9;
+      --muted: #89a79c;
+
+      --line: rgba(114, 230, 190, 0.22);
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      margin: 0;
+
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(35, 123, 98, 0.16),
+          transparent 40%
+        ),
+        linear-gradient(
+          180deg,
+          #06100e 0%,
+          var(--bg) 75%
+        );
+
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+
+    a {
+      color: inherit;
+    }
+
+
+    button {
+      font: inherit;
+    }
+
+
+    .mono {
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+
+    /* =========================================================
+       PAGE SHELL
+    ========================================================= */
+
+    .portal-shell {
+      width: min(100% - 28px, 1040px);
+      margin: 0 auto;
+      padding: 28px 0 60px;
+    }
+
+
+    /* =========================================================
+       TOP NAV
+    ========================================================= */
+
+    .portal-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+
+      padding-bottom: 18px;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    .brand {
+      color: var(--green);
+      font-size: 10px;
+    }
+
+
+    .back-link {
+      color: var(--muted);
+      font-size: 10px;
+      text-decoration: none;
+    }
+
+
+    .back-link:hover {
+      color: var(--green-bright);
+    }
+
+
+    /* =========================================================
+       HANDOFF INTRO
+    ========================================================= */
+
+    .handoff {
+      max-width: 800px;
+      margin: 52px auto 32px;
+      text-align: center;
+    }
+
+
+    .handoff-label {
+      margin-bottom: 11px;
+
+      color: var(--green);
+      font-size: 10px;
+    }
+
+
+    .handoff h1 {
+      margin: 0;
+
+      color: white;
+
+      font-size:
+        clamp(34px, 7vw, 64px);
+
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+
+    .handoff-copy {
+      max-width: 650px;
+      margin: 20px auto 0;
+
+      color: #b7ccc4;
+
+      font-size:
+        clamp(14px, 2vw, 17px);
+
+      line-height: 1.7;
+    }
+
+
+    .connection-status {
+      display: inline-block;
+
+      margin-top: 22px;
+      padding: 9px 13px;
+
+      color: var(--green-bright);
+
+      border:
+        1px solid
+        rgba(114,230,190,.35);
+
+      border-radius: 999px;
+
+      background:
+        rgba(114,230,190,.06);
+
+      font-size: 9px;
+    }
+
+
+    .status-dot {
+      display: inline-block;
+
+      width: 7px;
+      height: 7px;
+
+      margin-right: 7px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 12px var(--green);
+    }
+
+
+    /* =========================================================
+       STORY METERS
+    ========================================================= */
+
+    .meters {
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 14px;
+
+      max-width: 820px;
+      margin: 38px auto;
+    }
+
+
+    .meter-box {
+      padding: 15px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.07);
+
+      border-radius: 12px;
+
+      background:
+        rgba(255,255,255,.018);
+    }
+
+
+    .meter-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      margin-bottom: 9px;
+
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+
+    .track {
+      width: 100%;
+      height: 6px;
+
+      overflow: hidden;
+
+      border-radius: 99px;
+
+      background:
+        rgba(255,255,255,.08);
+    }
+
+
+    .fill {
+      display: block;
+
+      height: 100%;
+
+      border-radius: inherit;
+
+      transition:
+        width .6s ease;
+    }
+
+
+    #stabilityMeter {
+      width: 19%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 12px
+        rgba(114,230,190,.55);
+    }
+
+
+    #interferenceMeter {
+      width: 0%;
+
+      background: var(--danger);
+
+      box-shadow:
+        0 0 12px
+        rgba(220,120,144,.5);
+    }
+
+
+    #keyMeter {
+      width: 20%;
+
+      background: var(--gold);
+
+      box-shadow:
+        0 0 12px
+        rgba(227,189,104,.45);
+    }
+
+
+    /* =========================================================
+       TRANSMISSION CARD
+    ========================================================= */
+
+    .transmission {
+      margin-top: 34px;
+
+      padding:
+        clamp(18px, 4vw, 38px);
+
+      border: 1px solid var(--line);
+
+      border-radius: 18px;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(114,230,190,.08),
+          transparent 43%
+        ),
+        var(--panel);
+    }
+
+
+    .transmission-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      gap: 16px;
+
+      padding-bottom: 18px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    .transmission-number {
+      color: var(--green);
+      font-size: 10px;
+    }
+
+
+    .transmission-title {
+      margin: 6px 0 0;
+
+      color: white;
+
+      font-size:
+        clamp(26px, 5vw, 42px);
+
+      line-height: 1;
+    }
+
+
+    .key-status {
+      flex-shrink: 0;
+
+      padding: 8px 10px;
+
+      color: var(--muted);
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 8px;
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       OVERSEER
+    ========================================================= */
+
+    .overseer {
+      margin: 24px 0;
+
+      padding: 18px;
+
+      border-left:
+        2px solid var(--green);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(114,230,190,.075),
+          transparent
+        );
+    }
+
+
+    .overseer-label {
+      margin-bottom: 8px;
+
+      color: var(--green);
+      font-size: 9px;
+    }
+
+
+    .overseer p {
+      margin: 0;
+
+      color: #dbece6;
+
+      font-size:
+        clamp(14px, 2vw, 17px);
+
+      line-height: 1.65;
+    }
+
+
+    /* =========================================================
+       SIGNAL SCREEN
+    ========================================================= */
+
+    .signal-screen {
+      position: relative;
+
+      min-height: 210px;
+
+      margin: 26px 0;
+
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+      align-items: center;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(114,230,190,.18);
+
+      border-radius: 14px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(114,230,190,.09),
+          transparent 58%
+        ),
+        #020706;
+    }
+
+
+    .signal-screen::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(255,255,255,.018) 4px
+        );
+    }
+
+
+    .reconstruction {
+      position: relative;
+      z-index: 2;
+
+      margin-bottom: 24px;
+
+      color: #63877a;
+      font-size: 9px;
+    }
+
+
+    .symbol-sequence {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap:
+        clamp(10px, 3vw, 26px);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size:
+        clamp(35px, 8vw, 68px);
+
+      text-shadow:
+        0 0 20px
+        rgba(114,230,190,.25);
+    }
+
+
+    /* Transmission 002:
+       full signal introduces color */
+
+    .symbol-sequence span:nth-child(1),
+    .symbol-sequence span:nth-child(4),
+    .symbol-sequence span:nth-child(7) {
+      color: var(--green-bright);
+    }
+
+
+    .symbol-sequence span:nth-child(2),
+    .symbol-sequence span:nth-child(5),
+    .symbol-sequence span:nth-child(8) {
+      color: var(--gold);
+    }
+
+
+    .symbol-sequence span:nth-child(3),
+    .symbol-sequence span:nth-child(6),
+    .symbol-sequence span:nth-child(9) {
+      color: var(--violet);
+    }
+
+
+    /* =========================================================
+       QUESTION
+    ========================================================= */
+
+    .question {
+      text-align: center;
+    }
+
+
+    .question-label {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+
+    .question h3 {
+      margin: 8px 0 20px;
+
+      color: white;
+
+      font-size:
+        clamp(18px, 4vw, 26px);
+    }
+
+
+    /* =========================================================
+       ANSWERS
+    ========================================================= */
+
+    .answer-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+
+    .answer {
+      min-height: 85px;
+
+      cursor: pointer;
+
+      color: var(--text);
+
+      border: 1px solid var(--line);
+      border-radius: 12px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+      font-size: 38px;
+
+      transition:
+        transform .18s ease,
+        border-color .18s ease,
+        background .18s ease;
+    }
+
+
+    .answer:hover {
+      transform:
+        translateY(-2px);
+
+      border-color:
+        rgba(114,230,190,.75);
+
+      background:
+        rgba(114,230,190,.07);
+    }
+
+
+    .answer.selected {
+      border-color:
+        var(--green);
+
+      background:
+        rgba(114,230,190,.13);
+
+      box-shadow:
+        inset 0 0 25px
+        rgba(114,230,190,.04);
+    }
+
+
+    /* =========================================================
+       DECIPHER BUTTON
+    ========================================================= */
+
+    .decode {
+      display: block;
+
+      width: min(100%, 600px);
+
+      min-height: 54px;
+
+      margin: 14px auto 0;
+      padding: 13px 20px;
+
+      cursor: pointer;
+
+      color: #04110d;
+
+      border: 0;
+      border-radius: 10px;
+
+      background: var(--green);
+
+      font-weight: 800;
+
+      transition:
+        opacity .2s ease,
+        transform .2s ease;
+    }
+
+
+    .decode:hover:not(:disabled) {
+      transform:
+        translateY(-1px);
+    }
+
+
+    .decode:disabled {
+      cursor: not-allowed;
+      opacity: .32;
+    }
+
+
+    /* =========================================================
+       RESULT
+    ========================================================= */
+
+    .result {
+      display: none;
+
+      max-width: 650px;
+
+      margin: 22px auto 0;
+      padding: 18px;
+
+      border: 1px solid var(--line);
+      border-radius: 12px;
+
+      background:
+        rgba(114,230,190,.04);
+
+      text-align: left;
+    }
+
+
+    .result.visible {
+      display: block;
+    }
+
+
+    .result-status {
+      margin-bottom: 8px;
+
+      color: var(--green);
+
+      font-size: 10px;
+    }
+
+
+    .result-status.wrong {
+      color: var(--danger);
+    }
+
+
+    .result h4 {
+      margin: 0 0 8px;
+
+      color: white;
+      font-size: 19px;
+    }
+
+
+    .result p {
+      margin: 0;
+
+      color: #b6cbc3;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       NEXT SIGNAL
+    ========================================================= */
+
+    .next-signal {
+      display: none;
+
+      max-width: 650px;
+
+      margin: 20px auto 0;
+      padding: 20px;
+
+      border:
+        1px solid
+        rgba(227,189,104,.35);
+
+      border-radius: 12px;
+
+      background:
+        rgba(227,189,104,.045);
+
+      text-align: center;
+    }
+
+
+    .next-signal.visible {
+      display: block;
+    }
+
+
+    .next-signal-label {
+      color: var(--gold);
+      font-size: 10px;
+    }
+
+
+    .next-signal p {
+      margin: 10px 0 0;
+
+      color: #c8d5d0;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       LOCKED TRANSMISSIONS
+    ========================================================= */
+
+    .archive-title {
+      margin: 52px 0 18px;
+
+      color: var(--green);
+
+      font-size: 10px;
+    }
+
+
+    .archive-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 14px;
+    }
+
+
+    .archive-card {
+      min-height: 150px;
+
+      padding: 18px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.07);
+
+      border-radius: 14px;
+
+      background:
+        rgba(255,255,255,.018);
+    }
+
+
+    .archive-card.unlocked {
+      border-color:
+        rgba(227,189,104,.4);
+
+      background:
+        rgba(227,189,104,.04);
+    }
+
+
+    .archive-number {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+
+    .archive-card h3 {
+      margin: 9px 0;
+
+      color: white;
+    }
+
+
+    .archive-card p {
+      margin: 0;
+
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .portal-footer {
+      margin-top: 48px;
+      padding-top: 20px;
+
+      border-top:
+        1px solid var(--line);
+
+      text-align: center;
+
+      color: #58746a;
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .meters,
+      .archive-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .transmission-header {
+        flex-direction: column;
+      }
+
+
+      .answer-grid {
+        gap: 8px;
+      }
+
+
+      .answer {
+        min-height: 70px;
+        font-size: 31px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="portal-shell">
+
+
+    <!-- =====================================================
+         NAV
+    ====================================================== -->
+
+    <nav class="portal-nav">
+
+      <div class="brand mono">
+        MEHEARTME // SIGNAL NETWORK
+      </div>
+
+      <a
+        class="back-link mono"
+        href="../"
+      >
+        ← TRANSMISSION CENTER
+      </a>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         HANDOFF
+    ====================================================== -->
+
+    <section class="handoff">
+
+      <div class="handoff-label mono">
+        PORTAL HANDOFF COMPLETE
+      </div>
+
+      <h1>
+        Signal connection stabilized.
+      </h1>
+
+      <p class="handoff-copy">
+        Transmission 002 has been recovered.
+        You have entered the deeper signal archive.
+        Continue decoding the transmissions to uncover
+        what is communicating through the portal.
+      </p>
+
+      <div class="connection-status mono">
+
+        <span class="status-dot"></span>
+
+        RECEIVER CONNECTION ACTIVE
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         GLOBAL PLAYER METERS
+    ====================================================== -->
+
+    <section class="meters">
+
+
+      <div class="meter-box">
+
+        <div class="meter-top mono">
+          <span>PORTAL STABILITY</span>
+          <span id="stabilityNumber">19%</span>
+        </div>
+
+        <div class="track">
+          <span
+            id="stabilityMeter"
+            class="fill">
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="meter-box">
+
+        <div class="meter-top mono">
+          <span>INTERFERENCE</span>
+          <span id="interferenceNumber">0%</span>
+        </div>
+
+        <div class="track">
+          <span
+            id="interferenceMeter"
+            class="fill">
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="meter-box">
+
+        <div class="meter-top mono">
+          <span>PORTAL KEYS</span>
+          <span id="keyNumber">1 / 5</span>
+        </div>
+
+        <div class="track">
+          <span
+            id="keyMeter"
+            class="fill">
+          </span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TRANSMISSION 002
+    ====================================================== -->
+
+    <article
+      class="transmission"
+      id="transmission002"
+    >
+
+
+      <header class="transmission-header">
+
+        <div>
+
+          <div class="transmission-number mono">
+            TRANSMISSION 002
+          </div>
+
+          <h2 class="transmission-title">
+            Pattern
+          </h2>
+
+        </div>
+
+
+        <div
+          class="key-status mono"
+          id="transmissionKeyStatus"
+        >
+          PORTAL KEYS 1 / 5
+        </div>
+
+      </header>
+
+
+
+      <!-- OVERSEER -->
+
+      <div class="overseer">
+
+        <div class="overseer-label mono">
+          CELESTIAL OVERSEER // ANALYSIS
+        </div>
+
+        <p>
+          “The second transmission arrived shortly after
+          we responded. This one was more deliberate.
+          They weren't simply repeating themselves.
+          They were checking whether we could follow.”
+        </p>
+
+      </div>
+
+
+
+      <!-- SIGNAL -->
+
+      <div class="signal-screen">
+
+        <div class="reconstruction mono">
+          SIGNAL RECONSTRUCTION // 100%
+        </div>
+
+
+        <div
+          class="symbol-sequence"
+          aria-label="Square square circle square square circle square square question mark"
+        >
+
+          <span>□</span>
+          <span>□</span>
+          <span>○</span>
+
+          <span>□</span>
+          <span>□</span>
+          <span>○</span>
+
+          <span>□</span>
+          <span>□</span>
+          <span>?</span>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- QUESTION -->
+
+      <section class="question">
+
+        <div class="question-label mono">
+          DECIPHER TRANSMISSION
+        </div>
+
+        <h3>
+          Which symbol completes their pattern?
+        </h3>
+
+
+        <div
+          class="answer-grid"
+          id="answerGrid"
+        >
+
+          <button
+            class="answer"
+            type="button"
+            data-answer="triangle"
+            aria-label="Triangle"
+          >
+            △
+          </button>
+
+
+          <button
+            class="answer"
+            type="button"
+            data-answer="circle"
+            aria-label="Circle"
+          >
+            ○
+          </button>
+
+
+          <button
+            class="answer"
+            type="button"
+            data-answer="square"
+            aria-label="Square"
+          >
+            □
+          </button>
+
+        </div>
+
+
+        <button
+          id="decodeButton"
+          class="decode"
+          type="button"
+          disabled
+        >
+          SELECT A SYMBOL
+        </button>
+
+
+
+        <!-- RESULT -->
+
+        <div
+          id="result"
+          class="result"
+          aria-live="polite"
+        >
+
+          <div
+            id="resultStatus"
+            class="result-status mono"
+          >
+          </div>
+
+          <h4 id="resultTitle"></h4>
+
+          <p id="resultCopy"></p>
+
+        </div>
+
+
+
+        <!-- NEXT SIGNAL -->
+
+        <div
+          id="nextSignal"
+          class="next-signal"
+        >
+
+          <div class="next-signal-label mono">
+            SIGNAL RESPONSE CONFIRMED
+          </div>
+
+          <p>
+            Portal Key 002 has been recovered.
+            Another transmission is attempting to connect.
+          </p>
+
+        </div>
+
+      </section>
+
+    </article>
+
+
+
+    <!-- =====================================================
+         FUTURE TRANSMISSION ARCHIVE
+    ====================================================== -->
+
+    <div class="archive-title mono">
+      SIGNAL ARCHIVE
+    </div>
+
+
+    <section class="archive-grid">
+
+
+      <div
+        class="archive-card"
+        id="archive003"
+      >
+
+        <div class="archive-number mono">
+          TRANSMISSION 003
+        </div>
+
+        <h3>
+          Signal Pending
+        </h3>
+
+        <p id="archive003Copy">
+          Locked until Transmission 002 is successfully deciphered.
+        </p>
+
+      </div>
+
+
+      <div class="archive-card">
+
+        <div class="archive-number mono">
+          TRANSMISSION 004
+        </div>
+
+        <h3>
+          Signal Locked
+        </h3>
+
+        <p>
+          Additional portal authorization required.
+        </p>
+
+      </div>
+
+
+      <div class="archive-card">
+
+        <div class="archive-number mono">
+          TRANSMISSION 005
+        </div>
+
+        <h3>
+          Origin Unknown
+        </h3>
+
+        <p>
+          Signal data has not yet been recovered.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="portal-footer mono">
+
+      MEHEARTME //
+      PORTAL PROTOCOL //
+      SIGNAL DECIPHER ARCHIVE
+
+    </footer>
+
+
+  </div>
+
+
+
+  <!-- =========================================================
+       PORTAL PROTOCOL ENGINE
+  ========================================================== -->
+
+  <script>
+
+    (function () {
+
+      "use strict";
+
+
+      /* =====================================================
+         STORAGE
+
+         IMPORTANT:
+         CCdA and GitHub are different domains,
+         so their localStorage cannot be shared.
+
+         The player arrives here AFTER T001,
+         therefore this archive begins with:
+         Key 001 already recovered.
+      ====================================================== */
+
+      const STORAGE_KEY =
+        "meHeartMePortalProtocolProgress";
+
+
+      const DEFAULT_PROGRESS = {
+        transmission: 2,
+        completed: [1],
+        portalKeys: 1,
+        stability: 19,
+        interference: 0
+      };
+
+
+
+      function createDefaultProgress() {
+
+        return {
+          transmission:
+            DEFAULT_PROGRESS.transmission,
+
+          completed:
+            [...DEFAULT_PROGRESS.completed],
+
+          portalKeys:
+            DEFAULT_PROGRESS.portalKeys,
+
+          stability:
+            DEFAULT_PROGRESS.stability,
+
+          interference:
+            DEFAULT_PROGRESS.interference
+        };
+
+      }
+
+
+
+      function getProgress() {
+
+        try {
+
+          const saved =
+            localStorage.getItem(
+              STORAGE_KEY
+            );
+
+
+          if (!saved) {
+
+            return createDefaultProgress();
+
+          }
+
+
+          const parsed =
+            JSON.parse(saved);
+
+
+          return {
+
+            transmission:
+              Number(
+                parsed.transmission
+              ) || 2,
+
+            completed:
+              Array.isArray(
+                parsed.completed
+              )
+                ? parsed.completed
+                : [1],
+
+            portalKeys:
+              Number(
+                parsed.portalKeys
+              ) || 1,
+
+            stability:
+              Number(
+                parsed.stability
+              ) || 19,
+
+            interference:
+              Number(
+                parsed.interference
+              ) || 0
+
+          };
+
+        }
+
+        catch (error) {
+
+          return createDefaultProgress();
+
+        }
+
+      }
+
+
+
+      function saveProgress() {
+
+        try {
+
+          localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(progress)
+          );
+
+        }
+
+        catch (error) {
+
+          /* Game remains playable
+             even if storage is unavailable. */
+
+        }
+
+      }
+
+
+
+      let progress =
+        getProgress();
+
+      let selectedAnswer =
+        null;
+
+
+
+      /* =====================================================
+         ELEMENTS
+      ====================================================== */
+
+      const answers =
+        document.querySelectorAll(
+          ".answer"
+        );
+
+
+      const decodeButton =
+        document.getElementById(
+          "decodeButton"
+        );
+
+
+      const result =
+        document.getElementById(
+          "result"
+        );
+
+
+      const resultStatus =
+        document.getElementById(
+          "resultStatus"
+        );
+
+
+      const resultTitle =
+        document.getElementById(
+          "resultTitle"
+        );
+
+
+      const resultCopy =
+        document.getElementById(
+          "resultCopy"
+        );
+
+
+      const nextSignal =
+        document.getElementById(
+          "nextSignal"
+        );
+
+
+      const archive003 =
+        document.getElementById(
+          "archive003"
+        );
+
+
+      const archive003Copy =
+        document.getElementById(
+          "archive003Copy"
+        );
+
+
+
+      /* =====================================================
+         UPDATE GLOBAL DISPLAY
+      ====================================================== */
+
+      function updateMeters() {
+
+        const stabilityMeter =
+          document.getElementById(
+            "stabilityMeter"
+          );
+
+
+        const stabilityNumber =
+          document.getElementById(
+            "stabilityNumber"
+          );
+
+
+        const interferenceMeter =
+          document.getElementById(
+            "interferenceMeter"
+          );
+
+
+        const interferenceNumber =
+          document.getElementById(
+            "interferenceNumber"
+          );
+
+
+        const keyMeter =
+          document.getElementById(
+            "keyMeter"
+          );
+
+
+        const keyNumber =
+          document.getElementById(
+            "keyNumber"
+          );
+
+
+        const transmissionKeyStatus =
+          document.getElementById(
+            "transmissionKeyStatus"
+          );
+
+
+        stabilityMeter.style.width =
+          progress.stability + "%";
+
+
+        stabilityNumber.textContent =
+          progress.stability + "%";
+
+
+        interferenceMeter.style.width =
+          progress.interference + "%";
+
+
+        interferenceNumber.textContent =
+          progress.interference + "%";
+
+
+        keyMeter.style.width =
+          (
+            progress.portalKeys / 5
+          ) * 100 + "%";
+
+
+        keyNumber.textContent =
+          progress.portalKeys +
+          " / 5";
+
+
+        transmissionKeyStatus.textContent =
+          "PORTAL KEYS " +
+          progress.portalKeys +
+          " / 5";
+
+      }
+
+
+
+      /* =====================================================
+         RESTORE COMPLETED STATE
+      ====================================================== */
+
+      function restoreProgress() {
+
+        if (
+          progress.completed.includes(2)
+        ) {
+
+          answers.forEach(
+            function (answer) {
+
+              answer.disabled = true;
+
+            }
+          );
+
+
+          decodeButton.disabled =
+            true;
+
+
+          decodeButton.textContent =
+            "TRANSMISSION COMPLETE";
+
+
+          result.classList.add(
+            "visible"
+          );
+
+
+          resultStatus.classList.remove(
+            "wrong"
+          );
+
+
+          resultStatus.textContent =
+            "TRANSMISSION DECIPHERED";
+
+
+          resultTitle.textContent =
+            "Pattern confirmed.";
+
+
+          resultCopy.textContent =
+            "Square. Square. Circle. The sequence repeats. The signal is becoming more deliberate.";
+
+
+          nextSignal.classList.add(
+            "visible"
+          );
+
+
+          unlockTransmission003();
+
+        }
+
+      }
+
+
+
+      /* =====================================================
+         ANSWER SELECTION
+      ====================================================== */
+
+      answers.forEach(
+        function (answer) {
+
+          answer.addEventListener(
+            "click",
+            function () {
+
+              answers.forEach(
+                function (item) {
+
+                  item.classList.remove(
+                    "selected"
+                  );
+
+                }
+              );
+
+
+              answer.classList.add(
+                "selected"
+              );
+
+
+              selectedAnswer =
+                answer.dataset.answer;
+
+
+              decodeButton.disabled =
+                false;
+
+
+              decodeButton.textContent =
+                "DECIPHER TRANSMISSION";
+
+            }
+          );
+
+        }
+      );
+
+
+
+      /* =====================================================
+         CHECK ANSWER
+      ====================================================== */
+
+      decodeButton.addEventListener(
+        "click",
+        function () {
+
+          if (!selectedAnswer) {
+            return;
+          }
+
+
+
+          /* -----------------------------
+             INCORRECT
+          ------------------------------ */
+
+          if (
+            selectedAnswer !== "circle"
+          ) {
+
+            progress.interference =
+              Math.min(
+                progress.interference + 4,
+                100
+              );
+
+
+            saveProgress();
+
+            updateMeters();
+
+
+            result.classList.add(
+              "visible"
+            );
+
+
+            resultStatus.classList.add(
+              "wrong"
+            );
+
+
+            resultStatus.textContent =
+              "PATTERN MISMATCH";
+
+
+            resultTitle.textContent =
+              "Signal response rejected.";
+
+
+            resultCopy.textContent =
+              "Study the repeating groups again. The transmission remains active. Try another response.";
+
+
+            return;
+
+          }
+
+
+
+          /* -----------------------------
+             CORRECT
+          ------------------------------ */
+
+          result.classList.add(
+            "visible"
+          );
+
+
+          resultStatus.classList.remove(
+            "wrong"
+          );
+
+
+          resultStatus.textContent =
+            "TRANSMISSION DECIPHERED";
+
+
+          resultTitle.textContent =
+            "Pattern confirmed.";
+
+
+          resultCopy.textContent =
+            "Square. Square. Circle. Square. Square. Circle. The sequence repeats. The sender is testing whether we recognize structured communication.";
+
+
+
+          /* Award T002 once */
+
+          if (
+            !progress.completed.includes(2)
+          ) {
+
+            progress.completed.push(2);
+
+          }
+
+
+          progress.portalKeys =
+            Math.max(
+              progress.portalKeys,
+              2
+            );
+
+
+          progress.stability =
+            Math.max(
+              progress.stability,
+              31
+            );
+
+
+          progress.transmission =
+            Math.max(
+              progress.transmission,
+              3
+            );
+
+
+          saveProgress();
+
+          updateMeters();
+
+
+
+          answers.forEach(
+            function (answer) {
+
+              answer.disabled = true;
+
+            }
+          );
+
+
+          decodeButton.disabled =
+            true;
+
+
+          decodeButton.textContent =
+            "TRANSMISSION COMPLETE";
+
+
+          nextSignal.classList.add(
+            "visible"
+          );
+
+
+          unlockTransmission003();
+
+        }
+      );
+
+
+
+      /* =====================================================
+         UNLOCK NEXT ARCHIVE SLOT
+      ====================================================== */
+
+      function unlockTransmission003() {
+
+        archive003.classList.add(
+          "unlocked"
+        );
+
+
+        archive003.querySelector(
+          "h3"
+        ).textContent =
+          "Signal Detected";
+
+
+        archive003Copy.textContent =
+          "Transmission 003 has been detected. Reconstruction pending.";
+
+      }
+
+
+
+      /* =====================================================
+         INITIALIZE
+      ====================================================== */
+
+      updateMeters();
+
+      restoreProgress();
+
+
+    })();
+
+  </script>
+
+
+</body>
+
+</html>
