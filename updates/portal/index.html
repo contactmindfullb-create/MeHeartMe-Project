@@ -1226,6 +1226,239 @@
 
     </article>
 
+    <!-- =====================================================
+     TRANSMISSION 003
+====================================================== -->
+
+<article
+  class="transmission"
+  id="transmission003"
+  style="display:none;"
+>
+
+  <header class="transmission-header">
+
+    <div>
+
+      <div class="transmission-number mono">
+        TRANSMISSION 003
+      </div>
+
+      <h2 class="transmission-title">
+        Color
+      </h2>
+
+    </div>
+
+    <div class="key-status mono">
+      PORTAL KEYS <span id="t003KeyStatus">2 / 5</span>
+    </div>
+
+  </header>
+
+
+  <div class="overseer">
+
+    <div class="overseer-label mono">
+      CELESTIAL OVERSEER // ANALYSIS
+    </div>
+
+    <p>
+      “This is where things changed.
+      The shapes remained familiar,
+      but the transmission began carrying color.
+      We believe color is part of their language.”
+    </p>
+
+  </div>
+
+
+  <div class="signal-screen">
+
+    <div class="reconstruction mono">
+      COLOR CHANNEL // RESTORED
+    </div>
+
+    <div class="symbol-sequence">
+
+      <span style="color:#73c7ff;">○</span>
+      <span style="color:#f0ca69;">△</span>
+
+      <span style="color:#73c7ff;">○</span>
+      <span style="color:#f0ca69;">△</span>
+
+      <span style="color:#73c7ff;">○</span>
+      <span>?</span>
+
+    </div>
+
+  </div>
+
+
+  <section class="question">
+
+    <div class="question-label mono">
+      DECIPHER TRANSMISSION
+    </div>
+
+    <h3>
+      Which colored symbol completes the signal?
+    </h3>
+
+    <div class="answer-grid" id="t003AnswerGrid">
+
+      <button
+        class="answer t003-answer"
+        type="button"
+        data-answer="yellow-triangle"
+        style="color:#f0ca69;"
+      >
+        △
+      </button>
+
+      <button
+        class="answer t003-answer"
+        type="button"
+        data-answer="blue-circle"
+        style="color:#73c7ff;"
+      >
+        ○
+      </button>
+
+      <button
+        class="answer t003-answer"
+        type="button"
+        data-answer="green-square"
+        style="color:#72e6be;"
+      >
+        □
+      </button>
+
+    </div>
+
+    <button
+      id="t003DecodeButton"
+      class="decode"
+      type="button"
+      disabled
+    >
+      SELECT A SYMBOL
+    </button>
+
+
+    <div
+      id="t003Result"
+      class="result"
+    >
+
+      <div
+        id="t003ResultStatus"
+        class="result-status mono"
+      >
+      </div>
+
+      <h4 id="t003ResultTitle"></h4>
+
+      <p id="t003ResultCopy"></p>
+
+    </div>
+
+  </section>
+
+
+  <!-- LOCAL SIGNAL MISSION -->
+
+  <section
+    id="localSignalMission"
+    class="next-signal"
+  >
+
+    <div class="next-signal-label mono">
+      LOCAL SIGNAL DETECTED
+    </div>
+
+    <p>
+      A transmission fragment has surfaced at a nearby
+      Signal Partner location.
+    </p>
+
+    <div class="overseer" style="margin-top:18px;">
+
+      <div class="overseer-label mono">
+        CELESTIAL OVERSEER // FIELD NOTE
+      </div>
+
+      <p>
+        “I have located an Earth food establishment
+        called One Love Island & Soul Food Restaurant.
+        I am collecting information about places I may
+        wish to visit when I arrive.
+        This is purely scientific.”
+      </p>
+
+    </div>
+
+    <h3>
+      Is the Sweet Guava BBQ Sauce available with chicken?
+    </h3>
+
+    <div class="answer-grid" id="businessAnswerGrid">
+
+      <button
+        class="answer business-answer"
+        type="button"
+        data-answer="yes"
+      >
+        YES
+      </button>
+
+      <button
+        class="answer business-answer"
+        type="button"
+        data-answer="no"
+      >
+        NO
+      </button>
+
+      <button
+        class="answer business-answer"
+        type="button"
+        data-answer="other"
+      >
+        ONLY WITH ANOTHER ITEM
+      </button>
+
+    </div>
+
+    <button
+      id="businessVerifyButton"
+      class="decode"
+      type="button"
+      disabled
+    >
+      VERIFY LOCAL SIGNAL
+    </button>
+
+    <div
+      id="businessResult"
+      class="result"
+    >
+
+      <div
+        id="businessResultStatus"
+        class="result-status mono"
+      >
+      </div>
+
+      <h4 id="businessResultTitle"></h4>
+
+      <p id="businessResultCopy"></p>
+
+    </div>
+
+  </section>
+
+</article>
 
 
     <!-- =====================================================
@@ -1895,6 +2128,8 @@
         archive003Copy.textContent =
           "Transmission 003 has been detected. Reconstruction pending.";
 
+        revealTransmission003();
+        
       }
 
 
@@ -1907,6 +2142,423 @@
 
       restoreProgress();
 
+      /* =====================================================
+   TRANSMISSION 003 + LOCAL SIGNAL
+===================================================== */
+
+const transmission003 =
+  document.getElementById(
+    "transmission003"
+  );
+
+const t003Answers =
+  document.querySelectorAll(
+    ".t003-answer"
+  );
+
+const t003DecodeButton =
+  document.getElementById(
+    "t003DecodeButton"
+  );
+
+const t003Result =
+  document.getElementById(
+    "t003Result"
+  );
+
+const t003ResultStatus =
+  document.getElementById(
+    "t003ResultStatus"
+  );
+
+const t003ResultTitle =
+  document.getElementById(
+    "t003ResultTitle"
+  );
+
+const t003ResultCopy =
+  document.getElementById(
+    "t003ResultCopy"
+  );
+
+const localSignalMission =
+  document.getElementById(
+    "localSignalMission"
+  );
+
+const businessAnswers =
+  document.querySelectorAll(
+    ".business-answer"
+  );
+
+const businessVerifyButton =
+  document.getElementById(
+    "businessVerifyButton"
+  );
+
+const businessResult =
+  document.getElementById(
+    "businessResult"
+  );
+
+const businessResultStatus =
+  document.getElementById(
+    "businessResultStatus"
+  );
+
+const businessResultTitle =
+  document.getElementById(
+    "businessResultTitle"
+  );
+
+const businessResultCopy =
+  document.getElementById(
+    "businessResultCopy"
+  );
+
+let t003Selected = null;
+let businessSelected = null;
+
+
+/* =====================================================
+   REVEAL T003
+===================================================== */
+
+function revealTransmission003() {
+
+  if (!transmission003) {
+    return;
+  }
+
+  transmission003.style.display =
+    "block";
+
+  setTimeout(
+    function () {
+
+      transmission003.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    },
+    200
+  );
+
+}
+
+
+/* =====================================================
+   T003 ANSWER SELECTION
+===================================================== */
+
+t003Answers.forEach(
+  function (answer) {
+
+    answer.addEventListener(
+      "click",
+      function () {
+
+        t003Answers.forEach(
+          function (item) {
+
+            item.classList.remove(
+              "selected"
+            );
+
+          }
+        );
+
+        answer.classList.add(
+          "selected"
+        );
+
+        t003Selected =
+          answer.dataset.answer;
+
+        t003DecodeButton.disabled =
+          false;
+
+        t003DecodeButton.textContent =
+          "DECIPHER TRANSMISSION";
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   CHECK T003
+===================================================== */
+
+t003DecodeButton.addEventListener(
+  "click",
+  function () {
+
+    if (!t003Selected) {
+      return;
+    }
+
+    if (
+      t003Selected !==
+      "yellow-triangle"
+    ) {
+
+      t003Result.classList.add(
+        "visible"
+      );
+
+      t003ResultStatus.classList.add(
+        "wrong"
+      );
+
+      t003ResultStatus.textContent =
+        "COLOR MISMATCH";
+
+      t003ResultTitle.textContent =
+        "That signal does not align.";
+
+      t003ResultCopy.textContent =
+        "Shape and color must both match the repeating sequence.";
+
+      return;
+
+    }
+
+    t003Result.classList.add(
+      "visible"
+    );
+
+    t003ResultStatus.classList.remove(
+      "wrong"
+    );
+
+    t003ResultStatus.textContent =
+      "COLOR LAYER DECIPHERED";
+
+    t003ResultTitle.textContent =
+      "Color carries information.";
+
+    t003ResultCopy.textContent =
+      "The yellow triangle completes the signal. The transmission has revealed a nearby local signal.";
+
+    t003Answers.forEach(
+      function (answer) {
+
+        answer.disabled = true;
+
+      }
+    );
+
+    t003DecodeButton.disabled =
+      true;
+
+    t003DecodeButton.textContent =
+      "TRANSMISSION COMPLETE";
+
+    localSignalMission.classList.add(
+      "visible"
+    );
+
+  }
+);
+
+
+/* =====================================================
+   BUSINESS ANSWER SELECTION
+===================================================== */
+
+businessAnswers.forEach(
+  function (answer) {
+
+    answer.addEventListener(
+      "click",
+      function () {
+
+        businessAnswers.forEach(
+          function (item) {
+
+            item.classList.remove(
+              "selected"
+            );
+
+          }
+        );
+
+        answer.classList.add(
+          "selected"
+        );
+
+        businessSelected =
+          answer.dataset.answer;
+
+        businessVerifyButton.disabled =
+          false;
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   VERIFY ONE LOVE LOCAL SIGNAL
+===================================================== */
+
+businessVerifyButton.addEventListener(
+  "click",
+  function () {
+
+    if (!businessSelected) {
+      return;
+    }
+
+    /*
+      IMPORTANT:
+      Replace "yes" below
+      once One Love confirms the correct answer.
+    */
+
+    const correctBusinessAnswer =
+      "yes";
+
+
+    if (
+      businessSelected !==
+      correctBusinessAnswer
+    ) {
+
+      businessResult.classList.add(
+        "visible"
+      );
+
+      businessResultStatus.classList.add(
+        "wrong"
+      );
+
+      businessResultStatus.textContent =
+        "LOCAL SIGNAL MISMATCH";
+
+      businessResultTitle.textContent =
+        "That detail does not match.";
+
+      businessResultCopy.textContent =
+        "Review the Signal Partner information and try again.";
+
+      return;
+
+    }
+
+
+    businessResult.classList.add(
+      "visible"
+    );
+
+    businessResultStatus.classList.remove(
+      "wrong"
+    );
+
+    businessResultStatus.textContent =
+      "LOCAL SIGNAL VERIFIED";
+
+    businessResultTitle.textContent =
+      "Portal Key 003 recovered.";
+
+    businessResultCopy.textContent =
+      "Excellent. Adding One Love Island & Soul Food Restaurant to my Earth itinerary.";
+
+
+    if (
+      !progress.completed.includes(3)
+    ) {
+
+      progress.completed.push(3);
+
+    }
+
+
+    progress.portalKeys =
+      Math.max(
+        progress.portalKeys,
+        3
+      );
+
+
+    progress.stability =
+      Math.max(
+        progress.stability,
+        46
+      );
+
+
+    progress.transmission =
+      Math.max(
+        progress.transmission,
+        4
+      );
+
+
+    saveProgress();
+
+    updateMeters();
+
+
+    businessAnswers.forEach(
+      function (answer) {
+
+        answer.disabled =
+          true;
+
+      }
+    );
+
+
+    businessVerifyButton.disabled =
+      true;
+
+    businessVerifyButton.textContent =
+      "LOCAL SIGNAL VERIFIED";
+
+
+    unlockTransmission004();
+
+  }
+);
+
+
+/* =====================================================
+   UNLOCK T004 PLACEHOLDER
+===================================================== */
+
+function unlockTransmission004() {
+
+  const archive004 =
+    document.querySelector(
+      ".archive-card:nth-child(2)"
+    );
+
+  if (!archive004) {
+    return;
+  }
+
+  archive004.classList.add(
+    "unlocked"
+  );
+
+  archive004.querySelector(
+    "h3"
+  ).textContent =
+    "Signal Detected";
+
+  archive004.querySelector(
+    "p"
+  ).textContent =
+    "Transmission 004 has been detected. Reconstruction pending.";
+
+}
 
     })();
 
