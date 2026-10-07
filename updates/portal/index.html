@@ -646,6 +646,12 @@
         rgba(114,230,190,.04);
     }
 
+    .t003-answer {
+  pointer-events: auto;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
 
     /* =========================================================
        DECIPHER BUTTON
@@ -2249,14 +2255,26 @@ function revealTransmission003() {
    T003 ANSWER SELECTION
 ===================================================== */
 
-t003Answers.forEach(
-  function (answer) {
+if (transmission003) {
 
-    answer.addEventListener(
-      "click",
-      function () {
+  transmission003.addEventListener(
+    "click",
+    function (event) {
 
-        t003Answers.forEach(
+      const answer =
+        event.target.closest(
+          ".t003-answer"
+        );
+
+      if (!answer) {
+        return;
+      }
+
+      document
+        .querySelectorAll(
+          ".t003-answer"
+        )
+        .forEach(
           function (item) {
 
             item.classList.remove(
@@ -2266,25 +2284,23 @@ t003Answers.forEach(
           }
         );
 
-        answer.classList.add(
-          "selected"
-        );
+      answer.classList.add(
+        "selected"
+      );
 
-        t003Selected =
-          answer.dataset.answer;
+      t003Selected =
+        answer.dataset.answer;
 
-        t003DecodeButton.disabled =
-          false;
+      t003DecodeButton.disabled =
+        false;
 
-        t003DecodeButton.textContent =
-          "DECIPHER TRANSMISSION";
+      t003DecodeButton.textContent =
+        "DECIPHER TRANSMISSION";
 
-      }
-    );
+    }
+  );
 
-  }
-);
-
+}
 
 /* =====================================================
    CHECK T003
