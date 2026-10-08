@@ -867,7 +867,39 @@
       line-height: 1.5;
     }
 
+   /* =====================================================
+   TRANSMISSION 005 // CORRUPTION
+===================================================== */
 
+#transmission005 .t005-corrupt-symbol {
+  color: #050505;
+
+  -webkit-text-stroke:
+    1px rgba(220,120,144,.85);
+
+  text-shadow:
+    0 0 10px rgba(220,120,144,.7),
+    0 0 26px rgba(220,120,144,.4);
+}
+
+#transmission005 .t005-corrupted-screen {
+  border-color:
+    rgba(220,120,144,.4);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(220,120,144,.08),
+      transparent 60%
+    ),
+    #050405;
+}
+
+#t005FinalAlert {
+  border-color:
+    rgba(220,120,144,.4);
+}
+    
     /* =========================================================
        FOOTER
     ========================================================= */
@@ -3416,38 +3448,6 @@ function unlockTransmission005() {
 
   }
 
-}
-      /* =====================================================
-   TRANSMISSION 005 // CORRUPTION
-===================================================== */
-
-#transmission005 .t005-corrupt-symbol {
-  color: #050505;
-
-  -webkit-text-stroke:
-    1px rgba(220,120,144,.85);
-
-  text-shadow:
-    0 0 10px rgba(220,120,144,.7),
-    0 0 26px rgba(220,120,144,.4);
-}
-
-#transmission005 .t005-corrupted-screen {
-  border-color:
-    rgba(220,120,144,.4);
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(220,120,144,.08),
-      transparent 60%
-    ),
-    #050405;
-}
-
-#t005FinalAlert {
-  border-color:
-    rgba(220,120,144,.4);
 }
       
       /* =====================================================
