@@ -1638,20 +1638,17 @@
         Curiously, another Earth signal appeared during
         reconstruction.
 
-        It originates from an establishment called
-        Venom and Virtue Tattoo Studio.
-
-        They appear to be opening their own kind of portal,
-        although humans apparently fill theirs with costumes,
-        candy, and decorated vehicles.”
+        It leads to a private veterans motorist club called W.A.R Empire.
+Apparently W.A.R means We Ain’t Regular.
+I’m beginning to suspect Earth organizations enjoy making simple things sound mysterious.”
       </p>
 
     </div>
 
 
     <h3>
-      Which event is being hosted by
-      Venom and Virtue Tattoo Studio?
+      Which organization is hosting the
+  Medieval Trunk-or-Treat?
     </h3>
 
 
@@ -1663,25 +1660,25 @@
       <button
         class="answer t004-business-answer"
         type="button"
-        data-answer="medieval"
+        data-answer="war-empire"
       >
-        MEDIEVAL TRUNK-OR-TREAT
+        W.A.R EMPIRE
       </button>
 
       <button
         class="answer t004-business-answer"
         type="button"
-        data-answer="galactic"
+        data-answer="venom-virtue"
       >
-        GALACTIC COSTUME EXPO
+        VENOM & VIRTUE TATTOO STUDIO
       </button>
 
       <button
         class="answer t004-business-answer"
         type="button"
-        data-answer="portal"
+        data-answer="portal-riders"
       >
-        PORTAL REPAIR WORKSHOP
+        PORTAL RIDERS ASSOCIATION
       </button>
 
     </div>
@@ -1718,6 +1715,200 @@
 
 </article>
 
+    <!-- =====================================================
+     TRANSMISSION 005
+====================================================== -->
+
+<article
+  class="transmission"
+  id="transmission005"
+  style="display:none;"
+>
+
+  <header class="transmission-header">
+
+    <div>
+      <div class="transmission-number mono">
+        TRANSMISSION 005
+      </div>
+
+      <h2 class="transmission-title">
+        Interference
+      </h2>
+    </div>
+
+    <div class="key-status mono">
+      PORTAL KEYS
+      <span id="t005KeyStatus">4 / 5</span>
+    </div>
+
+  </header>
+
+
+  <div class="overseer">
+
+    <div class="overseer-label mono">
+      CELESTIAL OVERSEER // WARNING
+    </div>
+
+    <p>
+      “Stop. Before you answer this one, look at the entire
+      transmission. There is a symbol here we have never
+      received from them before.”
+    </p>
+
+  </div>
+
+
+  <div
+    class="signal-screen t005-corrupted-screen"
+    id="t005SignalScreen"
+  >
+
+    <div class="reconstruction mono">
+      SIGNAL INTEGRITY // 71%
+    </div>
+
+    <div class="symbol-sequence">
+
+      <span>○</span>
+      <span>△</span>
+      <span>□</span>
+
+      <span class="t005-corrupt-symbol">
+        ■
+      </span>
+
+      <span>○</span>
+      <span>△</span>
+      <span>□</span>
+
+    </div>
+
+  </div>
+
+
+  <section class="question">
+
+    <div class="question-label mono">
+      ISOLATE FOREIGN SIGNAL
+    </div>
+
+    <h3>
+      Which symbol does NOT belong to their language?
+    </h3>
+
+
+    <div
+      class="answer-grid"
+      id="t005AnswerGrid"
+    >
+
+      <button
+        class="answer t005-answer t005-corrupt-symbol"
+        type="button"
+        data-answer="corruption"
+      >
+        ■
+      </button>
+
+      <button
+        class="answer t005-answer"
+        type="button"
+        data-answer="triangle"
+      >
+        △
+      </button>
+
+      <button
+        class="answer t005-answer"
+        type="button"
+        data-answer="circle"
+      >
+        ○
+      </button>
+
+    </div>
+
+
+    <button
+      id="t005DecodeButton"
+      class="decode"
+      type="button"
+      disabled
+    >
+      SELECT A SYMBOL
+    </button>
+
+
+    <div
+      id="t005Result"
+      class="result"
+    >
+
+      <div
+        id="t005ResultStatus"
+        class="result-status mono"
+      >
+      </div>
+
+      <h4 id="t005ResultTitle"></h4>
+
+      <p id="t005ResultCopy"></p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL PROTOCOL ALERT -->
+
+  <section
+    id="t005FinalAlert"
+    class="next-signal"
+  >
+
+    <div
+      class="next-signal-label mono"
+      style="color:#dc7890;"
+    >
+      PROTOCOL ALERT // FOREIGN SIGNAL
+    </div>
+
+    <h3>
+      Something else is in the connection.
+    </h3>
+
+    <p>
+      The corrupted symbol does not match any transmission
+      recovered from the other side.
+    </p>
+
+    <p>
+      It appeared somewhere between their signal and ours.
+      Until we understand what entered the channel,
+      the Portal Protocol remains active.
+    </p>
+
+    <div class="overseer" style="margin-top:20px;">
+
+      <div class="overseer-label mono">
+        CELESTIAL OVERSEER // FINAL ANALYSIS
+      </div>
+
+      <p>
+        “That symbol is not theirs.
+        And we did not put it there.
+
+        Something else has been listening.”
+      </p>
+
+    </div>
+
+  </section>
+
+</article>
+    
     <!-- =====================================================
          FUTURE TRANSMISSION ARCHIVE
     ====================================================== -->
@@ -3093,7 +3284,7 @@ t004BusinessAnswers.forEach(
 
 
 /* =====================================================
-   VERIFY VENOM & VIRTUE SIGNAL
+   VERIFY W.A.R EMPIRE SIGNAL
 ===================================================== */
 
 t004BusinessVerifyButton.addEventListener(
@@ -3107,7 +3298,7 @@ t004BusinessVerifyButton.addEventListener(
 
     if (
       t004BusinessSelected !==
-      "medieval"
+      "war-empire"
     ) {
 
       t004BusinessResult.classList.add(
@@ -3227,6 +3418,38 @@ function unlockTransmission005() {
 
   }
 
+}
+      /* =====================================================
+   TRANSMISSION 005 // CORRUPTION
+===================================================== */
+
+#transmission005 .t005-corrupt-symbol {
+  color: #050505;
+
+  -webkit-text-stroke:
+    1px rgba(220,120,144,.85);
+
+  text-shadow:
+    0 0 10px rgba(220,120,144,.7),
+    0 0 26px rgba(220,120,144,.4);
+}
+
+#transmission005 .t005-corrupted-screen {
+  border-color:
+    rgba(220,120,144,.4);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(220,120,144,.08),
+      transparent 60%
+    ),
+    #050405;
+}
+
+#t005FinalAlert {
+  border-color:
+    rgba(220,120,144,.4);
 }
       
       /* =====================================================
