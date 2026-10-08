@@ -1466,6 +1466,257 @@
 
 </article>
 
+    <!-- =====================================================
+     TRANSMISSION 004
+====================================================== -->
+
+<article
+  class="transmission"
+  id="transmission004"
+  style="display:none;"
+>
+
+  <header class="transmission-header">
+
+    <div>
+      <div class="transmission-number mono">
+        TRANSMISSION 004
+      </div>
+
+      <h2 class="transmission-title">
+        The Door
+      </h2>
+    </div>
+
+    <div class="key-status mono">
+      PORTAL KEYS
+      <span id="t004KeyStatus">3 / 5</span>
+    </div>
+
+  </header>
+
+
+  <div class="overseer">
+
+    <div class="overseer-label mono">
+      CELESTIAL OVERSEER // ANALYSIS
+    </div>
+
+    <p>
+      “This sequence appeared again and again in the next
+      transmission. Same order. Same spacing. Same emphasis.
+      Whatever it means, they wanted us to notice it.”
+    </p>
+
+  </div>
+
+
+  <div class="signal-screen">
+
+    <div class="reconstruction mono">
+      TRANSLATION LAYER // PARTIAL
+    </div>
+
+    <div class="symbol-sequence">
+
+      <span>△</span>
+      <span>○</span>
+      <span>□</span>
+
+      <span>△</span>
+      <span>○</span>
+      <span>□</span>
+
+      <span>△</span>
+      <span>○</span>
+      <span>?</span>
+
+    </div>
+
+  </div>
+
+
+  <section class="question">
+
+    <div class="question-label mono">
+      DECIPHER TRANSMISSION
+    </div>
+
+    <h3>
+      Complete the repeated signal cluster.
+    </h3>
+
+    <div
+      class="answer-grid"
+      id="t004AnswerGrid"
+    >
+
+      <button
+        class="answer t004-answer"
+        type="button"
+        data-answer="square"
+      >
+        □
+      </button>
+
+      <button
+        class="answer t004-answer"
+        type="button"
+        data-answer="circle"
+      >
+        ○
+      </button>
+
+      <button
+        class="answer t004-answer"
+        type="button"
+        data-answer="triangle"
+      >
+        △
+      </button>
+
+    </div>
+
+
+    <button
+      id="t004DecodeButton"
+      class="decode"
+      type="button"
+      disabled
+    >
+      SELECT A SYMBOL
+    </button>
+
+
+    <div
+      id="t004Result"
+      class="result"
+    >
+
+      <div
+        id="t004ResultStatus"
+        class="result-status mono"
+      >
+      </div>
+
+      <h4 id="t004ResultTitle"></h4>
+
+      <p id="t004ResultCopy"></p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================================
+       VENOM & VIRTUE LOCAL SIGNAL
+  =================================================== -->
+
+  <section
+    id="t004LocalSignal"
+    class="next-signal"
+  >
+
+    <div class="next-signal-label mono">
+      LOCAL SIGNAL DETECTED
+    </div>
+
+    <p>
+      A second Earth-based signal has appeared during
+      translation.
+    </p>
+
+
+    <div class="overseer">
+
+      <div class="overseer-label mono">
+        CELESTIAL OVERSEER // FIELD NOTE
+      </div>
+
+      <p>
+        “A door. That is the concept they continue sending.
+        Curiously, another Earth signal appeared during
+        reconstruction.
+
+        It originates from an establishment called
+        Venom and Virtue Tattoo Studio.
+
+        They appear to be opening their own kind of portal,
+        although humans apparently fill theirs with costumes,
+        candy, and decorated vehicles.”
+      </p>
+
+    </div>
+
+
+    <h3>
+      Which event is being hosted by
+      Venom and Virtue Tattoo Studio?
+    </h3>
+
+
+    <div
+      class="answer-grid"
+      id="t004BusinessAnswerGrid"
+    >
+
+      <button
+        class="answer t004-business-answer"
+        type="button"
+        data-answer="medieval"
+      >
+        MEDIEVAL TRUNK-OR-TREAT
+      </button>
+
+      <button
+        class="answer t004-business-answer"
+        type="button"
+        data-answer="galactic"
+      >
+        GALACTIC COSTUME EXPO
+      </button>
+
+      <button
+        class="answer t004-business-answer"
+        type="button"
+        data-answer="portal"
+      >
+        PORTAL REPAIR WORKSHOP
+      </button>
+
+    </div>
+
+
+    <button
+      id="t004BusinessVerifyButton"
+      class="decode"
+      type="button"
+      disabled
+    >
+      VERIFY LOCAL SIGNAL
+    </button>
+
+
+    <div
+      id="t004BusinessResult"
+      class="result"
+    >
+
+      <div
+        id="t004BusinessResultStatus"
+        class="result-status mono"
+      >
+      </div>
+
+      <h4 id="t004BusinessResultTitle"></h4>
+
+      <p id="t004BusinessResultCopy"></p>
+
+    </div>
+
+  </section>
+
+</article>
 
     <!-- =====================================================
          FUTURE TRANSMISSION ARCHIVE
@@ -2537,7 +2788,7 @@ businessVerifyButton.addEventListener(
 
 
     unlockTransmission004();
-
+revealTransmission004();
   }
 );
 
@@ -2573,6 +2824,411 @@ function unlockTransmission004() {
 
 }
 
+      /* =====================================================
+   TRANSMISSION 004
+===================================================== */
+
+const transmission004 =
+  document.getElementById(
+    "transmission004"
+  );
+
+const t004Answers =
+  document.querySelectorAll(
+    "#transmission004 .t004-answer"
+  );
+
+const t004DecodeButton =
+  document.getElementById(
+    "t004DecodeButton"
+  );
+
+const t004Result =
+  document.getElementById(
+    "t004Result"
+  );
+
+const t004ResultStatus =
+  document.getElementById(
+    "t004ResultStatus"
+  );
+
+const t004ResultTitle =
+  document.getElementById(
+    "t004ResultTitle"
+  );
+
+const t004ResultCopy =
+  document.getElementById(
+    "t004ResultCopy"
+  );
+
+const t004LocalSignal =
+  document.getElementById(
+    "t004LocalSignal"
+  );
+
+const t004BusinessAnswers =
+  document.querySelectorAll(
+    "#transmission004 .t004-business-answer"
+  );
+
+const t004BusinessVerifyButton =
+  document.getElementById(
+    "t004BusinessVerifyButton"
+  );
+
+const t004BusinessResult =
+  document.getElementById(
+    "t004BusinessResult"
+  );
+
+const t004BusinessResultStatus =
+  document.getElementById(
+    "t004BusinessResultStatus"
+  );
+
+const t004BusinessResultTitle =
+  document.getElementById(
+    "t004BusinessResultTitle"
+  );
+
+const t004BusinessResultCopy =
+  document.getElementById(
+    "t004BusinessResultCopy"
+  );
+
+
+let t004Selected = null;
+let t004BusinessSelected = null;
+
+
+/* =====================================================
+   REVEAL T004
+===================================================== */
+
+function revealTransmission004() {
+
+  if (!transmission004) {
+    return;
+  }
+
+  transmission004.style.display =
+    "block";
+
+  setTimeout(
+    function () {
+
+      transmission004.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    },
+    200
+  );
+
+}
+
+
+/* =====================================================
+   T004 ANSWER SELECTION
+===================================================== */
+
+t004Answers.forEach(
+  function (answer) {
+
+    answer.addEventListener(
+      "click",
+      function () {
+
+        t004Answers.forEach(
+          function (item) {
+
+            item.classList.remove(
+              "selected"
+            );
+
+          }
+        );
+
+        answer.classList.add(
+          "selected"
+        );
+
+        t004Selected =
+          answer.dataset.answer;
+
+        t004DecodeButton.disabled =
+          false;
+
+        t004DecodeButton.textContent =
+          "DECIPHER TRANSMISSION";
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   CHECK T004
+===================================================== */
+
+t004DecodeButton.addEventListener(
+  "click",
+  function () {
+
+    if (!t004Selected) {
+      return;
+    }
+
+    if (
+      t004Selected !==
+      "square"
+    ) {
+
+      t004Result.classList.add(
+        "visible"
+      );
+
+      t004ResultStatus.classList.add(
+        "wrong"
+      );
+
+      t004ResultStatus.textContent =
+        "SIGNAL MISMATCH";
+
+      t004ResultTitle.textContent =
+        "That symbol breaks the cluster.";
+
+      t004ResultCopy.textContent =
+        "Review the repeated sequence and try again.";
+
+      return;
+
+    }
+
+
+    t004Result.classList.add(
+      "visible"
+    );
+
+    t004ResultStatus.classList.remove(
+      "wrong"
+    );
+
+    t004ResultStatus.textContent =
+      "TRANSLATION FRAGMENT RECOVERED";
+
+    t004ResultTitle.textContent =
+      "One word survived.";
+
+    t004ResultCopy.textContent =
+      "The pattern reconstructed successfully. The translation system recovered a single concept from the repeated cluster: DOOR.";
+
+
+    t004Answers.forEach(
+      function (answer) {
+
+        answer.disabled =
+          true;
+
+      }
+    );
+
+
+    t004DecodeButton.disabled =
+      true;
+
+    t004DecodeButton.textContent =
+      "TRANSMISSION COMPLETE";
+
+
+    t004LocalSignal.classList.add(
+      "visible"
+    );
+
+  }
+);
+
+
+/* =====================================================
+   VENOM & VIRTUE ANSWER SELECTION
+===================================================== */
+
+t004BusinessAnswers.forEach(
+  function (answer) {
+
+    answer.addEventListener(
+      "click",
+      function () {
+
+        t004BusinessAnswers.forEach(
+          function (item) {
+
+            item.classList.remove(
+              "selected"
+            );
+
+          }
+        );
+
+        answer.classList.add(
+          "selected"
+        );
+
+        t004BusinessSelected =
+          answer.dataset.answer;
+
+        t004BusinessVerifyButton.disabled =
+          false;
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   VERIFY VENOM & VIRTUE SIGNAL
+===================================================== */
+
+t004BusinessVerifyButton.addEventListener(
+  "click",
+  function () {
+
+    if (!t004BusinessSelected) {
+      return;
+    }
+
+
+    if (
+      t004BusinessSelected !==
+      "medieval"
+    ) {
+
+      t004BusinessResult.classList.add(
+        "visible"
+      );
+
+      t004BusinessResultStatus.classList.add(
+        "wrong"
+      );
+
+      t004BusinessResultStatus.textContent =
+        "LOCAL SIGNAL MISMATCH";
+
+      t004BusinessResultTitle.textContent =
+        "That event does not match.";
+
+      t004BusinessResultCopy.textContent =
+        "Review the intercepted Earth signal and try again.";
+
+      return;
+
+    }
+
+
+    t004BusinessResult.classList.add(
+      "visible"
+    );
+
+    t004BusinessResultStatus.classList.remove(
+      "wrong"
+    );
+
+    t004BusinessResultStatus.textContent =
+      "LOCAL SIGNAL VERIFIED";
+
+    t004BusinessResultTitle.textContent =
+      "Portal Key 004 recovered.";
+
+    t004BusinessResultCopy.textContent =
+      "Medieval Trunk-or-Treat confirmed. Armor, candy, decorated vehicles... adding this to the Earth itinerary.";
+
+
+    if (
+      !progress.completed.includes(4)
+    ) {
+
+      progress.completed.push(4);
+
+    }
+
+
+    progress.portalKeys =
+      Math.max(
+        progress.portalKeys,
+        4
+      );
+
+
+    progress.stability =
+      Math.max(
+        progress.stability,
+        62
+      );
+
+
+    progress.transmission =
+      Math.max(
+        progress.transmission,
+        5
+      );
+
+
+    saveProgress();
+
+    updateMeters();
+
+
+    t004BusinessAnswers.forEach(
+      function (answer) {
+
+        answer.disabled =
+          true;
+
+      }
+    );
+
+
+    t004BusinessVerifyButton.disabled =
+      true;
+
+    t004BusinessVerifyButton.textContent =
+      "LOCAL SIGNAL VERIFIED";
+
+
+    unlockTransmission005();
+
+  }
+);
+
+
+/* =====================================================
+   UNLOCK T005
+===================================================== */
+
+function unlockTransmission005() {
+
+  const archive005 =
+    document.getElementById(
+      "archive005"
+    );
+
+  if (archive005) {
+
+    archive005.classList.add(
+      "unlocked"
+    );
+
+  }
+
+}
+      
       /* =====================================================
          INITIALIZE
       ====================================================== */
