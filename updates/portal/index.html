@@ -3448,7 +3448,269 @@ function unlockTransmission005() {
 
   }
 
+  revealTransmission005();
+
 }
+/* =====================================================
+   TRANSMISSION 005
+===================================================== */
+
+const transmission005 =
+  document.getElementById(
+    "transmission005"
+  );
+
+const t005Answers =
+  document.querySelectorAll(
+    "#transmission005 .t005-answer"
+  );
+
+const t005DecodeButton =
+  document.getElementById(
+    "t005DecodeButton"
+  );
+
+const t005Result =
+  document.getElementById(
+    "t005Result"
+  );
+
+const t005ResultStatus =
+  document.getElementById(
+    "t005ResultStatus"
+  );
+
+const t005ResultTitle =
+  document.getElementById(
+    "t005ResultTitle"
+  );
+
+const t005ResultCopy =
+  document.getElementById(
+    "t005ResultCopy"
+  );
+
+const t005FinalAlert =
+  document.getElementById(
+    "t005FinalAlert"
+  );
+
+let t005Selected = null;
+
+
+/* =====================================================
+   REVEAL T005
+===================================================== */
+
+function revealTransmission005() {
+
+  if (!transmission005) {
+    return;
+  }
+
+  transmission005.style.display =
+    "block";
+
+  setTimeout(
+    function () {
+
+      transmission005.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    },
+    200
+  );
+
+}
+
+
+/* =====================================================
+   T005 ANSWER SELECTION
+===================================================== */
+
+t005Answers.forEach(
+  function (answer) {
+
+    answer.addEventListener(
+      "click",
+      function () {
+
+        t005Answers.forEach(
+          function (item) {
+
+            item.classList.remove(
+              "selected"
+            );
+
+          }
+        );
+
+        answer.classList.add(
+          "selected"
+        );
+
+        t005Selected =
+          answer.dataset.answer;
+
+        t005DecodeButton.disabled =
+          false;
+
+        t005DecodeButton.textContent =
+          "ISOLATE SIGNAL";
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   CHECK T005
+===================================================== */
+
+t005DecodeButton.addEventListener(
+  "click",
+  function () {
+
+    if (!t005Selected) {
+      return;
+    }
+
+
+    /* WRONG ANSWER */
+
+    if (
+      t005Selected !==
+      "corruption"
+    ) {
+
+      t005Result.classList.add(
+        "visible"
+      );
+
+      t005ResultStatus.classList.add(
+        "wrong"
+      );
+
+      t005ResultStatus.textContent =
+        "SIGNAL MISMATCH";
+
+      t005ResultTitle.textContent =
+        "That symbol belongs to the known language.";
+
+      t005ResultCopy.textContent =
+        "Compare the transmission with the symbols recovered from the earlier signals.";
+
+      return;
+
+    }
+
+
+    /* CORRECT ANSWER */
+
+    t005Result.classList.add(
+      "visible"
+    );
+
+    t005ResultStatus.classList.remove(
+      "wrong"
+    );
+
+    t005ResultStatus.textContent =
+      "FOREIGN SIGNAL ISOLATED";
+
+    t005ResultTitle.textContent =
+      "Do not send it back.";
+
+    t005ResultCopy.textContent =
+      "The black symbol does not match any known transmission. It entered the connection somewhere between their world and ours.";
+
+
+    t005Answers.forEach(
+      function (answer) {
+
+        answer.disabled = true;
+
+      }
+    );
+
+
+    t005DecodeButton.disabled =
+      true;
+
+    t005DecodeButton.textContent =
+      "SIGNAL ISOLATED";
+
+
+    if (
+      !progress.completed.includes(5)
+    ) {
+
+      progress.completed.push(5);
+
+    }
+
+
+    progress.portalKeys =
+      Math.max(
+        progress.portalKeys,
+        5
+      );
+
+    progress.stability =
+      Math.max(
+        progress.stability,
+        70
+      );
+
+    progress.interference =
+      Math.max(
+        progress.interference,
+        27
+      );
+
+    progress.transmission = 5;
+
+
+    saveProgress();
+
+    updateMeters();
+
+
+    const t005KeyStatus =
+      document.getElementById(
+        "t005KeyStatus"
+      );
+
+    if (t005KeyStatus) {
+
+      t005KeyStatus.textContent =
+        "5 / 5";
+
+    }
+
+
+    setTimeout(
+      function () {
+
+        t005FinalAlert.classList.add(
+          "visible"
+        );
+
+        t005FinalAlert.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+      },
+      650
+    );
+
+  }
+);
       
       /* =====================================================
          INITIALIZE
