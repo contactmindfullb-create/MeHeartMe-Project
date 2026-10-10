@@ -449,6 +449,82 @@ box-shadow: 0 18px 40px rgba(0,0,0,.28);
   height: 100%;
   border: 0;
 }
+
+/* =====================================================
+   STORY PROGRESSION
+===================================================== */
+
+.story-progress {
+  max-width: 720px;
+  margin: 28px auto 0;
+  padding: 24px;
+
+  border: 1px solid rgba(239,169,74,.22);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(77,50,111,.18),
+      rgba(255,255,255,.025)
+    );
+
+  text-align: center;
+}
+
+.story-progress-label {
+  margin-bottom: 10px;
+
+  color: var(--gold);
+  font-size: 9px;
+}
+
+.story-progress h3 {
+  margin: 0 0 12px;
+
+  color: white;
+
+  font-size:
+    clamp(
+      20px,
+      4vw,
+      30px
+    );
+}
+
+.story-progress p {
+  max-width: 600px;
+  margin: 0 auto 20px;
+
+  color: rgba(255,255,255,.72);
+
+  line-height: 1.65;
+}
+
+.story-progress-status {
+  display: inline-flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  margin-bottom: 20px;
+  padding: 10px 16px;
+
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+
+  background: rgba(255,255,255,.025);
+}
+
+.story-progress-status span {
+  color: rgba(255,255,255,.48);
+  font-size: 8px;
+}
+
+.story-progress-status strong {
+  color: var(--yellow);
+  font-size: 13px;
+}
     /* =====================================================
        STORY STATUS
     ====================================================== */
@@ -1098,6 +1174,48 @@ box-shadow: 0 18px 40px rgba(0,0,0,.28);
 
 </div>
 
+<!-- =================================================
+     STORY PROGRESSION
+================================================== -->
+
+<div class="story-progress">
+
+  <div class="story-progress-label mono">
+    CHAPTER 1 // DINNER TREATY MISSION
+  </div>
+
+  <h3>
+    The twins found something they were not supposed to find.
+  </h3>
+
+  <p>
+    Their mission started with a simple question:
+    Is the Overseer really keeping the surprise-for-dinner treaty?
+
+    What they discovered instead may have opened a path
+    between worlds.
+  </p>
+
+  <div class="story-progress-status">
+
+    <span class="mono">
+      CURRENT STATUS
+    </span>
+
+    <strong>
+      BREACH DETECTED
+    </strong>
+
+  </div>
+
+  <a
+    class="watch-button primary"
+    href="#next-chapter"
+  >
+    CONTINUE ADVENTURE →
+  </a>
+
+</div>
       </div>
 
     </section>
