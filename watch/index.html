@@ -433,7 +433,20 @@
 
     }
 
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #000;
+}
 
+.video-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
     /* =====================================================
        STORY STATUS
     ====================================================== */
@@ -655,4 +668,651 @@
     .category-card h3 {
 
       margin:
-        0 0 
+        0 0 8px;
+
+      font-size: 24px;
+
+    }
+
+
+    .category-card p {
+
+      margin:
+        0 0 16px;
+
+      color:
+        rgba(255,255,255,.66);
+
+      line-height: 1.55;
+
+      font-size: 14px;
+
+    }
+
+
+    .category-link {
+
+      align-self:
+        flex-start;
+
+      text-decoration: none;
+
+      color:
+        var(--yellow);
+
+      font-weight: 800;
+
+      font-size: 13px;
+
+    }
+
+
+    /* =====================================================
+       PATH PREVIEW
+    ====================================================== */
+
+    .path-preview {
+
+      padding:
+        clamp(
+          24px,
+          5vw,
+          42px
+        );
+
+      border:
+        1px dashed
+        rgba(255,255,255,.16);
+
+      border-radius: 20px;
+
+      background:
+        rgba(255,255,255,.018);
+
+      text-align: center;
+
+    }
+
+
+    .path-preview .lock-label {
+
+      color:
+        var(--gold);
+
+      font-size: 9px;
+
+    }
+
+
+    .path-preview h2 {
+
+      margin:
+        10px 0 8px;
+
+      font-size:
+        clamp(
+          26px,
+          5vw,
+          44px
+        );
+
+    }
+
+
+    .path-preview p {
+
+      max-width: 650px;
+
+      margin:
+        0 auto;
+
+      color:
+        var(--muted);
+
+      line-height: 1.6;
+
+    }
+
+
+    /* =====================================================
+       COMING SOON
+    ====================================================== */
+
+    .coming-soon {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          1fr
+        );
+
+      gap: 14px;
+
+    }
+
+
+    .coming-card {
+
+      padding: 22px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.07);
+
+      border-radius: 16px;
+
+      background:
+        rgba(255,255,255,.02);
+
+    }
+
+
+    .coming-card small {
+
+      color:
+        var(--gold);
+
+      font-size: 9px;
+
+    }
+
+
+    .coming-card h3 {
+
+      margin:
+        8px 0 7px;
+
+    }
+
+
+    .coming-card p {
+
+      margin: 0;
+
+      color:
+        rgba(255,255,255,.62);
+
+      line-height: 1.55;
+
+      font-size: 14px;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ====================================================== */
+
+    .watch-footer {
+
+      margin-top: 70px;
+
+      padding-top: 26px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+      color:
+        rgba(255,255,255,.42);
+
+      font-size: 9px;
+
+      text-align: center;
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ====================================================== */
+
+    @media (
+      max-width: 760px
+    ) {
+
+      .category-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .story-status {
+        grid-template-columns:
+          1fr;
+      }
+
+      .coming-soon {
+        grid-template-columns:
+          1fr;
+      }
+
+      .featured-actions {
+        flex-direction:
+          column;
+      }
+
+      .watch-button {
+        width: 100%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <main class="watch-shell">
+
+
+    <!-- =================================================
+         TOP BAR
+    ================================================== -->
+
+    <div class="watch-topbar">
+
+      <div class="brand">
+        Me<span>❤️</span>Me
+      </div>
+
+      <a
+        class="back-link mono"
+        href="../"
+      >
+        ← HOME
+      </a>
+
+    </div>
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="watch-hero">
+
+      <div class="watch-kicker mono">
+        ME❤️ME // MEDIA HUB
+      </div>
+
+      <h1>
+        WATCH
+      </h1>
+
+      <p class="watch-tagline">
+        Stories, Shows & Adventures
+      </p>
+
+    </section>
+
+
+    <!-- =================================================
+         FEATURED NOW
+    ================================================== -->
+
+    <section class="featured">
+
+      <div class="featured-label mono">
+        FEATURED NOW
+      </div>
+
+      <h2>
+        THE SUCCESSOR BREACH
+      </h2>
+
+      <p class="featured-subtitle">
+        Twin Paths: Escape the Interference
+      </p>
+
+      <p class="featured-copy">
+        The Portal Protocol was completed.
+        Five keys were recovered.
+        The connection should have been secure.
+
+        It wasn't.
+
+        Follow the Overseer's twin successors as a simple
+        mission involving a dinner treaty becomes an
+        unexpected journey between worlds.
+      </p>
+
+
+      <div class="featured-actions">
+
+        <a
+          class="watch-button primary"
+          href="#start-adventure"
+        >
+          BEGIN STORY
+        </a>
+
+        <a
+          class="watch-button secondary"
+          href="#categories"
+        >
+          EXPLORE WATCH
+        </a>
+
+      </div>
+
+
+      <div class="story-status">
+
+        <div class="status-card">
+
+          <small class="mono">
+            CURRENT CHAPTER
+          </small>
+
+          <strong>
+            The Successor Breach
+          </strong>
+
+        </div>
+
+
+        <div class="status-card">
+
+          <small class="mono">
+            EXPERIENCE
+          </small>
+
+          <strong>
+            Interactive Adventure
+          </strong>
+
+        </div>
+
+
+        <div class="status-card">
+
+          <small class="mono">
+            PATH STATUS
+          </small>
+
+          <strong>
+            Locked Until Shape Land
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         START ADVENTURE
+    ================================================== -->
+
+    <section
+      class="section"
+      id="start-adventure"
+    >
+
+      <div class="section-heading">
+
+        <div class="section-label mono">
+          VIDEO ADVENTURE
+        </div>
+
+        <h2>
+          Start the Adventure
+        </h2>
+
+        <p>
+          The twins are on a mission to determine whether
+          the Overseer — their mom — is honoring their
+          surprise-for-dinner treaty.
+
+          What they find instead changes everything.
+        </p>
+
+      </div>
+
+
+      <div class="path-preview">
+
+        <div class="lock-label mono">
+          OPENING CHAPTER
+        </div>
+
+        <h2>
+          Dinner Treaty Mission
+        </h2>
+
+          <div class="video-frame">
+
+  <iframe
+    src="https://youtube.com/shorts/KKDfMG0Ex3Y?si=TLw6myi_SEo3hQX-"
+    title="The Successor Breach - Dinner Treaty Mission"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+</div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CHOOSE YOUR PATH
+    ================================================== -->
+
+    <section class="section">
+
+      <div class="path-preview">
+
+        <div class="lock-label mono">
+          PATH SELECTION LOCKED
+        </div>
+
+        <h2>
+          Choose Your Path
+        </h2>
+
+        <p>
+          Knight or Ninja Princess?
+
+          Path selection becomes available after
+          the twins arrive in Shape Land and discover
+          that something followed them through the breach.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         CATEGORIES
+    ================================================== -->
+
+    <section
+      class="section"
+      id="categories"
+    >
+
+      <div class="section-heading">
+
+        <div class="section-label mono">
+          EXPLORE
+        </div>
+
+        <h2>
+          Watch by Category
+        </h2>
+
+        <p>
+          Me❤️Me Watch will grow into a home for
+          interactive adventures, learning shows,
+          seasonal specials, and more.
+        </p>
+
+      </div>
+
+
+      <div class="category-grid">
+
+
+        <article class="category-card">
+
+          <div class="category-type mono">
+            STORIES
+          </div>
+
+          <h3>
+            Video Adventures
+          </h3>
+
+          <p>
+            Follow continuing stories, make choices,
+            unlock paths, and discover what happens next.
+          </p>
+
+          <a
+            class="category-link"
+            href="#start-adventure"
+          >
+            Explore Adventures →
+          </a>
+
+        </article>
+
+
+        <article class="category-card">
+
+          <div class="category-type mono">
+            LEARNING
+          </div>
+
+          <h3>
+            Science Shows
+          </h3>
+
+          <p>
+            Experiments, discoveries, ShapeScientist
+            stories, and learning experiences designed
+            for curious young explorers.
+          </p>
+
+          <span class="category-link">
+            Coming Soon
+          </span>
+
+        </article>
+
+
+        <article class="category-card">
+
+          <div class="category-type mono">
+            SPECIALS
+          </div>
+
+          <h3>
+            Event Specials
+          </h3>
+
+          <p>
+            Seasonal stories and experiences connected
+            to Me❤️Me events, community adventures,
+            and special transmissions.
+          </p>
+
+          <span class="category-link">
+            Coming Soon
+          </span>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         COMING SOON
+    ================================================== -->
+
+    <section class="section">
+
+      <div class="section-heading">
+
+        <div class="section-label mono">
+          NEXT UP
+        </div>
+
+        <h2>
+          Coming Soon
+        </h2>
+
+      </div>
+
+
+      <div class="coming-soon">
+
+        <article class="coming-card">
+
+          <small class="mono">
+            MINI SHOWS
+          </small>
+
+          <h3>
+            Character Shorts
+          </h3>
+
+          <p>
+            Short recurring segments featuring
+            characters from the Me❤️Me worlds.
+          </p>
+
+        </article>
+
+
+        <article class="coming-card">
+
+          <small class="mono">
+            STORIES
+          </small>
+
+          <h3>
+            Blogs & Story Posts
+          </h3>
+
+          <p>
+            Written adventures, updates,
+            parent-facing stories, and
+            behind-the-scenes content.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="watch-footer mono">
+
+      ME❤️ME //
+      STORIES, SHOWS & ADVENTURES
+
+    </footer>
+
+
+  </main>
+
+</body>
+
+</html>
