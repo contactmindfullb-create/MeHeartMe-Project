@@ -537,6 +537,55 @@
   color: var(--yellow);
   font-size: 13px;
 }
+
+.path-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.path-card {
+  padding: 24px 18px;
+  border: 1px solid rgba(239,169,74,.28);
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(77,50,111,.30),
+    rgba(255,255,255,.035)
+  );
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.path-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+
+.path-card h3 {
+  margin: 0 0 10px;
+  color: var(--yellow);
+}
+
+.path-card p {
+  margin: 0 0 16px;
+  color: rgba(255,255,255,.72);
+  line-height: 1.55;
+}
+
+.path-card strong {
+  color: var(--gold);
+  font-size: 12px;
+}
+
+@media (max-width: 650px) {
+  .path-options {
+    grid-template-columns: 1fr;
+  }
+}
     /* =====================================================
        STORY STATUS
     ====================================================== */
