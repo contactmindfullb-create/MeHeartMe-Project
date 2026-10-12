@@ -1519,7 +1519,20 @@
 
 
   </main>
+<script>
+  function revealChapter(chapterId) {
+    const chapter = document.getElementById(chapterId);
 
+    if (!chapter) return;
+
+    chapter.style.display = "block";
+
+    chapter.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+</script>
 </body>
 
 </html>
