@@ -1333,7 +1333,46 @@
           the twins arrive in Shape Land and discover
           that something followed them through the breach.
         </p>
+   
+    <section id="choose-path" style="display:none;">
 
+  <div class="story-progress-label mono">
+    CHOOSE YOUR PATH
+  </div>
+
+  <h2>Two paths. Two strengths. One mission.</h2>
+
+  <p>
+    Shape Land is changing.
+    How will you investigate the interference?
+  </p>
+
+  <div class="path-options">
+
+    <button class="path-card"
+      onclick="revealPath('knight-path')">
+      ...
+    </button>
+
+    <button class="path-card"
+      onclick="revealPath('ninja-path')">
+      ...
+    </button>
+
+  </div>
+
+  <!-- KNIGHT PATH -->
+  <section id="knight-path" style="display:none;">
+    ...
+  </section>
+
+  <!-- NINJA PRINCESS PATH -->
+  <section id="ninja-path" style="display:none;">
+    ...
+  </section>
+
+</section>
+    
       </div>
 
     </section>
@@ -1521,6 +1560,7 @@
 
 
   </main>
+  
 <script>
   function revealChapter(chapterId) {
     const chapter = document.getElementById(chapterId);
@@ -1530,6 +1570,22 @@
     chapter.style.display = "block";
 
     chapter.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  function revealPath(pathId) {
+    document.getElementById("knight-path").style.display = "none";
+    document.getElementById("ninja-path").style.display = "none";
+
+    const path = document.getElementById(pathId);
+
+    if (!path) return;
+
+    path.style.display = "block";
+
+    path.scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
