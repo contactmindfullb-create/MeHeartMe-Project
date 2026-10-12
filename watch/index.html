@@ -433,18 +433,30 @@
 
     }
 
-.video-frame {
+.video-frame-wide {
   position: relative;
-  width: min(100%; 900px);
+  width: min(100%, 900px);
   aspect-ratio: 16 / 9;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 18px;
   background: #000;
-box-shadow: 0 18px 40px rgba(0,0,0,.28);
+  box-shadow: 0 18px 40px rgba(0,0,0,.28);
 }
 
-.video-frame iframe {
+.video-frame-vertical {
+  position: relative;
+  width: min(100%, 420px);
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #000;
+  box-shadow: 0 18px 40px rgba(0,0,0,.28);
+}
+
+.video-frame-wide iframe,
+.video-frame-vertical iframe {
   width: 100%;
   height: 100%;
   border: 0;
@@ -1143,11 +1155,11 @@ box-shadow: 0 18px 40px rgba(0,0,0,.28);
         </h2>
 
         <p>
-          The twins are on a mission to determine whether
-          the Overseer — their mom — is honoring their
-          surprise-for-dinner treaty.
-
-          What they find instead changes everything.
+         Strange things have been happening lately. Twin siblings go
+         on an adventure inside their home to learn about what mom and dad does 
+        in their office
+        
+        But while searching for answers, they discover something they were never supposed to find.
         </p>
 
       </div>
@@ -1163,8 +1175,8 @@ box-shadow: 0 18px 40px rgba(0,0,0,.28);
           THE DREAM
         </h2>
 
-
-<div class="video-frame">
+<!-- PROLOGUE // THE DREAM -->
+<div class="video-frame-wide">
   <iframe
     src="https://www.youtube.com/embed/hzpWVbmDN5g"
     title="The Successor Breach - The Dream"
@@ -1208,7 +1220,7 @@ box-shadow: 0 18px 40px rgba(0,0,0,.28);
 
   <a
     class="watch-button primary"
-    href="#next-chapter"
+    href="#chapter-1"
   >
     CONTINUE ADVENTURE →
   </a>
@@ -1216,6 +1228,82 @@ box-shadow: 0 18px 40px rgba(0,0,0,.28);
 </div>
       </div>
 
+<!-- CHAPTER 1 // DINNER TREATY MISSION -->
+
+<div class="video-frame-vertical">
+   <iframe
+    src="https://www.youtube.com/embed/5kYc3z6sI2A"
+    title="The Successor Breach - Dinner Treaty Mission"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<div class="story-progress" id="chapter-1">
+  <div class="story-progress-label mono">
+    CHAPTER 1 // DINNER TREATY MISSION
+  </div>
+
+  <h3>
+    The twins are on a mission.
+  </h3>
+
+  <p>
+    The twins are on a mission to determine whether
+          the Overseer — their mom — is honoring their
+          surprise-for-dinner treaty.
+
+          What they find instead changes everything.
+
+  </p>
+
+  <div class="story-progress-status">
+    <span class="mono">CURRENT STATUS</span>
+    <strong>INVESTIGATION ACTIVE</strong>
+  </div>
+
+  <a class="watch-button primary" href="#chapter-2">
+    CONTINUE ADVENTURE →
+  </a>
+</div>
+
+<!-- CHAPTER 2 // THE BREACH -->
+
+<div class="video-frame-vertical">
+  <iframe
+    src="https://www.youtube.com/embed/5kYc3z6sI2A"
+    title="The Successor Breach - The Breach"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<div class="story-progress" id="chapter-2">
+  <div class="story-progress-label mono">
+    CHAPTER 2 // THE BREACH
+  </div>
+
+  <h3>
+    The warning becomes real.
+  </h3>
+
+  <p>
+       The twins' investigation leads them straight to the source of the interference.
+
+    Before they can understand what they have found, the connection breaks open —
+    pulling them into something far bigger than the Dinner Treaty mission.
+
+  </p>
+
+  <div class="story-progress-status">
+    <span class="mono">CURRENT STATUS</span>
+    <strong>BREACH DETECTED</strong>
+  </div>
+
+  <a class="watch-button primary" href="#chapter-3">
+    CONTINUE ADVENTURE →
+  </a>
+</div>
     </section>
 
 
