@@ -1,1 +1,237 @@
-a
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLAY 👻 | Me❤️Me</title>
+
+  <style>
+    :root {
+      --cream:#fffaf4;
+      --ink:#251d2b;
+      --purple:#4d326f;
+      --deep-purple:#24152f;
+      --gold:#efa94a;
+      --yellow:#ffd83d;
+      --night:#130f1b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(77,50,111,.35), transparent 35%),
+        var(--night);
+      color: white;
+      min-height: 100vh;
+    }
+
+    .play-wrap {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 40px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .topbar a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .play-hero {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .play-label {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .play-hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(36px, 8vw, 72px);
+    }
+
+    .play-hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+    }
+
+    .path-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .path-card {
+      padding: 28px 22px;
+      border: 1px solid rgba(239,169,74,.28);
+      border-radius: 20px;
+      background: linear-gradient(
+        180deg,
+        rgba(77,50,111,.30),
+        rgba(255,255,255,.035)
+      );
+      color: white;
+      text-align: left;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .path-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+    }
+
+    .path-card h3 {
+      margin: 0 0 10px;
+      color: var(--yellow);
+    }
+
+    .path-card p {
+      margin: 0 0 16px;
+      color: rgba(255,255,255,.72);
+      line-height: 1.55;
+    }
+
+    .path-card strong {
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    .path-content {
+      margin-top: 35px;
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+    }
+
+    @media (max-width: 650px) {
+      .path-options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="play-wrap">
+
+    <div class="topbar">
+      <a href="../">Me❤️Me</a>
+      <a href="../watch/">← WATCH</a>
+    </div>
+
+    <section class="play-hero">
+      <div class="play-label">
+        THE SUCCESSOR BREACH
+      </div>
+
+      <h1>CHOOSE YOUR PATH</h1>
+
+      <p>
+        The twins have reached Shape Land.
+        Something followed them through the breach.
+
+        Two paths. Two strengths. One mission.
+        How will you investigate the interference?
+      </p>
+    </section>
+
+    <div class="path-options">
+
+      <button class="path-card"
+        onclick="revealPath('knight-path')">
+
+        <h3>⚔️ KNIGHT PATH</h3>
+
+        <p>
+          Protect the Shapes.
+          Face the danger.
+          Move toward the disturbance.
+        </p>
+
+        <strong>CHOOSE KNIGHT →</strong>
+      </button>
+
+      <button class="path-card"
+        onclick="revealPath('ninja-path')">
+
+        <h3>🥷 NINJA PRINCESS PATH</h3>
+
+        <p>
+          Follow the clues.
+          Track the ghost trail.
+          Discover what is hiding beneath the surface.
+        </p>
+
+        <strong>CHOOSE NINJA →</strong>
+      </button>
+
+    </div>
+
+    <section id="knight-path"
+      class="path-content"
+      style="display:none;">
+
+      <h2>Knight Path Selected ⚔️</h2>
+
+      <p>
+        Mission loading...
+      </p>
+
+    </section>
+
+    <section id="ninja-path"
+      class="path-content"
+      style="display:none;">
+
+      <h2>Ninja Princess Path Selected 🥷</h2>
+
+      <p>
+        Mission loading...
+      </p>
+
+    </section>
+
+  </main>
+
+  <script>
+    function revealPath(pathId) {
+      document.getElementById("knight-path").style.display = "none";
+      document.getElementById("ninja-path").style.display = "none";
+
+      const path = document.getElementById(pathId);
+
+      if (!path) return;
+
+      path.style.display = "block";
+
+      path.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  </script>
+
+</body>
+</html>
