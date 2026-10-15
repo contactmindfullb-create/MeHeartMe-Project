@@ -128,6 +128,29 @@
       .path-options {
         grid-template-columns: 1fr;
       }
+    
+    .portal-entry {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.portal-button {
+  display: inline-block;
+  padding: 14px 24px;
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  background: rgba(239,169,74,.10);
+  color: var(--yellow);
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: .5px;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.portal-button:hover {
+  transform: translateY(-2px);
+  background: rgba(239,169,74,.18);
+}
     }
   </style>
 </head>
@@ -155,6 +178,13 @@
         Two paths. Two strengths. One mission.
         How will you investigate the interference?
       </p>
+      <div class="portal-entry">
+  <div class="play-label">NEW TO THE MISSION?</div>
+
+  <a class="portal-button" href="https://celestinecodeamor.com/portal-potocol">
+    START PORTAL PROTOCOL →
+  </a>
+</div>
     </section>
 
     <div class="path-options">
