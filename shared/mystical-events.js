@@ -64,7 +64,7 @@ export const events = [
     giveawayPassword: "Mad Shape Scientist Work",
     publicRevealAt: "2026-10-27T00:00:00-04:00",
     eventEndsAt: "2026-10-30T21:00:00-04:00",
-    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",,
+    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "Check event registration details and RSVP if required."
   },
   {
