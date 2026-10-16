@@ -385,6 +385,49 @@
       font-size: 0.8rem;
       padding-top: 20px;
     }
+    
+/* MIRRA CINEMATIC REVEAL */
+
+.mirra-reveal {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 2px solid #a68ad5;
+  background: #160d2b;
+  margin: 20px 0;
+}
+
+.mirra-reveal img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mirra-reveal .mirra-full {
+  opacity: 0;
+  transform: scale(1.07);
+  filter: blur(14px) brightness(1.5);
+  transition:
+    opacity 2.8s ease,
+    transform 3.5s ease,
+    filter 3s ease;
+}
+
+.mirra-reveal.is-revealed .mirra-full {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0) brightness(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mirra-reveal .mirra-full {
+    transition: none;
+  }
+}
 
     @media (max-width: 430px) {
       .hero-grid {
@@ -571,29 +614,78 @@
 
       <!-- MISSION SUCCESS -->
 
-      <div id="stageVictory" class="hidden">
+<!-- MISSION 1: GHOST REVEAL -->
 
-        <div class="reward-icon">✨</div>
+<div id="stageVictory" class="hidden">
 
-        <h2>The Majestic Gateway Is Restored!</h2>
+  <div class="eyebrow">
+    MISSION 01 · THE FINAL REFLECTION
+  </div>
 
-        <p>
-          The final mirror shatters into a thousand
-          harmless sparks. The trapped shape citizens
-          return to the palace.
-        </p>
+  <h2>The Secret Behind the Mirrors</h2>
 
-        <p>
-          Olivia and Trevor hear a low humming sound
-          beneath the floor. A hidden chamber opens.
-          Something ancient is waiting inside.
-        </p>
 
-        <button class="primary-button" id="showChest">
-          Enter the Hidden Chamber →
-        </button>
+<div class="mirra-reveal" id="mirraReveal">
+  <img
+    src="./assets/M1start.jpg"
+    alt="A mysterious silhouette appears inside the mirror."
+  >
 
-      </div>
+  <img
+    class="mirra-full"
+    src="./assets/M1victory.jpg"
+    alt="Mirra is revealed inside the magical mirror."
+  >
+</div>
+
+>
+
+  <p>
+    The final puzzle clicks into place.
+    Every mirror in the palace goes dark.
+  </p>
+
+  <p>
+    Then, in the largest mirror, a violet
+    silhouette begins to move.
+  </p>
+
+  <p>
+    The shadow twists into a floating figure
+    with a mischievous grin.
+  </p>
+
+  <p>
+    "You found me," the ghost whispers.
+    "I am Mirra. I only wanted the world
+    to see me."
+  </p>
+
+  <p>
+    Olivia and Trevor refuse to leave the
+    trapped citizens behind. Together,
+    they break the illusion and open
+    the Majestic Gateway.
+  </p>
+
+  <p class="success">
+    ✨ Mission Complete!
+    The shape citizens are free.
+  </p>
+
+  <p>
+    Beneath the palace floor, a hidden
+    chamber begins to glow...
+  </p>
+
+  <button
+    class="primary-button"
+    id="showChest"
+    type="button">
+    Discover the Hidden Chamber →
+  </button>
+
+</div>
 
       <!-- THE MYSTICAL BOX: REWARD REVEAL -->
 
