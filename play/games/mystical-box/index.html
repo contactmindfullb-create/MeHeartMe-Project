@@ -794,41 +794,6 @@
     </footer>
 
   </main>
-  
-  
-<!-- TEMPORARY GAME ERROR DIAGNOSTIC -->
-<script>
-  const errorBox = document.createElement("pre");
-  errorBox.style.cssText =
-    "display:none;position:fixed;bottom:12px;" +
-    "left:12px;right:12px;z-index:99999;" +
-    "padding:14px;background:#300;color:#fff;" +
-    "border:2px solid #ff7777;border-radius:8px;" +
-    "white-space:pre-wrap;overflow-wrap:anywhere;" +
-    "max-height:45vh;overflow:auto;font-size:13px;";
-
-  document.body.appendChild(errorBox);
-
-  function reportGameError(message) {
-    errorBox.style.display = "block";
-    errorBox.textContent += message + "\n";
-  }
-
-  window.addEventListener("error", (event) => {
-    reportGameError(
-      "ERROR: " + event.message +
-      "\nFILE: " + (event.filename || "unknown") +
-      "\nLINE: " + (event.lineno || "?")
-    );
-  }, true);
-
-  window.addEventListener("unhandledrejection", (event) => {
-    reportGameError(
-      "PROMISE ERROR: " + String(event.reason)
-    );
-  });
-</script>
-<!-- END TEMPORARY DIAGNOSTIC -->
 
 
   <!-- Existing game logic remains connected -->
