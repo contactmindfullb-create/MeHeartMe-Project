@@ -19,10 +19,10 @@ export const events = [
     startTime: "5:00 PM",
     endTime: "6:00 PM",
     location: "Virtual / Me❤️Me Facebook Page",
-    giveawayPassword: null,
-    publicRevealAt: null,
+    giveawayPassword: "Spreading Positivity",
+    publicRevealAt: "2026-10-18T00:00:00-04:00",: null,
     eventEndsAt: "2026-10-21T18:00:00-04:00",
-    rsvpUrl: null,
+    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",,
     rsvpReminder: "RSVP to participate in the giveaway."
   },
   {
@@ -33,10 +33,10 @@ export const events = [
     startTime: "4:00 PM",
     endTime: "8:00 PM",
     location: "124 South Macon St, Jesup, GA 31545",
-    giveawayPassword: null,
-    publicRevealAt: null,
+    giveawayPassword: "Island Soul Food",
+    publicRevealAt: "2026-10-20T00:00:00-04:00",
     eventEndsAt: "2026-10-23T20:00:00-04:00",
-    rsvpUrl: null,
+    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",,
     rsvpReminder: "Remember to RSVP for giveaway participation."
   },
   {
@@ -47,10 +47,10 @@ export const events = [
     startTime: "6:00 PM",
     endTime: "9:00 PM",
     location: "539 W. Oglethorpe Hwy",
-    giveawayPassword: null,
-    publicRevealAt: null,
+    giveawayPassword: "Sheilds of Knowledge",
+    publicRevealAt: "2026-10-21T00:00:00-04:00",
     eventEndsAt: "2026-10-24T21:00:00-04:00",
-    rsvpUrl: null,
+    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",,
     rsvpReminder: "Check event registration details and RSVP if required."
   },
   {
@@ -61,10 +61,10 @@ export const events = [
     startTime: "6:00 PM",
     endTime: "9:00 PM",
     location: "Downtown Hinesville",
-    giveawayPassword: null,
-    publicRevealAt: null,
+    giveawayPassword: "Mad Shape Scientist Work",
+    publicRevealAt: "2026-10-27T00:00:00-04:00",
     eventEndsAt: "2026-10-30T21:00:00-04:00",
-    rsvpUrl: null,
+    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",,
     rsvpReminder: "Check event registration details and RSVP if required."
   },
   {
@@ -75,10 +75,10 @@ export const events = [
     startTime: "1:00 PM",
     endTime: "4:00 PM",
     location: "41 Charlie Butler Rd, Midway, GA 31320",
-    giveawayPassword: null,
-    publicRevealAt: null,
+    giveawayPassword: "Unity Feast",
+    publicRevealAt: "2026-10-28T00:00:00-04:00",
     eventEndsAt: "2026-10-31T16:00:00-04:00",
-    rsvpUrl: null,
+    rsvpUrl:"https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "Check event registration details and RSVP if required."
   }
 ];
