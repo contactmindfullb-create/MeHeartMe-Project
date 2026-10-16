@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,27 +8,28 @@
 
   <style>
     :root {
-      --cream:#fffaf4;
-      --ink:#251d2b;
-      --purple:#4d326f;
-      --deep-purple:#24152f;
-      --gold:#efa94a;
-      --yellow:#ffd83d;
-      --night:#130f1b;
+      --cream: #fffaf4;
+      --purple: #4d326f;
+      --deep-purple: #24152f;
+      --gold: #efa94a;
+      --yellow: #ffd83d;
+      --night: #130f1b;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(77,50,111,.35), transparent 35%),
-        var(--night);
-      color: white;
       min-height: 100vh;
+      font-family: Arial, sans-serif;
+      color: white;
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(77,50,111,.35),
+          transparent 45%
+        ),
+        var(--night);
     }
 
     .play-wrap {
@@ -40,6 +42,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
       margin-bottom: 60px;
     }
 
@@ -69,199 +72,160 @@
     .play-hero p {
       max-width: 700px;
       margin: 0 auto;
-      color: rgba(255,255,255,.72);
+      color: rgba(255,255,255,.75);
       line-height: 1.7;
     }
 
-    .path-options {
+    .game-library {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      gap: 24px;
       margin-top: 35px;
     }
 
-    .path-card {
-      padding: 28px 22px;
-      border: 1px solid rgba(239,169,74,.28);
+    .game-card {
+      display: flex;
+      flex-direction: column;
+      padding: 30px 25px;
+      border: 1px solid rgba(239,169,74,.3);
       border-radius: 20px;
       background: linear-gradient(
         180deg,
-        rgba(77,50,111,.30),
+        rgba(77,50,111,.35),
         rgba(255,255,255,.035)
       );
-      color: white;
-      text-align: left;
-      cursor: pointer;
       transition: transform .2s ease, border-color .2s ease;
     }
 
-    .path-card:hover {
-      transform: translateY(-3px);
+    .game-card:hover {
+      transform: translateY(-4px);
       border-color: var(--gold);
     }
 
-    .path-card h3 {
-      margin: 0 0 10px;
+    .game-icon {
+      font-size: 54px;
+      margin-bottom: 18px;
+    }
+
+    .game-card h2 {
       color: var(--yellow);
+      margin: 0 0 12px;
+      font-size: 26px;
     }
 
-    .path-card p {
-      margin: 0 0 16px;
-      color: rgba(255,255,255,.72);
-      line-height: 1.55;
+    .game-card p {
+      color: rgba(255,255,255,.75);
+      line-height: 1.65;
+      flex-grow: 1;
     }
 
-    .path-card strong {
+    .game-tag {
       color: var(--gold);
-      font-size: 12px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      font-weight: bold;
     }
 
-    .path-content {
-      margin-top: 35px;
-      padding: 25px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 18px;
-      background: rgba(255,255,255,.03);
+    .game-button {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 20px;
+      padding: 14px 22px;
+      border-radius: 12px;
+      border: 1px solid var(--gold);
+      background: rgba(239,169,74,.12);
+      color: var(--yellow);
+      text-decoration: none;
+      font-weight: bold;
+      transition: background .2s ease;
+    }
+
+    .game-button:hover,
+    .game-button:focus-visible {
+      background: rgba(239,169,74,.25);
+    }
+
+    .library-footer {
+      text-align: center;
+      margin-top: 50px;
+      color: rgba(255,255,255,.55);
+      font-size: 13px;
     }
 
     @media (max-width: 650px) {
-      .path-options {
+      .game-library {
         grid-template-columns: 1fr;
       }
-    
-    .portal-entry {
-  margin-top: 28px;
-  text-align: center;
-}
 
-.portal-button {
-  display: inline-block;
-  padding: 14px 24px;
-  border: 1px solid var(--gold);
-  border-radius: 12px;
-  background: rgba(239,169,74,.10);
-  color: var(--yellow);
-  text-decoration: none;
-  font-weight: bold;
-  letter-spacing: .5px;
-  transition: transform .2s ease, background .2s ease;
-}
-
-.portal-button:hover {
-  transform: translateY(-2px);
-  background: rgba(239,169,74,.18);
-}
+      .topbar {
+        margin-bottom: 45px;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <main class="play-wrap">
 
-    <div class="topbar">
+    <nav class="topbar" aria-label="Page navigation">
       <a href="../">Me❤️Me</a>
       <a href="../watch/">← WATCH</a>
-    </div>
+    </nav>
 
     <section class="play-hero">
-      <div class="play-label">
-        THE SUCCESSOR BREACH
-      </div>
-
-      <h1>CHOOSE YOUR PATH</h1>
-
+      <div class="play-label">ME❤️ME ADVENTURES</div>
+      <h1>CHOOSE YOUR ADVENTURE</h1>
       <p>
-        The twins have reached Shape Land.
-        Something followed them through the breach.
-
-        Two paths. Two strengths. One mission.
-        How will you investigate the interference?
+        Every story opens a new world.
+        Explore mysterious transmissions,
+        uncover hidden clues, and discover
+        where your adventure takes you.
       </p>
-      <div class="portal-entry">
-  <div class="play-label">NEW TO THE MISSION?</div>
-
-  <a class="portal-button" href="https://celestinecodeamor.com/portal-potocol">
-    START PORTAL PROTOCOL →
-  </a>
-</div>
     </section>
 
-    <div class="path-options">
+    <section class="game-library" aria-label="Game Library">
 
-      <button class="path-card"
-        onclick="revealPath('knight-path')">
-
-        <h3>⚔️ KNIGHT PATH</h3>
+      <article class="game-card">
+        <div class="game-icon" aria-hidden="true">📡</div>
+        <div class="game-tag">THE ORIGINAL SIGNAL</div>
+        <h2>Portal Protocol</h2>
 
         <p>
-          Protect the Shapes.
-          Face the danger.
-          Move toward the disturbance.
+          Follow the mysterious transmissions.
+          Solve the clues and discover how
+          the adventure began.
         </p>
 
-        <strong>CHOOSE KNIGHT →</strong>
-      </button>
+        <a class="game-button"
+           href="https://celestinecodeamor.com/portal-potocol">
+          START PORTAL PROTOCOL →
+        </a>
+      </article>
 
-      <button class="path-card"
-        onclick="revealPath('ninja-path')">
-
-        <h3>🥷 NINJA PRINCESS PATH</h3>
+      <article class="game-card">
+        <div class="game-icon" aria-hidden="true">👻</div>
+        <div class="game-tag">THE SUCCESSOR BREACH</div>
+        <h2>The Mystical Box</h2>
 
         <p>
-          Follow the clues.
-          Track the ghost trail.
-          Discover what is hiding beneath the surface.
+          Enter Shape Land with Olivia and Trevor.
+          Choose your twin, solve the Majestic
+          Mirror Maze, and collect magical sigils
+          to unlock real-world discoveries.
         </p>
 
-        <strong>CHOOSE NINJA →</strong>
-      </button>
-
-    </div>
-
-    <section id="knight-path"
-      class="path-content"
-      style="display:none;">
-
-      <h2>Knight Path Selected ⚔️</h2>
-
-      <p>
-        Mission loading...
-      </p>
+        <a class="game-button"
+           href="./games/mystical-box/">
+          ENTER THE MYSTICAL BOX →
+        </a>
+      </article>
 
     </section>
 
-    <section id="ninja-path"
-      class="path-content"
-      style="display:none;">
-
-      <h2>Ninja Princess Path Selected 🥷</h2>
-
-      <p>
-        Mission loading...
-      </p>
-
-    </section>
+    <footer class="library-footer">
+      More adventures are coming to Me❤️Me.
+    </footer>
 
   </main>
-
-  <script>
-    function revealPath(pathId) {
-      document.getElementById("knight-path").style.display = "none";
-      document.getElementById("ninja-path").style.display = "none";
-
-      const path = document.getElementById(pathId);
-
-      if (!path) return;
-
-      path.style.display = "block";
-
-      path.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-  </script>
-
 </body>
 </html>
