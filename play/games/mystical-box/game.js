@@ -204,10 +204,25 @@ story:
 function renderPuzzle() {
   const puzzle = puzzles[selectedHero][currentPuzzle];
 
-  if (!puzzle) {
-    showStage("victory");
-    return;
+if (!puzzle) {
+  const reveal = document.getElementById("mirraReveal");
+
+  if (reveal) {
+    reveal.classList.remove("is-revealed");
   }
+
+  showStage("victory");
+
+  if (reveal) {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        reveal.classList.add("is-revealed");
+      });
+    });
+  }
+
+  return;
+}
 
   puzzleLocked = false;
 
