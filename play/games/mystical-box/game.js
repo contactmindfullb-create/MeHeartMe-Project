@@ -172,7 +172,7 @@ const puzzles = {
       success:
         "Trevor reaches toward the citizen. " +
         "A protective circle of light appears."
-    }
+    },
 {
   title: "The Mirror That Cannot Lie",
   story:
