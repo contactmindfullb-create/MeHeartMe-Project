@@ -172,17 +172,16 @@ const puzzles = {
       success:
         "Trevor reaches toward the citizen. " +
         "A protective circle of light appears."
-    },
-    {
-      title: "The Mirror That Cannot Lie",
-      story:
-        
-story:
-  "A golden doorway appears in the corridor. " +
-  "A mysterious voice whispers, " +
-  "'Take the shortcut and escape.' " +
-  "Behind Trevor, the trapped citizens begin " +
-  "fading into the glass. What should he do?",
+    }
+{
+  title: "The Mirror That Cannot Lie",
+  story:
+    "A golden doorway appears in the corridor. " +
+    "A mysterious voice whispers, " +
+    "'Take the shortcut and escape.' " +
+    "Behind Trevor, the trapped citizens begin " +
+    "fading into the glass. What should he do?",
+
 
       answers: [
         "Take the crown and escape alone",
