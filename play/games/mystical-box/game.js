@@ -93,7 +93,7 @@ document.getElementById("navEvents")
 // ----------------------------------
 // MISSION START
 // ----------------------------------
-
+window.alert("Mystical Box JavaScript is running!");
 document.getElementById("beginMission")
   .addEventListener("click", () => {
     showStage("choose");
