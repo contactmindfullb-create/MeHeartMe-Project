@@ -438,18 +438,35 @@ function renderEventBoard() {
       );
     }
 
-    if (showDetails && event.rsvpUrl) {
-      const link = document.createElement("a");
+   
+    // RSVP reminder and button for Majestic events.
+    // Available regardless of mission completion
+    // or public announcement status.
+    if (event.rsvpUrl) {
+      const reminder = document.createElement("p");
 
-      link.href = event.rsvpUrl;
-      link.textContent = "RSVP for the Public Giveaway →";
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
+      reminder.textContent =
+        event.rsvpReminder ||
+        "Reminder: RSVP to participate in the giveaway.";
 
-      link.style.color = "#f5d18b";
+      card.appendChild(reminder);
 
-      card.appendChild(link);
+      const rsvpButton = document.createElement("a");
+
+      rsvpButton.href = event.rsvpUrl;
+      rsvpButton.textContent = "RSVP for the Giveaway →";
+      rsvpButton.target = "_blank";
+      rsvpButton.rel = "noopener noreferrer";
+
+      rsvpButton.className = "primary-button";
+
+      rsvpButton.style.display = "inline-block";
+      rsvpButton.style.textDecoration = "none";
+      rsvpButton.style.textAlign = "center";
+
+      card.appendChild(rsvpButton);
     }
+
 
     if (archived) {
       const archiveNote = document.createElement("p");
