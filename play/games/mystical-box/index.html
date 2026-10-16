@@ -1,1 +1,492 @@
-.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>The Mystical Box | MeHeartMe PLAY</title>
+
+  <style>
+    :root {
+      --background: #100b21;
+      --surface: #211635;
+      --surface-light: #322149;
+      --violet: #aa79f4;
+      --gold: #f5d18b;
+      --text: #fff9ff;
+      --muted: #d0c2df;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(
+          ellipse at 50% 5%,
+          #593385 0%,
+          #211435 45%,
+          var(--background) 85%
+        );
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    .game-shell {
+      width: min(100% - 28px, 780px);
+      margin: auto;
+      padding: 25px 0 70px;
+    }
+
+    .game-header {
+      text-align: center;
+      padding: 32px 10px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 8vw, 4rem);
+      margin: 12px 0;
+      line-height: 1.1;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .game-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      margin-bottom: 22px;
+    }
+
+    .nav-button {
+      background: var(--surface-light);
+      border: 1px solid #7757a0;
+      border-radius: 12px;
+      color: white;
+      padding: 11px 14px;
+    }
+
+    .nav-button:hover {
+      background: #4c326a;
+    }
+
+    .game-panel {
+      background: rgba(33, 22, 53, 0.95);
+      border: 1px solid #73509e;
+      border-radius: 24px;
+      padding: clamp(20px, 5vw, 35px);
+      box-shadow: 0 20px 50px #0005;
+      margin-bottom: 20px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .primary-button {
+      background: linear-gradient(
+        135deg,
+        #d6b4ff,
+        #a576ef
+      );
+      color: #1d1032;
+      font-weight: 800;
+      border: none;
+      border-radius: 14px;
+      padding: 15px 22px;
+      margin-top: 12px;
+      min-height: 50px;
+    }
+
+    .primary-button:hover {
+      filter: brightness(1.1);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .hero-card {
+      background: var(--surface-light);
+      color: white;
+      border: 2px solid #755a9a;
+      border-radius: 18px;
+      padding: 20px 12px;
+      min-height: 170px;
+      text-align: center;
+    }
+
+    .hero-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-symbol {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-card strong {
+      display: block;
+      font-size: 1.3rem;
+    }
+
+    .hero-card span {
+      display: block;
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    .mirror-scene {
+      min-height: 185px;
+      border-radius: 20px;
+      margin: 22px 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(
+          circle,
+          #af9cff66,
+          transparent 55%
+        ),
+        repeating-linear-gradient(
+          125deg,
+          #573c81 0 18px,
+          #2d204e 18px 36px
+        );
+      border: 2px solid #a68ad5;
+      overflow: hidden;
+    }
+
+    .magic-mirror {
+      width: 110px;
+      height: 145px;
+      border: 8px ridge var(--gold);
+      border-radius: 50%;
+      background:
+        linear-gradient(
+          135deg,
+          #e0faff,
+          #8466bc,
+          #292044
+        );
+      box-shadow:
+        0 0 35px #b88bff,
+        inset 0 0 25px #fff7;
+      animation: mirrorGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes mirrorGlow {
+      50% {
+        box-shadow:
+          0 0 65px #d7b4ff,
+          inset 0 0 35px #fff9;
+      }
+    }
+
+    .answer-button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      background: var(--surface-light);
+      border: 1px solid #8768ad;
+      border-radius: 12px;
+      padding: 15px;
+      color: white;
+      text-align: left;
+    }
+
+    .answer-button:hover {
+      background: #503471;
+    }
+
+    .feedback {
+      min-height: 30px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .reward-icon {
+      font-size: 4rem;
+      text-align: center;
+      margin: 15px 0;
+      color: var(--gold);
+      filter: drop-shadow(0 0 20px #d6a6ff);
+    }
+
+    .treasure-chest {
+      display: block;
+      width: 100%;
+      background: linear-gradient(
+        145deg,
+        #593a32,
+        #251629
+      );
+      border: 4px ridge var(--gold);
+      border-radius: 20px;
+      padding: 25px;
+      margin: 20px 0;
+      font-size: 4rem;
+      box-shadow: 0 0 30px #a879ff55;
+    }
+
+    .treasure-chest:hover {
+      box-shadow: 0 0 50px #d6a6ff99;
+    }
+
+    .reward-card {
+      background: #392651;
+      border: 1px solid var(--gold);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 18px;
+    }
+
+    .event-card {
+      border: 1px solid #8c6cb2;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 15px 0;
+      background: var(--surface-light);
+    }
+
+    .event-card h3 {
+      margin-top: 0;
+    }
+
+    .status-label {
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .success {
+      color: #b5f4cd;
+    }
+
+    .game-footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      padding-top: 20px;
+    }
+
+    @media (max-width: 430px) {
+      .hero-grid {
+        gap: 9px;
+      }
+
+      .hero-card {
+        padding: 14px 8px;
+      }
+
+      .hero-card strong {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="game-shell">
+
+    <header class="game-header">
+      <div class="eyebrow">THE LAND OF SHAPES</div>
+      <h1>THE MYSTICAL BOX</h1>
+      <p>Choose Your Path · Restore the Magic</p>
+    </header>
+
+    <nav class="game-nav" aria-label="Game navigation">
+      <button class="nav-button" id="navAdventure">
+        Adventure
+      </button>
+      <button class="nav-button" id="navJournal">
+        Mission Journal
+      </button>
+      <button class="nav-button" id="navEvents">
+        Event Board
+      </button>
+    </nav>
+
+    <!-- MAIN ADVENTURE -->
+    <section id="adventurePanel" class="game-panel">
+
+      <div class="eyebrow">MISSION 01</div>
+      <h2>The Majestic Mirror Maze</h2>
+
+      <div class="mirror-scene" aria-hidden="true">
+        <div class="magic-mirror"></div>
+      </div>
+
+      <div id="stageIntro">
+        <p>
+          Something is moving behind the palace mirrors.
+          Mirra has trapped the shape citizens inside
+          their reflections.
+        </p>
+        <button class="primary-button" id="beginMission">
+          Enter the Mirror Maze →
+        </button>
+      </div>
+
+      <!-- CHOOSE YOUR TWIN -->
+      <div id="stageChoose" class="hidden">
+        <h2>Choose Your Twin</h2>
+        <p>
+          Two paths. Two different ways to save
+          the Majestic Gateway.
+        </p>
+
+        <div class="hero-grid">
+          <button class="hero-card" data-hero="olivia">
+            <div class="hero-symbol">◇</div>
+            <strong>Olivia</strong>
+            <span>Investigate · Decode · Discover</span>
+          </button>
+
+          <button class="hero-card" data-hero="trevor">
+            <div class="hero-symbol">⬡</div>
+            <strong>Trevor</strong>
+            <span>Protect · Observe · Rescue</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CHARACTER CHALLENGE -->
+      <div id="stageChallenge" class="hidden">
+        <div class="eyebrow" id="characterLabel"></div>
+        <h2 id="challengeTitle"></h2>
+        <p id="challengeStory"></p>
+
+        <div id="challengeAnswers"></div>
+
+        <p class="feedback"
+           id="challengeFeedback"
+           role="status"
+           aria-live="polite"></p>
+      </div>
+
+      <!-- VICTORY -->
+      <div id="stageVictory" class="hidden">
+        <div class="reward-icon">✨</div>
+        <h2>The Majestic Gateway Is Restored!</h2>
+        <p>
+          Mirra's illusions dissolve. The trapped
+          shape citizens return to the palace.
+          A mysterious chest appears beneath
+          the final mirror.
+        </p>
+        <button class="primary-button" id="showChest">
+          Discover the Keeper's Chest →
+        </button>
+      </div>
+
+      <!-- TREASURE CHEST -->
+      <div id="stageChest" class="hidden">
+        <h2>The Keeper's Chest</h2>
+        <p>
+          The chest glows with an ancient symbol.
+          Tap it to discover what you've earned.
+        </p>
+
+        <button class="treasure-chest" id="openChest"
+                aria-label="Open the Keeper's Chest">
+          🎁
+        </button>
+
+        <div id="chestRewards" class="reward-card hidden">
+          <div class="reward-icon">◇</div>
+          <h2>Perception Sigil Collected!</h2>
+
+          <p><strong>Gift:</strong> Mirror of True Seeing</p>
+
+          <p>
+            A reflection can show you who you are,
+            but it cannot give you the right
+            to become someone else.
+          </p>
+
+          <p class="success">
+            🏅 Badge earned: Mirror Maze Restorer
+          </p>
+
+          <button class="primary-button" id="viewUnlockedEvent">
+            View Your Event Discovery →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION JOURNAL -->
+    <section id="journalPanel" class="game-panel hidden">
+      <div class="eyebrow">YOUR ADVENTURE RECORD</div>
+      <h2>Mission Journal</h2>
+      <div id="journalContent"></div>
+    </section>
+
+    <!-- EVENT BOARD -->
+    <section id="eventsPanel" class="game-panel hidden">
+      <div class="eyebrow">COMMUNITY DISCOVERIES</div>
+      <h2>Event Board</h2>
+
+      <p>
+        Discover upcoming experiences.
+        Complete missions to unlock early
+        announcements and special clues.
+      </p>
+
+      <div id="eventBoardContent"></div>
+    </section>
+
+    <footer class="game-footer">
+      Me❤️Me · The Mystical Box
+      <p>Every shape has a place in the story.</p>
+    </footer>
+
+  </main>
+
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
