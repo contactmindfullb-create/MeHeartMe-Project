@@ -1,1 +1,487 @@
-.
+
+/*
+ * THE MYSTICAL BOX
+ * Mission 1 — The Majestic Mirror Maze
+ */
+
+import {
+  getProgress,
+  isMissionCompleted,
+  completeMissionOne
+} from "./progress.js";
+
+import {
+  events
+} from "../../../shared/mystical-events.js";
+
+// ----------------------------------
+// GAME ELEMENTS
+// ----------------------------------
+
+const panels = {
+  adventure: document.getElementById("adventurePanel"),
+  journal: document.getElementById("journalPanel"),
+  events: document.getElementById("eventsPanel")
+};
+
+const stages = {
+  intro: document.getElementById("stageIntro"),
+  choose: document.getElementById("stageChoose"),
+  challenge: document.getElementById("stageChallenge"),
+  victory: document.getElementById("stageVictory"),
+  chest: document.getElementById("stageChest")
+};
+
+const challengeTitle =
+  document.getElementById("challengeTitle");
+
+const challengeStory =
+  document.getElementById("challengeStory");
+
+const challengeAnswers =
+  document.getElementById("challengeAnswers");
+
+const challengeFeedback =
+  document.getElementById("challengeFeedback");
+
+const characterLabel =
+  document.getElementById("characterLabel");
+
+let selectedHero = null;
+let currentPuzzle = 0;
+let puzzleLocked = false;
+
+// ----------------------------------
+// SCREEN NAVIGATION
+// ----------------------------------
+
+function showPanel(name) {
+  Object.entries(panels).forEach(([key, panel]) => {
+    panel.classList.toggle("hidden", key !== name);
+  });
+
+  if (name === "journal") {
+    renderJournal();
+  }
+
+  if (name === "events") {
+    renderEventBoard();
+  }
+}
+
+function showStage(name) {
+  Object.entries(stages).forEach(([key, stage]) => {
+    stage.classList.toggle("hidden", key !== name);
+  });
+}
+
+document.getElementById("navAdventure")
+  .addEventListener("click", () => {
+    showPanel("adventure");
+  });
+
+document.getElementById("navJournal")
+  .addEventListener("click", () => {
+    showPanel("journal");
+  });
+
+document.getElementById("navEvents")
+  .addEventListener("click", () => {
+    showPanel("events");
+  });
+
+// ----------------------------------
+// MISSION START
+// ----------------------------------
+
+document.getElementById("beginMission")
+  .addEventListener("click", () => {
+    showStage("choose");
+  });
+
+document.querySelectorAll("[data-hero]")
+  .forEach(button => {
+    button.addEventListener("click", () => {
+      selectedHero = button.dataset.hero;
+      currentPuzzle = 0;
+      puzzleLocked = false;
+      renderPuzzle();
+      showStage("challenge");
+    });
+  });
+
+// ----------------------------------
+// CHARACTER PATHS
+// ----------------------------------
+
+const puzzles = {
+  olivia: [
+    {
+      title: "The Missing Reflection",
+      story:
+        "Olivia kneels beside a cracked violet mirror. " +
+        "Three glowing shapes repeat across its surface: " +
+        "triangle, circle, square, triangle, circle... " +
+        "A trapped citizen whispers, 'Finish the pattern.'",
+      answers: [
+        "◇ Diamond",
+        "□ Square",
+        "○ Circle"
+      ],
+      correct: 1,
+      success:
+        "The square locks into place. A hidden doorway " +
+        "opens behind the mirror."
+    },
+    {
+      title: "Mirra's False Door",
+      story:
+        "Inside a hall of silver arches, three doors " +
+        "show different reflections. One reflects " +
+        "Olivia exactly. Another moves before she does. " +
+        "The last shows a crown she never wore. " +
+        "Which reflection can she trust?",
+      answers: [
+        "The reflection that moves before Olivia",
+        "The reflection wearing the crown",
+        "The reflection that matches Olivia"
+      ],
+      correct: 2,
+      success:
+        "The true reflection ripples. The trapped " +
+        "citizens step through to freedom."
+    }
+  ],
+
+  trevor: [
+    {
+      title: "The Voice Behind the Glass",
+      story:
+        "Trevor enters a corridor of blue glass. " +
+        "Three reflections call for help. " +
+        "One repeats his words. One asks him to " +
+        "leave everyone behind. The third points " +
+        "toward a frightened shape citizen. " +
+        "Who needs Trevor's attention?",
+      answers: [
+        "The reflection repeating his words",
+        "The reflection demanding he leave",
+        "The frightened shape citizen"
+      ],
+      correct: 2,
+      success:
+        "Trevor reaches toward the citizen. " +
+        "A protective circle of light appears."
+    },
+    {
+      title: "The Mirror That Cannot Lie",
+      story:
+        "Mirra offers Trevor a golden shortcut. " +
+        "'Take my crown and you can escape,' she says. " +
+        "Behind him, the trapped citizens begin " +
+        "fading into the glass. What should he do?",
+      answers: [
+        "Take the crown and escape alone",
+        "Stay and help the citizens",
+        "Break every mirror without looking"
+      ],
+      correct: 1,
+      success:
+        "Trevor chooses the citizens. His courage " +
+        "breaks Mirra's spell."
+    }
+  ]
+};
+
+// ----------------------------------
+// PUZZLE ENGINE
+// ----------------------------------
+
+function renderPuzzle() {
+  const puzzle = puzzles[selectedHero][currentPuzzle];
+
+  if (!puzzle) {
+    showStage("victory");
+    return;
+  }
+
+  puzzleLocked = false;
+
+  const heroName =
+    selectedHero === "olivia" ? "OLIVIA" : "TREVOR";
+
+  characterLabel.textContent =
+    `${heroName} · CHALLENGE ${currentPuzzle + 1}`;
+
+  challengeTitle.textContent = puzzle.title;
+  challengeStory.textContent = puzzle.story;
+  challengeFeedback.textContent = "";
+
+  challengeAnswers.replaceChildren();
+
+  puzzle.answers.forEach((answer, index) => {
+    const button = document.createElement("button");
+
+    button.className = "answer-button";
+    button.type = "button";
+    button.textContent = answer;
+
+    button.addEventListener("click", () => {
+      checkAnswer(index);
+    });
+
+    challengeAnswers.appendChild(button);
+  });
+}
+
+function checkAnswer(answerIndex) {
+  if (puzzleLocked) {
+    return;
+  }
+
+  const puzzle = puzzles[selectedHero][currentPuzzle];
+
+  if (answerIndex !== puzzle.correct) {
+    challengeFeedback.textContent =
+      "The mirror flickers. Look again!";
+    return;
+  }
+
+  puzzleLocked = true;
+
+  challengeFeedback.textContent = puzzle.success;
+
+  challengeAnswers.querySelectorAll("button")
+    .forEach(button => {
+      button.disabled = true;
+    });
+
+  const continueButton = document.createElement("button");
+
+  continueButton.className = "primary-button";
+  continueButton.type = "button";
+  continueButton.textContent = "Continue the Adventure →";
+
+  continueButton.addEventListener("click", () => {
+    currentPuzzle += 1;
+    renderPuzzle();
+  });
+
+  challengeAnswers.appendChild(continueButton);
+}
+
+// ----------------------------------
+// KEEPER'S CHEST
+// ----------------------------------
+
+document.getElementById("showChest")
+  .addEventListener("click", () => {
+    showStage("chest");
+  });
+
+document.getElementById("openChest")
+  .addEventListener("click", () => {
+    // One completion action saves the
+    // mission, sigil, and badge together.
+    const saved = completeMissionOne();
+
+    if (!saved) {
+      window.alert(
+        "Your browser could not save your achievement. " +
+        "Please check browser storage and try again."
+      );
+      return;
+    }
+
+    document.getElementById("chestRewards")
+      .classList.remove("hidden");
+
+    document.getElementById("openChest")
+      .classList.add("hidden");
+  });
+
+document.getElementById("viewUnlockedEvent")
+  .addEventListener("click", () => {
+    showPanel("events");
+  });
+
+// ----------------------------------
+// MISSION JOURNAL
+// ----------------------------------
+
+function renderJournal() {
+  const progress = getProgress();
+  const journal = document.getElementById("journalContent");
+
+  journal.replaceChildren();
+
+  const completed =
+    progress.completedMissions.includes("mission-1");
+
+  const heading = document.createElement("h3");
+  heading.textContent = completed
+    ? "◇ The Perception Sigil"
+    : "◇ Perception Sigil — Not Yet Collected";
+
+  const description = document.createElement("p");
+  description.textContent = completed
+    ? "The Majestic Mirror Maze has been restored. " +
+      "You earned the Mirror of True Seeing " +
+      "and the Mirror Maze Restorer badge."
+    : "Enter the Majestic Mirror Maze and open " +
+      "the Keeper's Chest to earn your first sigil.";
+
+  journal.append(heading, description);
+
+  if (completed) {
+    const badge = document.createElement("p");
+    badge.className = "success";
+    badge.textContent = "🏅 Mirror Maze Restorer";
+    journal.appendChild(badge);
+  }
+}
+
+// ----------------------------------
+// EVENT BOARD
+// ----------------------------------
+
+function hasPassed(dateString) {
+  if (!dateString) {
+    return false;
+  }
+
+  const timestamp = Date.parse(dateString);
+
+  return Number.isFinite(timestamp) &&
+    Date.now() >= timestamp;
+}
+
+function addEventLine(container, label, value) {
+  const line = document.createElement("p");
+
+  const strong = document.createElement("strong");
+  strong.textContent = `${label}: `;
+
+  line.appendChild(strong);
+  line.appendChild(
+    document.createTextNode(value || "To be announced")
+  );
+
+  container.appendChild(line);
+}
+
+function renderEventBoard() {
+  const board = document.getElementById("eventBoardContent");
+
+  board.replaceChildren();
+
+  if (events.length === 0) {
+    const empty = document.createElement("p");
+    empty.textContent =
+      "New community experiences are coming soon.";
+    board.appendChild(empty);
+    return;
+  }
+
+  events.forEach(event => {
+    const missionUnlocked =
+      isMissionCompleted(event.missionId);
+
+    const publiclyRevealed =
+      hasPassed(event.publicRevealAt);
+
+    const archived =
+      hasPassed(event.eventEndsAt);
+
+    const showDetails =
+      missionUnlocked || publiclyRevealed;
+
+    const card = document.createElement("article");
+    card.className = "event-card";
+
+    const status = document.createElement("div");
+    status.className = "status-label";
+
+    status.textContent = archived
+      ? "EVENT ARCHIVE"
+      : missionUnlocked
+        ? "MISSION DISCOVERY UNLOCKED"
+        : publiclyRevealed
+          ? "PUBLIC ANNOUNCEMENT"
+          : "MYSTERY EVENT";
+
+    const title = document.createElement("h3");
+
+    title.textContent = showDetails
+      ? event.name
+      : "A New Experience Is Approaching...";
+
+    card.append(status, title);
+
+    if (showDetails) {
+      addEventLine(card, "Date", event.date);
+      addEventLine(card, "Location", event.location);
+    } else {
+      const teaser = document.createElement("p");
+      teaser.textContent =
+        "Complete the connected mission to " +
+        "discover event details before the " +
+        "public announcement.";
+      card.appendChild(teaser);
+    }
+
+    if (missionUnlocked) {
+      addEventLine(
+        card,
+        "Mission Giveaway Password",
+        event.giveawayPassword
+      );
+    }
+
+    if (showDetails && event.rsvpUrl) {
+      const link = document.createElement("a");
+
+      link.href = event.rsvpUrl;
+      link.textContent = "RSVP for the Public Giveaway →";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+      link.style.color = "#f5d18b";
+
+      card.appendChild(link);
+    }
+
+    if (archived) {
+      const archiveNote = document.createElement("p");
+
+      archiveNote.textContent =
+        "This event has concluded. " +
+        "Your mission achievements remain saved.";
+
+      card.appendChild(archiveNote);
+    }
+
+    board.appendChild(card);
+  });
+}
+
+// ----------------------------------
+// RETURNING PLAYER
+// ----------------------------------
+
+function initializeGame() {
+  showPanel("adventure");
+
+  if (isMissionCompleted("mission-1")) {
+    const message = document.createElement("p");
+
+    message.className = "success";
+    message.textContent =
+      "◇ Perception Sigil already collected! " +
+      "You can replay this mission anytime.";
+
+    stages.intro.prepend(message);
+  }
+}
+
+initializeGame();
