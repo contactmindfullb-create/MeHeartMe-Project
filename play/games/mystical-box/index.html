@@ -219,6 +219,33 @@
       margin: 10px 0;
     }
 
+
+/* OFFICIAL MISSION 1 ARTWORK */
+
+.mission-art {
+  min-height: 0;
+  background: #170d2b;
+  display: block;
+  overflow: hidden;
+}
+
+.mission-art::after {
+  display: none;
+}
+
+.mission-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  object-fit: contain;
+}
+
+.mission-art .art-caption {
+  display: none;
+}
+
+
     /* CHOOSE A PATH */
 
     .hero-grid {
@@ -418,37 +445,59 @@
       <div class="eyebrow">MISSION 01</div>
       <h2>The Majestic Mirror Maze</h2>
 
-      <!-- Opening mission illustration -->
-      <div class="mission-art"
-           role="img"
-           aria-label="An enchanted mirror glows inside a mysterious violet palace">
-        <div class="magic-mirror"></div>
+      
+<!-- Mission 1 opening artwork -->
+<div class="mission-art">
+  <img
+    class="mission-image"
+    src="./assets/mirra-maze.PNG"
+    alt="A dazzling maze of crystal mirrors stretches into glowing corridors of violet, blue, and gold."
+    loading="eager"
+    decoding="async"
+  >
+</div>
 
-        <div class="art-caption">
-          Something is moving behind the mirrors...
-        </div>
-      </div>
 
       <!-- Mission introduction -->
       <div id="stageIntro">
 
-        <div class="mission-story">
-          <p>
-            In the Majestic Mirror Palace, reflections
-            have begun moving on their own.
-          </p>
+      
+<div class="mission-story">
 
-          <p>
-            Mirra has trapped the shape citizens
-            behind the glass. Every doorway
-            leads deeper into her illusions.
-          </p>
+  <p>
+    At the edge of the Land of Shapes, the
+    Majestic Mirror Palace has gone silent.
+  </p>
 
-          <p>
-            Olivia and Trevor have reached the palace.
-            They can save everyone—but they must
-            choose how to face the maze.
-          </p>
+  <p>
+    Its crystal corridors once reflected
+    every color in the kingdom. Now the
+    reflections move when no one is there,
+    familiar doorways lead to impossible
+    places, and shape citizens have begun
+    disappearing behind the glass.
+  </p>
+
+  <p>
+    Olivia and Trevor arrive at the palace
+    gates and discover two glowing paths.
+    One is marked with a diamond.
+    The other bears a shield.
+  </p>
+
+  <p>
+    Somewhere deep inside the maze,
+    something is watching.
+  </p>
+
+  <p>
+    The twins must find the missing citizens,
+    discover what is controlling the mirrors,
+    and restore the Majestic Gateway
+    before the palace seals itself forever.
+  </p>
+</div>
+
         </div>
 
         <button class="primary-button" id="beginMission">
