@@ -6,7 +6,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>The Mystical Box | MeHeartMe PLAY</title>
+  <title>Choose a Path | Me❤️Me PLAY</title>
 
   <style>
     :root {
@@ -30,9 +30,9 @@
       color: var(--text);
       background:
         radial-gradient(
-          ellipse at 50% 5%,
-          #593385 0%,
-          #211435 45%,
+          ellipse at 50% 0%,
+          #56317c 0%,
+          #211435 46%,
           var(--background) 85%
         );
     }
@@ -42,7 +42,8 @@
       cursor: pointer;
     }
 
-    button:focus-visible {
+    button:focus-visible,
+    a:focus-visible {
       outline: 3px solid var(--gold);
       outline-offset: 4px;
     }
@@ -55,29 +56,31 @@
 
     .game-header {
       text-align: center;
-      padding: 32px 10px;
+      padding: 30px 10px;
     }
 
     .eyebrow {
       color: var(--gold);
       font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.16em;
       font-weight: 700;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: clamp(2.3rem, 8vw, 4rem);
+      font-size: clamp(2.4rem, 8vw, 4.2rem);
       margin: 12px 0;
       line-height: 1.1;
     }
 
     h2 {
       margin-top: 0;
+      line-height: 1.2;
     }
 
     p {
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .game-nav {
@@ -94,6 +97,7 @@
       border-radius: 12px;
       color: white;
       padding: 11px 14px;
+      min-height: 44px;
     }
 
     .nav-button:hover {
@@ -101,7 +105,7 @@
     }
 
     .game-panel {
-      background: rgba(33, 22, 53, 0.95);
+      background: rgba(33, 22, 53, 0.96);
       border: 1px solid #73509e;
       border-radius: 24px;
       padding: clamp(20px, 5vw, 35px);
@@ -131,6 +135,91 @@
     .primary-button:hover {
       filter: brightness(1.1);
     }
+
+    /* MISSION INTRO IMAGE AREA */
+
+    .mission-art {
+      position: relative;
+      min-height: 275px;
+      border-radius: 20px;
+      margin: 20px 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 2px solid #a68ad5;
+      background:
+        radial-gradient(
+          circle at 50% 40%,
+          #d3b8ff66,
+          transparent 38%
+        ),
+        repeating-linear-gradient(
+          125deg,
+          #573c81 0 18px,
+          #2d204e 18px 36px
+        );
+    }
+
+    .mission-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        transparent 60%,
+        #130b27c9
+      );
+      pointer-events: none;
+    }
+
+    .magic-mirror {
+      width: 135px;
+      height: 190px;
+      border: 9px ridge var(--gold);
+      border-radius: 50%;
+      background:
+        linear-gradient(
+          135deg,
+          #e0faff,
+          #8466bc,
+          #292044
+        );
+      box-shadow:
+        0 0 45px #b88bff,
+        inset 0 0 25px #fff7;
+      animation: mirrorGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes mirrorGlow {
+      50% {
+        box-shadow:
+          0 0 75px #d7b4ff,
+          inset 0 0 35px #fff9;
+      }
+    }
+
+    .art-caption {
+      position: absolute;
+      z-index: 1;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      text-align: center;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 2px 10px #000;
+    }
+
+    .mission-story {
+      border-left: 3px solid var(--gold);
+      padding-left: 17px;
+      margin: 22px 0;
+    }
+
+    .mission-story p {
+      margin: 10px 0;
+    }
+
+    /* CHOOSE A PATH */
 
     .hero-grid {
       display: grid;
@@ -171,52 +260,7 @@
       font-size: 0.9rem;
     }
 
-    .mirror-scene {
-      min-height: 185px;
-      border-radius: 20px;
-      margin: 22px 0;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(
-          circle,
-          #af9cff66,
-          transparent 55%
-        ),
-        repeating-linear-gradient(
-          125deg,
-          #573c81 0 18px,
-          #2d204e 18px 36px
-        );
-      border: 2px solid #a68ad5;
-      overflow: hidden;
-    }
-
-    .magic-mirror {
-      width: 110px;
-      height: 145px;
-      border: 8px ridge var(--gold);
-      border-radius: 50%;
-      background:
-        linear-gradient(
-          135deg,
-          #e0faff,
-          #8466bc,
-          #292044
-        );
-      box-shadow:
-        0 0 35px #b88bff,
-        inset 0 0 25px #fff7;
-      animation: mirrorGlow 3s ease-in-out infinite;
-    }
-
-    @keyframes mirrorGlow {
-      50% {
-        box-shadow:
-          0 0 65px #d7b4ff,
-          inset 0 0 35px #fff9;
-      }
-    }
+    /* CHALLENGES */
 
     .answer-button {
       display: block;
@@ -234,11 +278,18 @@
       background: #503471;
     }
 
+    .answer-button:disabled {
+      opacity: 0.65;
+      cursor: default;
+    }
+
     .feedback {
       min-height: 30px;
       color: var(--gold);
       font-weight: 600;
     }
+
+    /* THE MYSTICAL BOX */
 
     .reward-icon {
       font-size: 4rem;
@@ -275,6 +326,8 @@
       padding: 20px;
       margin-top: 18px;
     }
+
+    /* EVENT BOARD */
 
     .event-card {
       border: 1px solid #8c6cb2;
@@ -318,10 +371,16 @@
       .hero-card strong {
         font-size: 1.1rem;
       }
+
+      .mission-art {
+        min-height: 235px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         animation: none !important;
         transition: none !important;
       }
@@ -334,70 +393,122 @@
 
     <header class="game-header">
       <div class="eyebrow">THE LAND OF SHAPES</div>
-      <h1>THE MYSTICAL BOX</h1>
-      <p>Choose Your Path · Restore the Magic</p>
+      <h1>CHOOSE A PATH</h1>
+      <p>Two Paths · One Mission · Your Adventure</p>
     </header>
 
     <nav class="game-nav" aria-label="Game navigation">
       <button class="nav-button" id="navAdventure">
         Adventure
       </button>
+
       <button class="nav-button" id="navJournal">
         Mission Journal
       </button>
+
       <button class="nav-button" id="navEvents">
         Event Board
       </button>
     </nav>
 
     <!-- MAIN ADVENTURE -->
+
     <section id="adventurePanel" class="game-panel">
 
       <div class="eyebrow">MISSION 01</div>
       <h2>The Majestic Mirror Maze</h2>
 
-      <div class="mirror-scene" aria-hidden="true">
+      <!-- Opening mission illustration -->
+      <div class="mission-art"
+           role="img"
+           aria-label="An enchanted mirror glows inside a mysterious violet palace">
         <div class="magic-mirror"></div>
-      </div>
 
-      <div id="stageIntro">
-        <p>
-          Something is moving behind the palace mirrors.
-          Mirra has trapped the shape citizens inside
-          their reflections.
-        </p>
-        <button class="primary-button" id="beginMission">
-          Enter the Mirror Maze →
-        </button>
-      </div>
-
-      <!-- CHOOSE YOUR TWIN -->
-      <div id="stageChoose" class="hidden">
-        <h2>Choose Your Twin</h2>
-        <p>
-          Two paths. Two different ways to save
-          the Majestic Gateway.
-        </p>
-
-        <div class="hero-grid">
-          <button class="hero-card" data-hero="olivia">
-            <div class="hero-symbol">◇</div>
-            <strong>Olivia</strong>
-            <span>Investigate · Decode · Discover</span>
-          </button>
-
-          <button class="hero-card" data-hero="trevor">
-            <div class="hero-symbol">⬡</div>
-            <strong>Trevor</strong>
-            <span>Protect · Observe · Rescue</span>
-          </button>
+        <div class="art-caption">
+          Something is moving behind the mirrors...
         </div>
       </div>
 
-      <!-- CHARACTER CHALLENGE -->
+      <!-- Mission introduction -->
+      <div id="stageIntro">
+
+        <div class="mission-story">
+          <p>
+            In the Majestic Mirror Palace, reflections
+            have begun moving on their own.
+          </p>
+
+          <p>
+            Mirra has trapped the shape citizens
+            behind the glass. Every doorway
+            leads deeper into her illusions.
+          </p>
+
+          <p>
+            Olivia and Trevor have reached the palace.
+            They can save everyone—but they must
+            choose how to face the maze.
+          </p>
+        </div>
+
+        <button class="primary-button" id="beginMission">
+          Choose Your Path →
+        </button>
+      </div>
+
+      <!-- CHARACTER SELECTION -->
+
+      <div id="stageChoose" class="hidden">
+
+        <div class="eyebrow">YOUR DECISION</div>
+        <h2>Who Will Lead the Mission?</h2>
+
+        <p>
+          Choose Olivia's investigative path or
+          Trevor's rescue path. Both twins will
+          work together, but your choice determines
+          the challenges you'll face.
+        </p>
+
+        <div class="hero-grid">
+
+          <button class="hero-card"
+                  type="button"
+                  data-hero="olivia">
+
+            <div class="hero-symbol">◇</div>
+
+            <strong>Olivia</strong>
+
+            <span>
+              Investigate · Decode · Discover
+            </span>
+          </button>
+
+          <button class="hero-card"
+                  type="button"
+                  data-hero="trevor">
+
+            <div class="hero-symbol">⬡</div>
+
+            <strong>Trevor</strong>
+
+            <span>
+              Protect · Observe · Rescue
+            </span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- CHARACTER-SPECIFIC MISSION -->
+
       <div id="stageChallenge" class="hidden">
+
         <div class="eyebrow" id="characterLabel"></div>
+
         <h2 id="challengeTitle"></h2>
+
         <p id="challengeStory"></p>
 
         <div id="challengeAnswers"></div>
@@ -406,41 +517,72 @@
            id="challengeFeedback"
            role="status"
            aria-live="polite"></p>
+
       </div>
 
-      <!-- VICTORY -->
+      <!-- MISSION SUCCESS -->
+
       <div id="stageVictory" class="hidden">
+
         <div class="reward-icon">✨</div>
+
         <h2>The Majestic Gateway Is Restored!</h2>
+
         <p>
-          Mirra's illusions dissolve. The trapped
-          shape citizens return to the palace.
-          A mysterious chest appears beneath
-          the final mirror.
+          The final mirror shatters into a thousand
+          harmless sparks. The trapped shape citizens
+          return to the palace.
         </p>
+
+        <p>
+          Olivia and Trevor hear a low humming sound
+          beneath the floor. A hidden chamber opens.
+          Something ancient is waiting inside.
+        </p>
+
         <button class="primary-button" id="showChest">
-          Discover the Keeper's Chest →
+          Enter the Hidden Chamber →
         </button>
+
       </div>
 
-      <!-- TREASURE CHEST -->
+      <!-- THE MYSTICAL BOX: REWARD REVEAL -->
+
       <div id="stageChest" class="hidden">
-        <h2>The Keeper's Chest</h2>
+
+        <div class="eyebrow">MISSION COMPLETE · REWARD DISCOVERY</div>
+
+        <h2>The Mystical Box</h2>
+
         <p>
-          The chest glows with an ancient symbol.
-          Tap it to discover what you've earned.
+          Beneath the Majestic Mirror Palace,
+          a mysterious treasure chest awakens.
+          Its golden markings glow as you approach.
         </p>
 
-        <button class="treasure-chest" id="openChest"
-                aria-label="Open the Keeper's Chest">
+        <p>
+          The Mystical Box only appears to those
+          who have completed the mission.
+        </p>
+
+        <button class="treasure-chest"
+                id="openChest"
+                type="button"
+                aria-label="Open The Mystical Box">
           🎁
         </button>
 
-        <div id="chestRewards" class="reward-card hidden">
+        <div id="chestRewards"
+             class="reward-card hidden">
+
           <div class="reward-icon">◇</div>
+
           <h2>Perception Sigil Collected!</h2>
 
-          <p><strong>Gift:</strong> Mirror of True Seeing</p>
+          <p>
+            <strong>Special Artifact:</strong>
+            Mirror of True Seeing
+          </p>
 
           <p>
             A reflection can show you who you are,
@@ -449,44 +591,69 @@
           </p>
 
           <p class="success">
-            🏅 Badge earned: Mirror Maze Restorer
+            🏅 Badge Earned: Mirror Maze Restorer
           </p>
 
-          <button class="primary-button" id="viewUnlockedEvent">
+          <p class="success">
+            Your achievement has been recorded
+            in the Mission Journal.
+          </p>
+
+          <button class="primary-button"
+                  id="viewUnlockedEvent">
             View Your Event Discovery →
           </button>
+
         </div>
       </div>
+
     </section>
 
     <!-- MISSION JOURNAL -->
-    <section id="journalPanel" class="game-panel hidden">
+
+    <section id="journalPanel"
+             class="game-panel hidden">
+
       <div class="eyebrow">YOUR ADVENTURE RECORD</div>
+
       <h2>Mission Journal</h2>
+
       <div id="journalContent"></div>
+
     </section>
 
     <!-- EVENT BOARD -->
-    <section id="eventsPanel" class="game-panel hidden">
+
+    <section id="eventsPanel"
+             class="game-panel hidden">
+
       <div class="eyebrow">COMMUNITY DISCOVERIES</div>
+
       <h2>Event Board</h2>
 
       <p>
-        Discover upcoming experiences.
-        Complete missions to unlock early
-        announcements and special clues.
+        Explore upcoming community experiences.
+        Completing missions unlocks early
+        announcements, special clues,
+        and giveaway passwords.
       </p>
 
       <div id="eventBoardContent"></div>
+
     </section>
 
     <footer class="game-footer">
-      Me❤️Me · The Mystical Box
-      <p>Every shape has a place in the story.</p>
+      Me❤️Me · Choose a Path
+
+      <p>
+        Every shape has a place in the story.
+      </p>
     </footer>
 
   </main>
 
+  <!-- Existing game logic remains connected -->
   <script type="module" src="./game.js"></script>
+
 </body>
 </html>
