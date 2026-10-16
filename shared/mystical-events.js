@@ -20,9 +20,9 @@ export const events = [
     endTime: "6:00 PM",
     location: "Virtual / Me❤️Me Facebook Page",
     giveawayPassword: "Spreading Positivity",
-    publicRevealAt: "2026-10-18T00:00:00-04:00",: null,
+    publicRevealAt: "2026-10-18T00:00:00-04:00",
     eventEndsAt: "2026-10-21T18:00:00-04:00",
-    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",,
+    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "RSVP to participate in the giveaway."
   },
   {
@@ -36,7 +36,7 @@ export const events = [
     giveawayPassword: "Island Soul Food",
     publicRevealAt: "2026-10-20T00:00:00-04:00",
     eventEndsAt: "2026-10-23T20:00:00-04:00",
-    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",,
+    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "Remember to RSVP for giveaway participation."
   },
   {
@@ -50,7 +50,7 @@ export const events = [
     giveawayPassword: "Sheilds of Knowledge",
     publicRevealAt: "2026-10-21T00:00:00-04:00",
     eventEndsAt: "2026-10-24T21:00:00-04:00",
-    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",,
+    rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "Check event registration details and RSVP if required."
   },
   {
