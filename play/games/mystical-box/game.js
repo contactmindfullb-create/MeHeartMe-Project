@@ -134,7 +134,7 @@ const puzzles = {
         "opens behind the mirror."
     },
     {
-      title: "Mirra's False Door",
+      title: "The False Reflection",
       story:
         "Inside a hall of silver arches, three doors " +
         "show different reflections. One reflects " +
@@ -176,10 +176,14 @@ const puzzles = {
     {
       title: "The Mirror That Cannot Lie",
       story:
-        "Mirra offers Trevor a golden shortcut. " +
-        "'Take my crown and you can escape,' she says. " +
-        "Behind him, the trapped citizens begin " +
-        "fading into the glass. What should he do?",
+        
+story:
+  "A golden doorway appears in the corridor. " +
+  "A mysterious voice whispers, " +
+  "'Take the shortcut and escape.' " +
+  "Behind Trevor, the trapped citizens begin " +
+  "fading into the glass. What should he do?",
+
       answers: [
         "Take the crown and escape alone",
         "Stay and help the citizens",
