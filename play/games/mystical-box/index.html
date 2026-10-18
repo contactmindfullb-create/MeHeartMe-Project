@@ -421,6 +421,21 @@
   width: 100%;
   height: auto;
   border-radius: 12px;
+  
+}
+
+.chest-instruction {
+  text-align: center;
+  color: #f5d98b;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 18px 0;
+}
+
+.chest-instruction strong {
+  display: block;
+  margin-top: 8px;
+  color: #ffffff;
 }
 
     .treasure-chest:has(.chest-image) {
@@ -818,6 +833,11 @@
           The Mystical Box only appears to those
           who have completed the mission.
         </p>
+
+<p class="chest-instruction">
+  ✨ A magical treasure awaits! ✨
+  <strong>Tap the Mystical Box to reveal your reward!</strong>
+</p>
 
         <button class="treasure-chest"
         id="openChest"
