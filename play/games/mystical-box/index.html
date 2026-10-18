@@ -342,6 +342,19 @@
       box-shadow: 0 0 30px #a879ff55;
     }
 
+    .chest-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+    .treasure-chest:has(.chest-image) {
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
     .treasure-chest:hover {
       box-shadow: 0 0 50px #d6a6ff99;
     }
@@ -707,11 +720,17 @@
         </p>
 
         <button class="treasure-chest"
-                id="openChest"
-                type="button"
-                aria-label="Open The Mystical Box">
-          🎁
-        </button>
+        id="openChest"
+        type="button"
+        aria-label="Open The Mystical Box">
+
+  <img
+    src="./assets/M1-mystical-box.jpg"
+    alt="An ornate magical treasure chest revealing a glowing multicolored gemstone."
+    class="chest-image"
+  >
+
+</button>
 
         <div id="chestRewards"
              class="reward-card hidden">
