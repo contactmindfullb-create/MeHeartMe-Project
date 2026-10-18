@@ -95,3 +95,104 @@ export function completeMissionOne() {
 
   return saveProgress(progress);
 }
+
+
+/*
+ * MISSIONS 2–5
+ * Sequential Unlocking and Rewards
+ *
+ * Mission 1 remains unchanged.
+ * Reward identifiers are provisional.
+ */
+
+const missionRewards = {
+  "mission-2": {
+    sigil: "courage",
+    badge: "castle-restorer"
+  },
+  "mission-3": {
+    sigil: "patience",
+    badge: "cauldron-restorer"
+  },
+  "mission-4": {
+    sigil: "balance",
+    badge: "festival-restorer"
+  },
+  "mission-5": {
+    sigil: "compassion",
+    badge: "harvest-restorer"
+  }
+};
+
+// Check whether a mission can be entered.
+export function isMissionUnlocked(missionId) {
+  const match = /^mission-([1-5])$/.exec(missionId);
+
+  if (!match) {
+    return false;
+  }
+
+  const missionNumber = Number(match[1]);
+
+  if (missionNumber === 1) {
+    return true;
+  }
+
+  const previousMission = `mission-${missionNumber - 1}`;
+
+  const requiredSigil =
+    missionNumber === 2
+      ? "perception"
+      : missionRewards[previousMission]?.sigil;
+
+  return (
+    isMissionCompleted(previousMission) &&
+    hasSigil(requiredSigil)
+  );
+}
+
+// Award a newly completed mission's rewards.
+// Call only after the final challenge and
+// Mystical Box opening.
+export function completeMission(missionId) {
+  const reward = missionRewards[missionId];
+
+  // Mission 1 keeps its original completion function.
+  if (!reward || !isMissionUnlocked(missionId)) {
+    return false;
+  }
+
+  const progress = getProgress();
+
+  // Never award the same mission twice.
+  if (progress.completedMissions.includes(missionId)) {
+    return false;
+  }
+
+  const updatedProgress = {
+    ...progress,
+
+    completedMissions: [
+      ...new Set([
+        ...progress.completedMissions,
+        missionId
+      ])
+    ],
+
+    collectedSigils: [
+      ...new Set([
+        ...progress.collectedSigils,
+        reward.sigil
+      ])
+    ],
+
+    earnedBadges: [
+      ...new Set([
+        ...progress.earnedBadges,
+        reward.badge
+      ])
+    ]
+  };
+
+  return saveProgress(updatedProgress);
+}
