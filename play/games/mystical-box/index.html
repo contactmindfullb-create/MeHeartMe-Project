@@ -287,6 +287,21 @@
       font-size: 0.9rem;
     }
 
+
+.hero-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border-radius: 12px;
+}
+
+.hero-card {
+  overflow: hidden;
+}
+    
     /* CHALLENGES */
 
     .answer-button {
@@ -575,36 +590,39 @@
           the challenges you'll face.
         </p>
 
-        <div class="hero-grid">
+        
+<div class="hero-grid">
 
-          <button class="hero-card"
-                  type="button"
-                  data-hero="olivia">
+  <button class="hero-card"
+          type="button"
+          data-hero="olivia">
 
-            <div class="hero-symbol">◇</div>
+    <img
+      class="hero-portrait"
+      src="./assets/Olivia-caps.PNG"
+      alt="Olivia, the powerful ninja princess"
+    >
 
-            <strong>Olivia</strong>
+    <strong>Olivia</strong>
+    <span>Investigate · Decode · Discover</span>
+  </button>
 
-            <span>
-              Investigate · Decode · Discover
-            </span>
-          </button>
+  <button class="hero-card"
+          type="button"
+          data-hero="trevor">
 
-          <button class="hero-card"
-                  type="button"
-                  data-hero="trevor">
+    <img
+      class="hero-portrait"
+      src="./assets/Trevor-caps.PNG"
+      alt="Trevor, the brave knight"
+    >
 
-            <div class="hero-symbol">⬡</div>
+    <strong>Trevor</strong>
+    <span>Protect · Observe · Rescue</span>
+  </button>
 
-            <strong>Trevor</strong>
+</div>
 
-            <span>
-              Protect · Observe · Rescue
-            </span>
-          </button>
-
-        </div>
-      </div>
 
       <!-- CHARACTER-SPECIFIC MISSION -->
 
