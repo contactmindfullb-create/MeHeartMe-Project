@@ -730,7 +730,55 @@ function initializeGame() {
     stages.intro.prepend(message);
   }
 }
+initMission3();
+/* ------------------------------------------
+   MISSION 3 ENTRY BUTTON
+   Appears after Mission 2 is completed.
+   ------------------------------------------ */
 
+function m3AddEntryButton() {
+  if (
+    !isMissionUnlocked("mission-3") ||
+    document.getElementById("enterMission3")
+  ) {
+    return;
+  }
+
+  const button = document.createElement("button");
+
+  button.id = "enterMission3";
+  button.type = "button";
+  button.className = "primary-button";
+  button.textContent =
+    "Enter Mission 3 — Island Soul Food →";
+
+  button.addEventListener("click", () => {
+    // Hide Mission 1's stages.
+    Object.values(stages).forEach(stage => {
+      stage.classList.add("hidden");
+    });
+
+    // Hide Mission 2 if it is visible.
+    const mission2 =
+      document.getElementById("mission2Panel");
+
+    if (mission2) {
+      mission2.classList.add("hidden");
+    }
+
+    showPanel("adventure");
+    startMission3();
+  });
+
+  stages.intro.appendChild(button);
+}
+
+m3AddEntryButton();
+
+window.addEventListener(
+  "mystical-box-progress-updated",
+  m3AddEntryButton
+);
 initializeGame();
 
     
