@@ -16,6 +16,11 @@ import {
   events
 } from "../../../shared/mystical-events.js";
 
+import {
+  initMission3,
+  startMission3
+} from "./mission3.js";
+
 // ----------------------------------
 // GAME ELEMENTS
 // ----------------------------------
@@ -104,7 +109,7 @@ document.getElementById("beginMission")
     showStage("choose");
   });
 
-document.querySelectorAll("[data-hero]")
+document.querySelectorAll("#stageChoose [data-hero]")
   .forEach(button => {
     button.addEventListener("click", () => {
       selectedHero = button.dataset.hero;
@@ -328,6 +333,10 @@ document.getElementById("viewUnlockedEvent")
     showPanel("events");
   });
 
+  document.getElementById("m3ViewUnlockedEvent")
+  .addEventListener("click", () => {
+    showPanel("events");
+  });
   
 /* ----------------------------------
  * THE FIRST WHISPER
