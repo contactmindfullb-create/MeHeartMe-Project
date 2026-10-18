@@ -557,6 +557,38 @@
         transition: none !important;
       }
     }
+    
+    
+/* THE FIRST WHISPER EPILOGUE */
+
+.epilogue-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  margin: 18px auto;
+}
+
+.epilogue-narration {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--text);
+  white-space: pre-line;
+  margin: 20px 0;
+}
+
+#epilogueCounter {
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+}
+
+#epilogueEnding {
+  margin-top: 24px;
+  text-align: center;
+}
+
   </style>
 </head>
 
@@ -886,6 +918,60 @@
 
         </div>
       </div>
+
+
+<!-- MISSION 1 EPILOGUE: THE FIRST WHISPER -->
+
+<div id="stageEpilogue" class="hidden">
+
+  <div class="eyebrow">
+    MISSION 1 · CINEMATIC EPILOGUE
+  </div>
+
+  <h2>The First Whisper</h2>
+
+  <p id="epilogueCounter"></p>
+
+  <img
+    id="epilogueImage"
+    class="epilogue-image"
+    src="./assets/M1epilogue-00.PNG"
+    alt="The ShapeScientist's laboratory"
+  >
+
+  <p
+    id="epilogueNarration"
+    class="epilogue-narration">
+  </p>
+
+  <button
+    id="epilogueNext"
+    class="primary-button"
+    type="button">
+    Next →
+  </button>
+
+  <div id="epilogueEnding" class="hidden">
+    <p class="success">
+      ✨ The next adventure awaits!
+    </p>
+
+    <p>
+      Mission 2 — The Knight of Polygon Keep
+    </p>
+
+    <button
+      id="epilogueContinue"
+      class="primary-button"
+      type="button">
+      Continue to Mission 2 →
+    </button>
+
+    <p id="epilogueContinueStatus"
+       role="status"></p>
+  </div>
+
+</div>
 
     </section>
 
