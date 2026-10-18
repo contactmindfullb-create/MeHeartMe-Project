@@ -301,6 +301,65 @@
 .hero-card {
   overflow: hidden;
 }
+
+    
+/* HERO POWER REVEAL */
+
+.hero-reveal {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.hero-empty-frame,
+.hero-power-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-power-frame {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
+#stageChoose:not(.hidden) .hero-power-frame {
+  animation: heroMaterialize 2.2s ease-out 0.5s forwards;
+}
+
+@keyframes heroMaterialize {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+    filter: brightness(2) blur(8px);
+  }
+
+  55% {
+    opacity: 0.65;
+    filter: brightness(1.6) blur(3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1) blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #stageChoose:not(.hidden) .hero-power-frame {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
     
     /* CHALLENGES */
 
@@ -591,37 +650,57 @@
         </p>
 
         
+
 <div class="hero-grid">
 
+  <!-- OLIVIA -->
   <button class="hero-card"
           type="button"
           data-hero="olivia">
 
-    <img
-      class="hero-portrait"
-      src="./assets/Olivia-caps.PNG"
-      alt="Olivia, the powerful ninja princess"
-    >
+    <div class="hero-reveal">
+      <img
+        class="hero-empty-frame"
+        src="./assets/mpt-oframe.PNG"
+        alt=""
+      >
+
+      <img
+        class="hero-portrait hero-power-frame"
+        src="./assets/Olivia-caps.PNG"
+        alt="Olivia, the powerful ninja princess"
+      >
+    </div>
 
     <strong>Olivia</strong>
     <span>Investigate · Decode · Discover</span>
   </button>
 
+  <!-- TREVOR -->
   <button class="hero-card"
           type="button"
           data-hero="trevor">
 
-    <img
-      class="hero-portrait"
-      src="./assets/Trevor-caps.PNG"
-      alt="Trevor, the brave knight"
-    >
+    <div class="hero-reveal">
+      <img
+        class="hero-empty-frame"
+        src="./assets/mpt-tframe.PNG"
+        alt=""
+      >
+
+      <img
+        class="hero-portrait hero-power-frame"
+        src="./assets/Trevor-caps.PNG"
+        alt="Trevor, the brave knight"
+      >
+    </div>
 
     <strong>Trevor</strong>
     <span>Protect · Observe · Rescue</span>
   </button>
 
 </div>
+
 
 
       <!-- CHARACTER-SPECIFIC MISSION -->
