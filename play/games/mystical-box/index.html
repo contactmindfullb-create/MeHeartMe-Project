@@ -1292,6 +1292,442 @@
 </div>
 
     </section>
+    
+    <!-- MISSION 3: ISLAND SOUL FOOD -->
+    
+    
+<!-- MISSION 3: ISLAND SOUL FOOD -->
+
+<div id="mission3Panel" hidden>
+
+  <div class="eyebrow">
+    MISSION 03 · ISLAND SOUL FOOD
+  </div>
+
+  <h2>The Feast of Floating Islands</h2>
+
+  <!-- MISSION 3 INTRODUCTION -->
+
+  <div id="m3Intro">
+
+    <div class="mission-art">
+      <img
+        class="mission-image"
+        src="./assets/M3start.PNG"
+        alt="Cooking pots and ingredients fly above a tropical floating-island feast."
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+
+    <div class="mission-story">
+
+      <h2>The Runaway Feast</h2>
+
+      <p>
+        CLANG! A bronze cooking pot rockets above
+        the island marketplace. Ingredients scatter,
+        serving carts race toward the edge, and
+        a spoon points straight at the twins.
+      </p>
+
+      <p>
+        “Our ceremonial pot has gone wild!”
+        cries an island cook.
+        “If we can't stop it, the whole feast
+        is ruined!”
+      </p>
+
+    </div>
+
+    <button
+      class="primary-button"
+      id="m3StartBtn"
+      type="button">
+      Choose Your Path →
+    </button>
+
+  </div>
+
+
+  <!-- CHARACTER SELECTION -->
+
+  <div id="m3Choose" class="hidden">
+
+    <div class="eyebrow">YOUR DECISION</div>
+
+    <h2>Who Will Lead the Mission?</h2>
+
+    <p>
+      Both paths restore the feast, but each
+      hero solves a different problem.
+    </p>
+
+    <div class="hero-grid">
+
+      <!-- OLIVIA -->
+
+      <button
+        class="hero-card"
+        id="m3OliviaBtn"
+        type="button"
+        data-hero="olivia">
+
+        <div class="hero-reveal">
+
+          <img
+            class="hero-empty-frame"
+            src="./assets/mpt-oframe.PNG"
+            alt=""
+          >
+
+          <img
+            class="hero-portrait hero-power-frame"
+            src="./assets/Olivia-caps.PNG"
+            alt="Olivia, the ninja princess"
+          >
+
+        </div>
+
+        <strong>Olivia</strong>
+        <span>Investigate · Decode · Discover</span>
+
+      </button>
+
+
+      <!-- TREVOR -->
+
+      <button
+        class="hero-card"
+        id="m3TrevorBtn"
+        type="button"
+        data-hero="trevor">
+
+        <div class="hero-reveal">
+
+          <img
+            class="hero-empty-frame"
+            src="./assets/mpt-tframe.PNG"
+            alt=""
+          >
+
+          <img
+            class="hero-portrait hero-power-frame"
+            src="./assets/Trevor-caps.PNG"
+            alt="Trevor, the brave knight"
+          >
+
+        </div>
+
+        <strong>Trevor</strong>
+        <span>Protect · Observe · Rescue</span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- CHARACTER-SPECIFIC CHALLENGES -->
+
+  <div id="m3Challenge" class="hidden">
+
+    <div
+      class="eyebrow"
+      id="m3CharacterLabel">
+    </div>
+
+    <h2 id="m3ChallengeTitle"></h2>
+
+    <p id="m3ChallengeStory"></p>
+
+    <div id="m3ChallengeAnswers"></div>
+
+    <p
+      class="feedback"
+      id="m3ChallengeFeedback"
+      role="status"
+      aria-live="polite">
+    </p>
+
+  </div>
+
+
+  <!-- GHOST REVEAL -->
+
+  <div id="m3Reveal" class="hidden">
+
+    <div class="eyebrow">
+      MISSION 03 · THE FEAST PHANTOM
+    </div>
+
+    <div class="mission-art">
+      <img
+        class="mission-image"
+        src="./assets/M3shadow.PNG"
+        alt="An enchanted ceremonial pot rises in the island kitchen."
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+
+    <h2>The Feast Phantom</h2>
+
+    <p>
+      The pot rises above the hearth.
+      Its lid spins like a crown.
+    </p>
+
+    <p>
+      <strong>
+        “TOO MANY COOKS? NOT ENOUGH CHAOS!”
+      </strong>
+    </p>
+
+    <p>
+      The lid flies upward. A shimmering ghost
+      emerges from the steam.
+    </p>
+
+    <h2>SIMMER — THE FEAST PHANTOM!</h2>
+
+    <p>
+      Simmer wanted everyone to remember his
+      spectacular feast. But the islanders'
+      coordinated rhythm brings his runaway
+      magic to a halt.
+    </p>
+
+    <button
+      class="primary-button"
+      id="m3VictoryBtn"
+      type="button">
+      Restore the Feast →
+    </button>
+
+  </div>
+
+
+  <!-- MISSION SUCCESS -->
+
+  <div id="m3Victory" class="hidden">
+
+    <div class="eyebrow">
+      MISSION 03 · THE FEAST RESTORED
+    </div>
+
+    <div class="mission-art">
+      <img
+        class="mission-image"
+        src="./assets/M3victory.PNG"
+        alt="Simmer celebrates with the twins and island cooks at a restored tropical feast."
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+
+    <h2>Everyone Has a Place</h2>
+
+    <p>
+      “So... nobody wants my feast?”
+      Simmer asks.
+    </p>
+
+    <p>
+      “We do,” Olivia replies.
+      “But it's better when everyone helps.”
+    </p>
+
+    <p>
+      Trevor offers him a wooden spoon.
+      “You can be our head chef.
+      Just don't make the pots chase anybody.”
+    </p>
+
+    <p>
+      The community laughs. Music fills the
+      islands, and the Harmony Crystal
+      shines again.
+    </p>
+
+    <p class="success">
+      ✨ Mission Complete!
+      The island feast is restored.
+    </p>
+
+    <p>
+      Deep beneath the pavilion,
+      The Mystical Box awakens.
+    </p>
+
+    <button
+      class="primary-button"
+      id="m3ChestBtn"
+      type="button">
+      Find The Mystical Box →
+    </button>
+
+  </div>
+
+
+  <!-- THE MYSTICAL BOX -->
+
+  <div id="m3Chest" class="hidden">
+
+    <div class="eyebrow">
+      MISSION COMPLETE · REWARD DISCOVERY
+    </div>
+
+    <h2>The Mystical Box</h2>
+
+    <p>
+      Beneath the floating-island pavilion,
+      a mysterious treasure chest awakens.
+      Its golden markings glow as you approach.
+    </p>
+
+    <p>
+      The Mystical Box only appears to those
+      who have completed the mission.
+    </p>
+
+    <p class="chest-instruction">
+      ✨ A magical treasure awaits! ✨
+      <strong>
+        Tap the Mystical Box to reveal your reward!
+      </strong>
+    </p>
+
+    <button
+      class="treasure-chest"
+      id="m3OpenChestBtn"
+      type="button"
+      aria-label="Open The Mystical Box">
+
+      <img
+        src="./assets/victory-box.PNG"
+        alt="An ornate magical treasure chest."
+        class="chest-image"
+      >
+
+    </button>
+
+    <!-- HIDDEN UNTIL REWARD IS COLLECTED -->
+
+    <div
+      id="m3ChestRewards"
+      class="reward-card hidden">
+
+      <div class="reward-icon">○</div>
+
+      <h2>Unity Sigil Collected!</h2>
+
+      <p>
+        <strong>Special Artifact:</strong>
+        Harmony Crystal
+      </p>
+
+      <p>
+        Together, the island community
+        restored the feast and welcomed
+        Simmer into the celebration.
+      </p>
+
+      <p class="success">
+        ✨ Mission 4 Unlocked!
+      </p>
+
+      <p class="success">
+        Your achievement has been recorded
+        in the Mission Journal.
+      </p>
+
+      <p
+        id="m3RewardMessage"
+        role="status"
+        aria-live="polite">
+      </p>
+
+      <button
+        class="primary-button"
+        id="m3ViewUnlockedEvent"
+        type="button">
+        View Your Event Discovery →
+      </button>
+
+      <button
+        class="primary-button"
+        id="m3CliffhangerBtn"
+        type="button">
+        Continue the Story →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- MISSION 3 CINEMATIC CLIFFHANGER -->
+
+  <div id="m3Cliffhanger" class="hidden">
+
+    <div class="eyebrow">
+      MISSION 03 · CINEMATIC EPILOGUE
+    </div>
+
+    <div class="mission-art">
+      <img
+        class="mission-image"
+        src="./assets/M3cliffhanger.PNG"
+        alt="Rows of geometric assistants march through the ShapeScientist's laboratory."
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+
+    <h2>The Scientist's Great Invention</h2>
+
+    <p>
+      Far above the Floating Islands,
+      geometric assistants march along
+      glowing assembly lines.
+    </p>
+
+    <p>
+      “Marvelous!” the ShapeScientist declares.
+      “Soon we'll have enough assistants
+      to repair every gateway!”
+    </p>
+
+    <p>
+      Outside the glass, Simmer watches.
+    </p>
+
+    <p>
+      <strong>
+        “The Scientist is almost ready.”
+      </strong>
+    </p>
+
+    <p>
+      One assistant stops marching.
+      Its crystal eyes flicker violet.
+      It turns toward the Grand Gateway.
+    </p>
+
+    <button
+      class="primary-button"
+      id="m3ReturnToMissions"
+      type="button">
+      Return to Choose a Path →
+    </button>
+
+  </div>
+
+</div>
+<!-- END MISSION 3 -->
+  </section>
 
     <!-- MISSION JOURNAL -->
 
@@ -1303,6 +1739,8 @@
       <h2>Mission Journal</h2>
 
       <div id="journalContent"></div>
+      
+      </div>
 
     </section>
 
