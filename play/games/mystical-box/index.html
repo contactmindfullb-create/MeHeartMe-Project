@@ -973,6 +973,302 @@
 
 </div>
 
+
+<!-- MISSION 2: POLYGON KEEP -->
+
+<div id="stageM2Intro" class="hidden">
+
+  <div class="eyebrow">MISSION 02 · POLYGON KEEP</div>
+  <h2>The Mystery of Polygon Keep</h2>
+
+  <img
+    class="epilogue-image"
+    src="./assets/M2start.PNG"
+    alt="A medieval tournament interrupted by enchanted armor."
+  >
+
+  <div class="mission-story">
+    <p>
+      Polygon Keep was preparing for its grand
+      medieval tournament when something
+      extraordinary happened.
+    </p>
+
+    <p>
+      Empty armored boots began marching
+      across the drawbridge. Shields spun
+      through the air. The castle gates
+      slammed shut.
+    </p>
+
+    <p>
+      Then a thunderous voice echoed
+      through the Great Hall.
+    </p>
+
+    <p>
+      "BEHOLD THE GREATEST KNIGHT
+      IN ALL THE KINGDOMS!"
+    </p>
+
+    <p>
+      Olivia and Trevor must rescue the
+      trapped shape citizens and discover
+      who is controlling the castle.
+    </p>
+  </div>
+
+  <button
+    id="m2Begin"
+    class="primary-button"
+    type="button">
+    Choose Your Path →
+  </button>
+</div>
+
+<!-- MISSION 2 CHARACTER SELECTION -->
+
+<div id="stageM2Choose" class="hidden">
+
+  <div class="eyebrow">YOUR DECISION</div>
+  <h2>Who Will Lead the Mission?</h2>
+
+  <p>
+    Choose Olivia's investigation or
+    Trevor's rescue adventure.
+  </p>
+
+  <div class="hero-grid">
+
+    <button
+      class="hero-card"
+      data-m2-hero="olivia"
+      type="button">
+      <img
+        class="hero-portrait"
+        src="./assets/Olivia-caps.PNG"
+        alt="Olivia the investigator"
+      >
+      <strong>Olivia</strong>
+      <span>Investigate · Decode · Discover</span>
+    </button>
+
+    <button
+      class="hero-card"
+      data-m2-hero="trevor"
+      type="button">
+      <img
+        class="hero-portrait"
+        src="./assets/Trevor-caps.PNG"
+        alt="Trevor the protector"
+      >
+      <strong>Trevor</strong>
+      <span>Protect · Rescue · Encourage</span>
+    </button>
+
+  </div>
+</div>
+
+<!-- MISSION 2 CHALLENGES -->
+
+<div id="stageM2Challenge" class="hidden">
+
+  <div class="eyebrow" id="m2CharacterLabel"></div>
+  <h2 id="m2ChallengeTitle"></h2>
+  <p id="m2ChallengeStory"></p>
+
+  <div id="m2ChallengeAnswers"></div>
+
+  <p
+    class="feedback"
+    id="m2ChallengeFeedback"
+    role="status"
+    aria-live="polite">
+  </p>
+</div>
+
+<!-- MISSION 2 CINEMATIC VICTORY -->
+
+<div id="stageM2Victory" class="hidden">
+
+  <div class="eyebrow">
+    MISSION 02 · THE FINAL CHALLENGE
+  </div>
+
+  <h2>The Knight Who Found Courage</h2>
+
+  <div class="mirra-reveal" id="clankReveal">
+
+    <img
+      src="./assets/M2shadow.PNG"
+      alt="A mysterious armored knight stands in shadow."
+    >
+
+    <img
+      class="mirra-full"
+      src="./assets/M2victory.PNG"
+      alt="Clank is revealed as a friendly ghostly knight."
+    >
+
+  </div>
+
+  <p>
+    "BEHOLD MY TERRIFYING—"
+  </p>
+
+  <p>
+    CLINK!
+  </p>
+
+  <p>
+    "WAIT! WHAT'S THAT NOISE?!"
+  </p>
+
+  <p>
+    The enormous suit of armor rattles apart.
+    Inside is Clank, a frightened ghost
+    who dreams of becoming a legendary knight.
+  </p>
+
+  <p>
+    Suddenly, the enchanted castle gate
+    begins falling toward the trapped citizens.
+  </p>
+
+  <p>
+    Clank trembles. But with encouragement
+    from Olivia and Trevor, he chooses to help.
+  </p>
+
+  <p>
+    The citizens are saved. Polygon Keep
+    is restored, and Clank becomes its
+    newest guardian.
+  </p>
+
+  <p class="success">
+    ✨ Mission Complete!
+  </p>
+
+  <button
+    id="m2ShowChest"
+    class="primary-button"
+    type="button">
+    Discover the Mystical Box →
+  </button>
+</div>
+
+<!-- MISSION 2 REWARD -->
+
+<div id="stageM2Chest" class="hidden">
+
+  <div class="eyebrow">
+    MISSION COMPLETE · REWARD DISCOVERY
+  </div>
+
+  <h2>The Mystical Box</h2>
+
+  <p class="chest-instruction">
+    ✨ A magical treasure awaits! ✨
+    <strong>
+      Tap the Mystical Box to collect your reward!
+    </strong>
+  </p>
+
+  <button
+    id="m2OpenChest"
+    class="treasure-chest"
+    type="button"
+    aria-label="Open the Mystical Box">
+    <img
+      class="chest-image"
+      src="./assets/M2victory-box.PNG"
+      alt="The Mystical Box inside Polygon Keep."
+    >
+  </button>
+
+  <div id="m2ChestRewards" class="reward-card hidden">
+
+    <div class="reward-icon">△</div>
+    <h2>Courage Sigil Collected!</h2>
+
+    <p>
+      Courage is not the absence of fear.
+      It is choosing to do what is right,
+      even when you feel afraid.
+    </p>
+
+    <p class="success">
+      🏅 Badge Earned: Castle Restorer
+    </p>
+
+    <p class="success">
+      Your achievement has been recorded
+      in the Mission Journal.
+    </p>
+
+    <button
+      id="m2ViewEvent"
+      class="primary-button"
+      type="button">
+      View Your Event Discovery →
+    </button>
+
+    <button
+      id="m2ReadEpilogue"
+      class="primary-button"
+      type="button">
+      Discover the Castle's Secret →
+    </button>
+  </div>
+</div>
+
+<!-- MISSION 2 CLIFFHANGER -->
+
+<div id="stageM2Epilogue" class="hidden">
+
+  <div class="eyebrow">
+    MISSION 02 · CINEMATIC EPILOGUE
+  </div>
+
+  <h2>The Hollow Design</h2>
+
+  <img
+    class="epilogue-image"
+    src="./assets/M2cliffhanger.PNG"
+    alt="A mysterious shape assistant emerges from the armor."
+  >
+
+  <p class="epilogue-narration">
+    As Polygon Keep grows quiet, something
+    stirs inside the discarded armor.
+
+    A tiny geometric assistant crawls
+    from a hidden compartment.
+
+    On its surface glimmers a familiar
+    insignia: the ShapeScientist's mark.
+
+    But this assistant is different.
+
+    Deep inside its body is an empty chamber,
+    just large enough for a ghost.
+
+    Somewhere far away, a shadow watches.
+
+    The mystery is only beginning.
+  </p>
+
+  <button
+    id="m2Finish"
+    class="primary-button"
+    type="button">
+    Finish Mission 2 →
+  </button>
+
+  <p id="m2FinishStatus" role="status"></p>
+</div>
+
     </section>
 
     <!-- MISSION JOURNAL -->
