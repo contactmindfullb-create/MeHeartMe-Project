@@ -702,8 +702,16 @@ function renderEventBoard() {
 
     board.appendChild(card);
   });
+  
 }
+document.getElementById("m3ReturnToMissions")
+  .addEventListener("click", () => {
+    document.getElementById("mission3Panel").hidden = true;
 
+    showPanel("adventure");
+    showStage("intro");
+  });
+  
 // ----------------------------------
 // RETURNING PLAYER
 // ----------------------------------
