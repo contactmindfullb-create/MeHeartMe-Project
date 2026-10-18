@@ -4,10 +4,12 @@
  * Mission 1 — The Majestic Mirror Maze
  */
 
+
 import {
   getProgress,
   isMissionCompleted,
-  completeMissionOne
+  completeMissionOne,
+  isMissionUnlocked
 } from "./progress.js";
 
 import {
@@ -24,13 +26,16 @@ const panels = {
   events: document.getElementById("eventsPanel")
 };
 
+
 const stages = {
   intro: document.getElementById("stageIntro"),
   choose: document.getElementById("stageChoose"),
   challenge: document.getElementById("stageChallenge"),
   victory: document.getElementById("stageVictory"),
-  chest: document.getElementById("stageChest")
+  chest: document.getElementById("stageChest"),
+  epilogue: document.getElementById("stageEpilogue")
 };
+
 
 const challengeTitle =
   document.getElementById("challengeTitle");
@@ -322,6 +327,196 @@ document.getElementById("viewUnlockedEvent")
   .addEventListener("click", () => {
     showPanel("events");
   });
+
+  
+/* ----------------------------------
+ * THE FIRST WHISPER
+ * Mission 1 Cinematic Epilogue
+ * ---------------------------------- */
+
+const epilogueScenes = [
+  {
+    image: "M1epilogue-00.PNG",
+    alt: "Olivia and Trevor meet the ShapeScientist.",
+    text:
+      "The ShapeScientist welcomed Olivia and Trevor " +
+      "into his extraordinary laboratory.\n\n" +
+      "He dreamed of creating geometric assistants " +
+      "to help repair the damaged gateways.\n\n" +
+      "“Perhaps the answer to getting you home " +
+      "is a shape we haven't discovered yet!”"
+  },
+  {
+    image: "M1epilogue-01.jpg",
+    alt: "A mysterious visitor watches the laboratory.",
+    text:
+      "High above the laboratory, an unexpected " +
+      "visitor watched the crystal machinery.\n\n" +
+      "The Scientist was too busy working to notice."
+  },
+  {
+    image: "M1epilogue-02.jpg",
+    alt: "A secret exchange takes place.",
+    text:
+      "In a hidden corner, a smoky figure " +
+      "offered the little apparition something strange.\n\n" +
+      "A tiny fragment shimmered between them."
+  },
+  {
+    image: "M1epilogue-03.jpg",
+    alt: "The apparition approaches the machinery.",
+    text:
+      "The little apparition accepted the fragment.\n\n" +
+      "Then it slipped quietly toward " +
+      "the Scientist's newest invention."
+  },
+  {
+    image: "M1epilogue-07.PNG",
+    alt: "The apparition carries the fragment toward the crystal core.",
+    text:
+      "The crystal core glowed ahead.\n\n" +
+      "The Scientist continued his work, " +
+      "unaware of the visitor moving nearby."
+  },
+  {
+    image: "M1epilogue-04.jpg",
+    alt: "The invention core is secretly altered.",
+    text:
+      "The apparition slipped the fragment " +
+      "into the invention core.\n\n" +
+      "A thread of grey smoke disappeared " +
+      "inside the violet crystal.\n\n" +
+      "Its light flickered once."
+  },
+  {
+    image: "M1epilogue-05.jpg",
+    alt: "The first geometric assistant awakens.",
+    text:
+      "The ShapeScientist activated his first " +
+      "experimental shape assistant.\n\n" +
+      "“Wonderful! With enough helpers, " +
+      "we might restore every gateway!”"
+  },
+  {
+    image: "M1epilogue-06.jpg",
+    alt: "The Scientist admires his new shape assistant.",
+    text:
+      "The little assistant smiled brightly.\n\n" +
+      "The Scientist smiled back, unaware.\n\n" +
+      "But deep inside the invention core, " +
+      "something had already begun to grow."
+  }
+];
+
+let epilogueSceneIndex = 0;
+
+const epilogueImage =
+  document.getElementById("epilogueImage");
+
+const epilogueNarration =
+  document.getElementById("epilogueNarration");
+
+const epilogueCounter =
+  document.getElementById("epilogueCounter");
+
+const epilogueNext =
+  document.getElementById("epilogueNext");
+
+const epilogueEnding =
+  document.getElementById("epilogueEnding");
+
+function renderEpilogueScene() {
+  const scene = epilogueScenes[epilogueSceneIndex];
+
+  epilogueImage.src = "./assets/" + scene.image;
+  epilogueImage.alt = scene.alt;
+
+  epilogueNarration.textContent = scene.text;
+
+  epilogueCounter.textContent =
+    `STILL ${epilogueSceneIndex + 1} OF ${epilogueScenes.length}`;
+
+  const finalScene =
+    epilogueSceneIndex === epilogueScenes.length - 1;
+
+  epilogueNext.textContent =
+    finalScene ? "Finish the Story →" : "Next →";
+
+  epilogueNext.classList.remove("hidden");
+  epilogueEnding.classList.add("hidden");
+}
+
+function openEpilogue() {
+  if (!isMissionUnlocked("mission-2")) {
+    return;
+  }
+
+  epilogueSceneIndex = 0;
+  renderEpilogueScene();
+
+  showPanel("adventure");
+  showStage("epilogue");
+}
+
+epilogueNext.addEventListener("click", () => {
+  if (epilogueSceneIndex < epilogueScenes.length - 1) {
+    epilogueSceneIndex += 1;
+    renderEpilogueScene();
+    return;
+  }
+
+  epilogueNext.classList.add("hidden");
+  epilogueEnding.classList.remove("hidden");
+});
+
+document.getElementById("epilogueContinue")
+  .addEventListener("click", () => {
+    const status = document.getElementById(
+      "epilogueContinueStatus"
+    );
+
+    status.textContent = isMissionUnlocked("mission-2")
+      ? "Polygon Keep is unlocked! " +
+        "Clank's adventure is coming next."
+      : "Collect the Perception Sigil " +
+        "to unlock Mission 2.";
+  });
+
+// Add access after the Mystical Box reward.
+const epilogueRewardButton =
+  document.createElement("button");
+
+epilogueRewardButton.type = "button";
+epilogueRewardButton.className = "primary-button";
+epilogueRewardButton.textContent =
+  "Read The First Whisper →";
+
+epilogueRewardButton.addEventListener(
+  "click",
+  openEpilogue
+);
+
+document.getElementById("chestRewards")
+  .appendChild(epilogueRewardButton);
+
+// Returning players can read the epilogue
+// without replaying Mission 1.
+if (isMissionUnlocked("mission-2")) {
+  const returnButton =
+    document.createElement("button");
+
+  returnButton.type = "button";
+  returnButton.className = "primary-button";
+  returnButton.textContent =
+    "Read The First Whisper →";
+
+  returnButton.addEventListener(
+    "click",
+    openEpilogue
+  );
+
+  stages.intro.appendChild(returnButton);
+}
 
 // ----------------------------------
 // MISSION JOURNAL
