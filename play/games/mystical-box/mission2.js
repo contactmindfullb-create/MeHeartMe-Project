@@ -281,24 +281,16 @@ function m2Opening() {
 function m2ChooseHero() {
   m2Clear();
 
-  m2Content.append(
-    m2Heading("Who Will Lead the Adventure?"),
+  const chooseScreen = document.getElementById("stageM2Choose");
 
-    m2Text(
-      "Both heroes will help restore Polygon Keep. " +
-      "Choose the challenges you want to solve."
-    ),
+  chooseScreen.classList.remove("hidden");
 
-    m2Button(
-      "Olivia · Investigate the Castle →",
-      () => m2BeginPath("olivia")
-    ),
-
-    m2Button(
-      "Trevor · Protect the Citizens →",
-      () => m2BeginPath("trevor")
-    )
-  );
+  chooseScreen.querySelectorAll("[data-hero]").forEach(button => {
+    button.onclick = () => {
+      chooseScreen.classList.add("hidden");
+      m2BeginPath(button.dataset.hero);
+    };
+  });
 }
 
 function m2BeginPath(hero) {
