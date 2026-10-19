@@ -710,6 +710,8 @@ document.getElementById("m3ReturnToMissions")
 
     showPanel("adventure");
     showStage("intro");
+    document.getElementById("mission1Header")
+  .classList.remove("hidden");
   });
   
 // ----------------------------------
@@ -768,6 +770,8 @@ function m3AddEntryButton() {
 
     showPanel("adventure");
     startMission3();
+    document.getElementById("mission1Header")
+  .classList.add("hidden");
   });
 
   stages.intro.appendChild(button);
