@@ -281,16 +281,22 @@ function m2Opening() {
 function m2ChooseHero() {
   m2Clear();
 
-  const chooseScreen = document.getElementById("stageM2Choose");
+  const chooseScreen =
+    document.getElementById("stageM2Choose");
+
+  // Move the existing portrait cards into
+  // Mission 2's visible content panel.
+  m2Content.appendChild(chooseScreen);
 
   chooseScreen.classList.remove("hidden");
 
-  chooseScreen.querySelectorAll("[data-hero]").forEach(button => {
-    button.onclick = () => {
-      chooseScreen.classList.add("hidden");
-      m2BeginPath(button.dataset.hero);
-    };
-  });
+  chooseScreen.querySelectorAll("[data-hero]")
+    .forEach(button => {
+      button.onclick = () => {
+        chooseScreen.classList.add("hidden");
+        m2BeginPath(button.dataset.hero);
+      };
+    });
 }
 
 function m2BeginPath(hero) {
