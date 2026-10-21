@@ -624,7 +624,24 @@ document.getElementById("next-transmission").textContent =
 <script type="module">
   import { events } from "./shared/mystical-events.js";
 
-  alert("MeHeartMe connected: " + events.length + " events found!");
+  const now = new Date();
+
+const visibleEvents = events.filter(event => {
+  const revealTime = new Date(event.publicRevealAt);
+
+  const eventDate = event.date;
+  const eventDay = new Date(eventDate + " 00:00:00");
+
+  const expiration = new Date(eventDay);
+  expiration.setDate(expiration.getDate() + 1);
+
+  return now >= revealTime && now < expiration;
+});
+
+alert(
+  "Visible events:\n\n" +
+  visibleEvents.map(event => event.name).join("\n")
+);
 </script>
 
 </body>
