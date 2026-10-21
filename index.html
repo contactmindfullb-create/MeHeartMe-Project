@@ -539,7 +539,7 @@ document.getElementById("next-transmission").textContent =
         date once we're ready.
       */
 
-       eventDate: "2026-10-21T17:00:00-04:00"
+       eventDate: "2026-10-21T19:00:00-04:00"
 
     };
 
@@ -643,7 +643,17 @@ const eventCount = document.getElementById("visitors-detected");
 if (eventCount) {
   eventCount.textContent = visibleEvents.length;
 }
+const currentEventDisplay = document.getElementById("latest-detection");
 
+if (currentEventDisplay) {
+  if (visibleEvents.length > 0) {
+    currentEventDisplay.textContent =
+      visibleEvents[0].name;
+  } else {
+    currentEventDisplay.textContent =
+      "No active event signals. Stay tuned.";
+  }
+}
 </script>
 
 </body>
