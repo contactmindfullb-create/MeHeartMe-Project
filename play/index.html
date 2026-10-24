@@ -230,42 +230,55 @@
   
   <script src="../shared/reading-levels.js" defer></script>
   
+
 <script>
-/* MeHeartMe → Portal Protocol reading preference */
+/* MeHeartMe → Portal Protocol age transfer */
 (function () {
+  const STORAGE_KEY = "meheartme-reading-age";
+
   const portalLink = document.querySelector(
     'a[href*="celestinecodeamor.com/portal-potocol"]'
   );
 
   if (!portalLink) return;
 
-  let readingLevel = "10+";
+  function updatePortalLink() {
+    const selector = document.getElementById("reading-age");
 
-  try {
-    const stored = localStorage.getItem("meheartme-reading-age");
-    if (["4-6", "7-9", "10+"].includes(stored)) {
-      readingLevel = stored;
+    let level = selector ? selector.value : "10+";
+
+    if (!["4-6", "7-9", "10+"].includes(level)) {
+      try {
+        level = localStorage.getItem(STORAGE_KEY) || "10+";
+      } catch (error) {
+        level = "10+";
+      }
     }
-  } catch (error) {
-    // Keep the original 10+ level if storage is unavailable.
+
+    if (!["4-6", "7-9", "10+"].includes(level)) {
+      level = "10+";
+    }
+
+    const url = new URL(portalLink.href);
+    url.searchParams.set("reading", level);
+    portalLink.href = url.toString();
   }
 
-  const url = new URL(portalLink.href);
-  url.searchParams.set("reading", readingLevel);
-  portalLink.href = url.toString();
+  // Run after the reading selector initializes.
+  updatePortalLink();
 
+  // Update whenever the selected age changes.
   const selector = document.getElementById("reading-age");
+
   if (selector) {
-    selector.addEventListener("change", function () {
-      const selected = ["4-6", "7-9", "10+"].includes(selector.value)
-        ? selector.value
-        : "10+";
-      url.searchParams.set("reading", selected);
-      portalLink.href = url.toString();
-    });
+    selector.addEventListener("change", updatePortalLink);
   }
+
+  // Verify the latest selection when the player starts.
+  portalLink.addEventListener("click", updatePortalLink);
 })();
 </script>
+
 
 </body>
 </html>
