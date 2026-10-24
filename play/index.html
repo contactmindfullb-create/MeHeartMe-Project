@@ -231,53 +231,68 @@
   <script src="../shared/reading-levels.js" defer></script>
   
 
+
 <script>
-/* MeHeartMe → Portal Protocol age transfer */
+/* MeHeartMe → Portal Protocol reading transfer v1.2 */
 (function () {
-  const STORAGE_KEY = "meheartme-reading-age";
+  const STORAGE_KEY = "meheartme-reading-level";
+  const LEVELS = ["4-6", "7-9", "10+"];
 
-  const portalLink = document.querySelector(
-    'a[href*="celestinecodeamor.com/portal-potocol"]'
-  );
+  document.addEventListener("DOMContentLoaded", function () {
+    const portalLink = document.querySelector(
+      'a[href*="celestinecodeamor.com/portal-potocol"]'
+    );
 
-  if (!portalLink) return;
+    if (!portalLink) return;
 
-  function updatePortalLink() {
-    const selector = document.getElementById("reading-age");
+    function getReadingLevel() {
+      const selector = document.getElementById("me-reading-level");
 
-    let level = selector ? selector.value : "10+";
-
-    if (!["4-6", "7-9", "10+"].includes(level)) {
-      try {
-        level = localStorage.getItem(STORAGE_KEY) || "10+";
-      } catch (error) {
-        level = "10+";
+      if (selector && LEVELS.includes(selector.value)) {
+        return selector.value;
       }
+
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (LEVELS.includes(saved)) return saved;
+      } catch (error) {}
+
+      return "10+";
     }
 
-    if (!["4-6", "7-9", "10+"].includes(level)) {
-      level = "10+";
+    function updatePortalLink() {
+      const url = new URL(portalLink.href);
+      url.searchParams.set("reading", getReadingLevel());
+      portalLink.href = url.toString();
     }
 
-    const url = new URL(portalLink.href);
-    url.searchParams.set("reading", level);
-    portalLink.href = url.toString();
-  }
+    // Set the correct level on page load.
+    updatePortalLink();
 
-  // Run after the reading selector initializes.
-  updatePortalLink();
+    // Update when the player changes reading levels.
+    const selector = document.getElementById("me-reading-level");
 
-  // Update whenever the selected age changes.
-  const selector = document.getElementById("reading-age");
+    if (selector) {
+      selector.addEventListener("change", updatePortalLink);
+    }
 
-  if (selector) {
-    selector.addEventListener("change", updatePortalLink);
-  }
-
-  // Verify the latest selection when the player starts.
-  portalLink.addEventListener("click", updatePortalLink);
+    // Use the latest selection when entering the game.
+    portalLink.addEventListener("click", function (event) {
+      updatePortalLink();
+      if (!event.defaultPrevented &&
+          event.button === 0 &&
+          !event.metaKey &&
+          !event.ctrlKey &&
+          !event.shiftKey &&
+          !event.altKey) {
+        event.preventDefault();
+        window.location.assign(portalLink.href);
+      }
+    });
+  });
 })();
 </script>
+
 
 
 </body>
