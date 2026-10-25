@@ -11,6 +11,74 @@ const app=document.getElementById('app');const esc=s=>String(s).replace(/[&<>"']
 function btn(t,fn,css=''){return `<button class="btn ${css}" data-act="${esc(fn)}">${t}</button>`}
 function controls(html){app.innerHTML=html;app.querySelectorAll('[data-act]').forEach(b=>b.onclick=()=>action(b.dataset.act));update()}
 
+let issuedGhostCode = null;
+let ghostCodeRequestPending = false;
+
+async function issueGhostCode() {
+  if (state.stage !== 'victory') return;
+
+  const awardPanel = app.querySelector('.success');
+  if (!awardPanel) return;
+
+  let message = document.getElementById('ghost-code-message');
+
+  if (!message) {
+    message = document.createElement('p');
+    message.id = 'ghost-code-message';
+    message.setAttribute('aria-live', 'polite');
+    awardPanel.appendChild(message);
+  }
+
+  if (issuedGhostCode) {
+    message.textContent =
+      'Your Royal Ghost Hunter Code: ' + issuedGhostCode;
+    return;
+  }
+
+  if (ghostCodeRequestPending) return;
+
+  ghostCodeRequestPending = true;
+  message.textContent = 'Requesting your Royal Ghost Hunter Code...';
+
+  try {
+    const response = await fetch(GHOST_CODE_API, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        event: 'majestic-ghostly-2026'
+      }),
+      cache: 'no-store'
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.code) {
+      throw new Error(result.message || 'Code unavailable');
+    }
+
+    issuedGhostCode = result.code;
+
+    if (state.stage === 'victory') {
+      message.textContent =
+        'Your Royal Ghost Hunter Code: ' +
+        issuedGhostCode +
+        ' — Copy or save this code.';
+    }
+  } catch (error) {
+    if (state.stage === 'victory') {
+      message.textContent =
+        'The Royal Registry could not issue a code. ' +
+        'Please try again later.';
+
+      console.error('Ghost Hunter code request:', error);
+    }
+  } finally {
+    ghostCodeRequestPending = false;
+  }
+}
+
 function update() {
   const stages = {
     decree: 'Royal Decree',
@@ -116,6 +184,13 @@ else if(state.stage==='challenge'){let g=suspects[state.active];controls(`<h2>Ca
 else if(state.stage==='interrogate'){const q=[{overseer:'Four ghosts. One ruined base. Explain yourselves.',ghost:'Sir Whoosh: The tent looked like it wanted to fly!'},{overseer:'And why were the packages missing?',ghost:'Lady Lootalot: I call it unexpected express delivery.'},{overseer:'What did the lanterns see?',ghost:'Sir Flicker: Two shadows near the portal... or maybe my lanterns.'},{overseer:'Whisper, do you know where Olivia and Trevor went?',ghost:'Whisper: We did not open the portal. Someone opened it from the OTHER SIDE.'}];controls(`<h2>Mission 2 · Royal Interrogation</h2><p>Choose what the Overseer should ask. Each question unlocks a testimony.</p><div class="speech"><strong>THE OVERSEER:</strong> "The truth, please. Preferably before the castle flies away."</div><div class="choices">${q.map((x,i)=>btn(['Question Sir Whoosh','Question Lady Lootalot','Question Sir Flicker','Question Whisper'][i]+(state.asked.includes(i)?' ✓':''),`ask:${i}`,'ghostbtn')).join('')}</div>${state.question!==null&&state.asked.length?`<div class="speech"><strong>THE OVERSEER:</strong> ${esc(q[state.question].overseer)}<p><strong>SUSPECT:</strong> ${esc(q[state.question].ghost)}</p></div>`:''}<p class="status">Testimonies heard: ${state.asked.length}/4</p>${state.asked.length===4?`<div class="actions">${btn('Escort ghosts to the portal','portal')}</div>`:''}`)}
 else if(state.stage==='portal')controls(`<h2>Mission 3 · Return to the Portal</h2><p>Activate all four seals to send the mischievous ghosts back to their realm.</p><div class="portal" aria-label="Magic portal">✧</div><div class="sealgrid">${suspects.map((g,i)=>btn(state.seals.includes(i)?'✓ Returned':`👻 ${esc(g.name)}`,`seal:${i}`,state.seals.includes(i)?'secondary':'ghostbtn')).join('')}</div>${state.seals.length===4?`<div class="success"><b>All four ghosts returned!</b><p>Whisper leaves one final message: &ndash;Find the one who opened the door.&ndash;</p>${btn('Claim mission completion','win')}</div>`:''}`);
 else if(state.stage==='victory'){const entryReady=!!(CONFIG.entryUrl&&CONFIG.officialRulesUrl&&CONFIG.deadline&&CONFIG.prizeDescription!=='Giveaway prize details coming soon');controls(`<h2>🏆 Mission accomplished!</h2><p>You've returned all four mischievous ghosts and uncovered a clue to the search for Olivia and Trevor. The Overseer's investigation continues...</p><div class="success"><strong>Royal Ghost Hunter &mdash; Mission Complete</strong><p>Your adventure completion is recorded <b>on this screen only</b>. It is not an entry or a prize claim.</p></div><h2 style="margin-top:25px">🎁 ${esc(CONFIG.giveawayTitle)}</h2><p>Thanks for playing! Here's how to take part in the event giveaway.</p>${entryReady?`<p><b>Prize:</b> ${esc(CONFIG.prizeDescription)}<br><b>Deadline:</b> ${esc(CONFIG.deadline)}<br><b>Eligibility:</b> ${esc(CONFIG.eligibleRegions)}</p><div class="actions"><a class="btn" target="_blank" rel="noopener" href="${esc(CONFIG.entryUrl)}">Open giveaway entry form</a><a class="btn secondary" target="_blank" rel="noopener" href="${esc(CONFIG.officialRulesUrl)}">Official rules</a></div><p class="note">You must submit the separate form and meet all eligibility rules. Game completion alone does not enter you.</p>`:`<div class="warning"><b>Giveaway registration is not yet active in this prototype.</b><p>The organizer must publish prize details, eligibility, deadline, official rules, and a working registration link before entries can be accepted. Playing does not automatically enter you.</p></div>`}<div class="actions">${btn('Play again','restart','secondary')} ${btn('Copy victory message','copy','ghostbtn')}</div><p class="status">${esc(state.hint)}</p>`)}}
-function action(a){if(a==='start'){state.stage='hunt';state.hint='Tap a ghost to begin.'}else if(a.startsWith('catch:')){state.active=+a.split(':')[1];state.hint='';state.stage='challenge'}else if(a.startsWith('answer:')){const n=+a.split(':')[1];if(n===suspects[state.active].correct){state.caught.push(state.active);state.stage='hunt';state.hint=`Captured ${suspects[state.active].name}! Clue: ${suspects[state.active].clue}`;}else state.hint='Not quite. Try another answer.';}else if(a==='back')state.stage='hunt';else if(a==='interrogate'){state.stage='interrogate';state.question=null;}else if(a.startsWith('ask:')){const i=+a.split(':')[1];state.question=i;if(!state.asked.includes(i))state.asked.push(i)}else if(a==='portal')state.stage='portal';else if(a.startsWith('seal:')){const i=+a.split(':')[1];if(!state.seals.includes(i))state.seals.push(i)}else if(a==='win')state.stage='victory';else if(a==='restart'){state={stage:'decree',caught:[],active:null,question:0,asked:[],seals:[],hint:'',award:false};}else if(a==='copy'){navigator.clipboard?.writeText("I completed Majestic Ghostly: The Overseer's Portal Pursuit! 👻 The search for Olivia and Trevor continues.").then(()=>{state.hint='Victory message copied.';render()}).catch(()=>{state.hint='Copy unavailable in this browser.';render()});return}render()}
+function action(a){if(a==='start'){state.stage='hunt';state.hint='Tap a ghost to begin.'}else if(a.startsWith('catch:')){state.active=+a.split(':')[1];state.hint='';state.stage='challenge'}else if(a.startsWith('answer:')){const n=+a.split(':')[1];if(n===suspects[state.active].correct){state.caught.push(state.active);state.stage='hunt';state.hint=`Captured ${suspects[state.active].name}! Clue: ${suspects[state.active].clue}`;}else state.hint='Not quite. Try another answer.';}else if(a==='back')state.stage='hunt';else if(a==='interrogate'){state.stage='interrogate';state.question=null;}else if(a.startsWith('ask:')){const i=+a.split(':')[1];state.question=i;if(!state.asked.includes(i))state.asked.push(i)}else if(a==='portal')state.stage='portal';else if(a.startsWith('seal:')){const i=+a.split(':')[1];if(!state.seals.includes(i))state.seals.push(i)}
+else if(a==='win'){
+  state.stage='victory';
+  render();
+  issueGhostCode();
+  return;
+}
+else if(a==='restart'){state={stage:'decree',caught:[],active:null,question:0,asked:[],seals:[],hint:'',award:false};}else if(a==='copy'){navigator.clipboard?.writeText("I completed Majestic Ghostly: The Overseer's Portal Pursuit! 👻 The search for Olivia and Trevor continues.").then(()=>{state.hint='Victory message copied.';render()}).catch(()=>{state.hint='Copy unavailable in this browser.';render()});return}render()}
 render();
 </script></body></html>
