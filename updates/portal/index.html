@@ -3838,6 +3838,79 @@ t005DecodeButton.addEventListener(
     }
   }
 
+/* TRANSMISSION 002 — ADAPT ANSWER FEEDBACK */
+
+const feedbackTranslations = {
+  "PATTERN MISMATCH": [
+    "TRY AGAIN",
+    "PATTERN DOES NOT MATCH"
+  ],
+  "Signal response rejected.": [
+    "Not quite!",
+    "That answer doesn't match."
+  ],
+  "Study the repeating groups again. The transmission remains active. Try another response.": [
+    "Look at the shapes again. You can try!",
+    "Look at the groups of shapes again. Find the pattern and try another answer."
+  ],
+  "TRANSMISSION DECIPHERED": [
+    "YOU DID IT!",
+    "MESSAGE SOLVED"
+  ],
+  "Pattern confirmed.": [
+    "Great job!",
+    "Pattern solved!"
+  ],
+  "Square. Square. Circle. Square. Square. Circle. The sequence repeats. The sender is testing whether we recognize structured communication.": [
+    "Square, square, circle! You found the pattern!",
+    "The shapes repeat: square, square, circle. You discovered how the message works!"
+  ],
+  "TRANSMISSION COMPLETE": [
+    "MISSION COMPLETE!",
+    "TRANSMISSION COMPLETE"
+  ]
+};
+
+const feedbackTargets = [
+  "#resultStatus",
+  "#resultTitle",
+  "#resultCopy",
+  "#decodeButton"
+];
+
+function adaptFeedback() {
+  feedbackTargets.forEach(function (selector) {
+    const node = mission.querySelector(selector);
+    if (!node) return;
+
+    const current = node.textContent
+      .trim()
+      .replace(/\s+/g, " ");
+
+    const options = feedbackTranslations[current];
+
+    if (options && node.textContent !== options[index]) {
+      node.textContent = options[index];
+    }
+  });
+}
+
+const feedbackArea = mission.querySelector(".question");
+
+if (feedbackArea) {
+  const feedbackObserver = new MutationObserver(
+    adaptFeedback
+  );
+
+  feedbackObserver.observe(feedbackArea, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+
+  adaptFeedback();
+}
+
   if (document.readyState === "loading") {
     document.addEventListener(
       "DOMContentLoaded",
