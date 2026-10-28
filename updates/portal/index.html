@@ -3727,15 +3727,17 @@ t005DecodeButton.addEventListener(
   </script>
 
 
-<!-- MeHeartMe Signal Archive — Reading Adapter v1 -->
+
+<!-- Signal Archive — Reading Adapter v1.2 -->
 <script>
 (function () {
   "use strict";
 
   const KEY = "meheartme-reading-level";
   const allowed = ["4-6", "7-9", "10+"];
-  const incoming = new URLSearchParams(location.search)
-    .get("reading");
+  const incoming = new URLSearchParams(
+    location.search
+  ).get("reading");
 
   let level = "10+";
 
@@ -3752,99 +3754,101 @@ t005DecodeButton.addEventListener(
     localStorage.setItem(KEY, level);
   } catch (_) {}
 
-  // [Ages 4–6, Ages 7–9]
-  // Existing text remains the original Ages 10+ version.
-  const catalog = [
-    ["Which colored symbol completes the signal?",
-      "Which color and shape come next?",
-      "Which colored shape finishes the pattern?"],
-
-    ["Complete the repeated signal cluster.",
+  // Translation entries for Transmission 002
+  // Each pair: [Ages 4–6, Ages 7–9]
+  const catalog = {
+    title: [
+      "Find the Pattern",
+      "The Secret Pattern"
+    ],
+    overseer: [
+      "We got another message! Look at the shapes. They go in a pattern. Can you find what comes next?",
+      "Another message arrived! The shapes repeat in a special order. Look closely and find the pattern."
+    ],
+    question: [
       "What shape comes next?",
-      "Find the missing shape in the pattern."],
-
-    ["Is the Sweet Guava BBQ Sauce available with chicken?",
-      "Can you get Sweet Guava BBQ Sauce with chicken?",
-      "Can you order the Sweet Guava BBQ Sauce with chicken?"],
-
-    ["Which organization is hosting the Medieval Trunk-or-Treat?",
-      "Who is hosting the Medieval Trunk-or-Treat?",
-      "Which group is hosting the Medieval Trunk-or-Treat?"],
-
-    ["DECIPHER TRANSMISSION",
-      "SOLVE THE CLUE",
-      "SOLVE THE MESSAGE"],
-
-    ["SELECT A SYMBOL",
+      "Which shape finishes the pattern?"
+    ],
+    decode: [
       "PICK A SHAPE",
-      "CHOOSE A SYMBOL"],
-
-    ["VERIFY LOCAL SIGNAL",
-      "CHECK MY ANSWER",
-      "CHECK THE ANSWER"]
-  ];
-
-  function updateText() {
-    if (level === "10+") return;
-
-    const index = level === "4-6" ? 1 : 2;
-
-    // Restrict changes to labels, instructions and
-    // feedback; never change symbols or answer values.
-    const selectors = [
-      ".question-label",
-      ".question h3",
-      ".next-signal h3",
-      ".decode"
-    ];
-
-    document.querySelectorAll(selectors.join(","))
-      .forEach(function (node) {
-        const value = node.textContent.trim()
-          .replace(/\s+/g, " ");
-
-        const match = catalog.find(
-          item => item[0] === value
-        );
-
-        if (match) node.textContent = match[index];
-      });
-  }
+      "CHOOSE A SYMBOL"
+    ]
+  };
 
   function initialize() {
+    const shell = document.querySelector(".portal-shell");
+    if (!shell) return;
+
     const badge = document.createElement("div");
     badge.id = "archive-reading-status";
     badge.setAttribute("role", "status");
-    badge.textContent = "Reading mode: Ages " + level;
     badge.style.cssText =
       "text-align:center;padding:12px;" +
       "margin:16px auto;border:1px solid #72e6be;" +
       "border-radius:10px;color:#b9ffe7;" +
       "background:#071512;font:600 14px Arial;";
 
-    const shell = document.querySelector(".portal-shell");
+    badge.textContent = "Reading mode: Ages " + level;
+    shell.prepend(badge);
 
-    if (shell) shell.prepend(badge);
+    if (level === "10+") return;
 
-    updateText();
+    const index = level === "4-6" ? 0 : 1;
+    const mission = document.getElementById(
+      "transmission002"
+    );
 
-    // Catch instructions updated during gameplay.
-    if (shell) {
-      new MutationObserver(updateText).observe(shell, {
-        subtree: true,
-        childList: true,
-        characterData: true
+    if (!mission) return;
+
+    const elements = [
+      [".transmission-title", "title"],
+      [".overseer p", "overseer"],
+      [".question h3", "question"]
+    ];
+
+    elements.forEach(function (entry) {
+      const node = mission.querySelector(entry[0]);
+      if (node) {
+        node.textContent = catalog[entry[1]][index];
+      }
+    });
+
+    const decodeButton = mission.querySelector(
+      "#decodeButton"
+    );
+
+    if (decodeButton) {
+      const observer = new MutationObserver(function () {
+        const current = decodeButton.textContent.trim();
+
+        if (current === "SELECT A SYMBOL") {
+          decodeButton.textContent = catalog.decode[index];
+        }
       });
+
+      observer.observe(decodeButton, {
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
+
+      if (decodeButton.textContent.trim() === "SELECT A SYMBOL") {
+        decodeButton.textContent = catalog.decode[index];
+      }
     }
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initialize);
+    document.addEventListener(
+      "DOMContentLoaded",
+      initialize
+    );
   } else {
     initialize();
   }
 })();
 </script>
+
 
 
 </body>
