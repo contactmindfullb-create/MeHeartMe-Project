@@ -3727,6 +3727,126 @@ t005DecodeButton.addEventListener(
   </script>
 
 
+<!-- MeHeartMe Signal Archive — Reading Adapter v1 -->
+<script>
+(function () {
+  "use strict";
+
+  const KEY = "meheartme-reading-level";
+  const allowed = ["4-6", "7-9", "10+"];
+  const incoming = new URLSearchParams(location.search)
+    .get("reading");
+
+  let level = "10+";
+
+  if (allowed.includes(incoming)) {
+    level = incoming;
+  } else {
+    try {
+      const saved = localStorage.getItem(KEY);
+      if (allowed.includes(saved)) level = saved;
+    } catch (_) {}
+  }
+
+  try {
+    localStorage.setItem(KEY, level);
+  } catch (_) {}
+
+  // [Ages 4–6, Ages 7–9]
+  // Existing text remains the original Ages 10+ version.
+  const catalog = [
+    ["Which colored symbol completes the signal?",
+      "Which color and shape come next?",
+      "Which colored shape finishes the pattern?"],
+
+    ["Complete the repeated signal cluster.",
+      "What shape comes next?",
+      "Find the missing shape in the pattern."],
+
+    ["Is the Sweet Guava BBQ Sauce available with chicken?",
+      "Can you get Sweet Guava BBQ Sauce with chicken?",
+      "Can you order the Sweet Guava BBQ Sauce with chicken?"],
+
+    ["Which organization is hosting the Medieval Trunk-or-Treat?",
+      "Who is hosting the Medieval Trunk-or-Treat?",
+      "Which group is hosting the Medieval Trunk-or-Treat?"],
+
+    ["DECIPHER TRANSMISSION",
+      "SOLVE THE CLUE",
+      "SOLVE THE MESSAGE"],
+
+    ["SELECT A SYMBOL",
+      "PICK A SHAPE",
+      "CHOOSE A SYMBOL"],
+
+    ["VERIFY LOCAL SIGNAL",
+      "CHECK MY ANSWER",
+      "CHECK THE ANSWER"]
+  ];
+
+  function updateText() {
+    if (level === "10+") return;
+
+    const index = level === "4-6" ? 1 : 2;
+
+    // Restrict changes to labels, instructions and
+    // feedback; never change symbols or answer values.
+    const selectors = [
+      ".question-label",
+      ".question h3",
+      ".next-signal h3",
+      ".decode"
+    ];
+
+    document.querySelectorAll(selectors.join(","))
+      .forEach(function (node) {
+        const value = node.textContent.trim()
+          .replace(/\s+/g, " ");
+
+        const match = catalog.find(
+          item => item[0] === value
+        );
+
+        if (match) node.textContent = match[index];
+      });
+  }
+
+  function initialize() {
+    const badge = document.createElement("div");
+    badge.id = "archive-reading-status";
+    badge.setAttribute("role", "status");
+    badge.textContent = "Reading mode: Ages " + level;
+    badge.style.cssText =
+      "text-align:center;padding:12px;" +
+      "margin:16px auto;border:1px solid #72e6be;" +
+      "border-radius:10px;color:#b9ffe7;" +
+      "background:#071512;font:600 14px Arial;";
+
+    const shell = document.querySelector(".portal-shell");
+
+    if (shell) shell.prepend(badge);
+
+    updateText();
+
+    // Catch instructions updated during gameplay.
+    if (shell) {
+      new MutationObserver(updateText).observe(shell, {
+        subtree: true,
+        childList: true,
+        characterData: true
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialize);
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+
 </body>
 
 </html>
