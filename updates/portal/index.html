@@ -3924,6 +3924,207 @@ if (feedbackArea) {
 </script>
 
 
+<!-- TRANSMISSION 003 — AGE-ADAPTIVE LANGUAGE v1.0 -->
+<script>
+(function () {
+  "use strict";
+
+  const KEY = "meheartme-reading-level";
+  const allowed = ["4-6", "7-9", "10+"];
+  const incoming = new URLSearchParams(
+    window.location.search
+  ).get("reading");
+
+  let level = "10+";
+
+  if (allowed.includes(incoming)) {
+    level = incoming;
+  } else {
+    try {
+      const saved = localStorage.getItem(KEY);
+      if (allowed.includes(saved)) level = saved;
+    } catch (_) {}
+  }
+
+  if (level === "10+") return;
+
+  const index = level === "4-6" ? 0 : 1;
+
+  // [Ages 4-6, Ages 7-9]
+  const staticContent = [
+    [
+      ".transmission-title",
+      "Colors and Shapes",
+      "The Color Clue"
+    ],
+    [
+      ".overseer > p",
+      "Look! The shapes have colors now. The colors can help us find the next shape!",
+      "Something new has appeared in the message. The shapes now have colors! Look at both to find the pattern."
+    ],
+    [
+      ".question h3",
+      "Which color and shape come next?",
+      "Which colored shape completes the pattern?"
+    ],
+    [
+      "#localSignalMission > p",
+      "We found a clue at a place nearby!",
+      "A new clue has appeared at a nearby Signal Partner location."
+    ],
+    [
+      "#localSignalMission .overseer p",
+      "I found a place on Earth called One Love Island & Soul Food Restaurant. I want to learn about their food. It's for science, of course!",
+      "I've discovered One Love Island & Soul Food Restaurant on Earth. I'm learning about places to visit when I arrive. This is scientific research, of course!"
+    ],
+    [
+      "#localSignalMission > h3",
+      "Can you get Sweet Guava BBQ Sauce with chicken?",
+      "Is Sweet Guava BBQ Sauce served with chicken?"
+    ]
+  ];
+
+  // Original game-engine messages -> younger versions.
+  const messages = {
+    "SELECT A SYMBOL": [
+      "PICK A SHAPE",
+      "CHOOSE A SYMBOL"
+    ],
+    "DECIPHER TRANSMISSION": [
+      "CHECK MY ANSWER",
+      "CHECK THE PATTERN"
+    ],
+    "COLOR MISMATCH": [
+      "TRY AGAIN",
+      "COLOR OR SHAPE DOES NOT MATCH"
+    ],
+    "That signal does not align.": [
+      "Not quite!",
+      "That isn't the right color and shape."
+    ],
+    "Shape and color must both match the repeating sequence.": [
+      "Look at the color and shape. Try again!",
+      "Check both the color and the shape in the pattern. Then try again."
+    ],
+    "COLOR LAYER DECIPHERED": [
+      "YOU DID IT!",
+      "COLOR CLUE SOLVED"
+    ],
+    "Color carries information.": [
+      "You found the color clue!",
+      "The colors help explain the message!"
+    ],
+    "The yellow triangle completes the signal. The transmission has revealed a nearby local signal.": [
+      "The yellow triangle is right! We found another clue nearby!",
+      "The yellow triangle completes the pattern. Now we've discovered another clue nearby!"
+    ],
+    "TRANSMISSION COMPLETE": [
+      "MISSION COMPLETE!",
+      "TRANSMISSION COMPLETE"
+    ],
+    "VERIFY LOCAL SIGNAL": [
+      "CHECK MY ANSWER",
+      "CHECK THE LOCAL CLUE"
+    ],
+    "LOCAL SIGNAL MISMATCH": [
+      "TRY AGAIN",
+      "LOCAL CLUE DOES NOT MATCH"
+    ],
+    "That detail does not match.": [
+      "Not quite!",
+      "That answer doesn't match the clue."
+    ],
+    "Review the Signal Partner information and try again.": [
+      "Look at the food clue again. You can try again!",
+      "Check the restaurant information and try another answer."
+    ],
+    "LOCAL SIGNAL VERIFIED": [
+      "CLUE FOUND!",
+      "LOCAL SIGNAL VERIFIED"
+    ],
+    "Portal Key 003 recovered.": [
+      "You found Portal Key 3!",
+      "Portal Key 003 has been recovered!"
+    ],
+    "Excellent. Adding One Love Island & Soul Food Restaurant to my Earth itinerary.": [
+      "Great job! I'll add One Love to my list of Earth places to visit!",
+      "Excellent! I'm adding One Love Island & Soul Food Restaurant to my Earth travel plans."
+    ]
+  };
+
+  function initialize() {
+    const mission = document.getElementById(
+      "transmission003"
+    );
+
+    if (!mission) return;
+
+    // Adapt permanent page content.
+    staticContent.forEach(function (entry) {
+      const node = mission.querySelector(entry[0]);
+      if (node) {
+        node.textContent = entry[index + 1];
+      }
+    });
+
+    // Watch the specific elements the game engine updates.
+    const dynamicSelectors = [
+      "#t003DecodeButton",
+      "#t003ResultStatus",
+      "#t003ResultTitle",
+      "#t003ResultCopy",
+      "#businessVerifyButton",
+      "#businessResultStatus",
+      "#businessResultTitle",
+      "#businessResultCopy"
+    ];
+
+    function translateNode(node) {
+      const original = node.textContent
+        .trim()
+        .replace(/\s+/g, " ");
+
+      const versions = messages[original];
+
+      if (versions) {
+        const translated = versions[index];
+
+        if (node.textContent !== translated) {
+          node.textContent = translated;
+        }
+      }
+    }
+
+    dynamicSelectors.forEach(function (selector) {
+      const node = mission.querySelector(selector);
+      if (!node) return;
+
+      translateNode(node);
+
+      const observer = new MutationObserver(function () {
+        translateNode(node);
+      });
+
+      observer.observe(node, {
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initialize
+    );
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+
 
 </body>
 
