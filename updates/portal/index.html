@@ -4329,6 +4329,191 @@ if (feedbackArea) {
 </script>
 
 
+<!-- TRANSMISSION 005 — AGE-ADAPTIVE LANGUAGE v1.0 -->
+<script>
+(function () {
+  "use strict";
+
+  const KEY = "meheartme-reading-level";
+  const allowed = ["4-6", "7-9", "10+"];
+  const incoming = new URLSearchParams(
+    window.location.search
+  ).get("reading");
+
+  let level = "10+";
+
+  if (allowed.includes(incoming)) {
+    level = incoming;
+  } else {
+    try {
+      const saved = localStorage.getItem(KEY);
+      if (allowed.includes(saved)) level = saved;
+    } catch (_) {}
+  }
+
+  // Keep the original Ages 10+ experience.
+  if (level === "10+") return;
+
+  const index = level === "4-6" ? 0 : 1;
+
+  // [selector, ages 4-6, ages 7-9]
+  const staticContent = [
+    [
+      ".transmission-title",
+      "The Strange Signal",
+      "The Unknown Signal"
+    ],
+    [
+      ".overseer > p",
+      "Wait! Look at all the shapes. One shape is new. We have never seen it before!",
+      "Stop and look closely. There's a strange symbol in this message that wasn't in the earlier signals."
+    ],
+    [
+      ".question-label",
+      "FIND THE NEW SHAPE",
+      "FIND THE UNKNOWN SYMBOL"
+    ],
+    [
+      ".question h3",
+      "Which shape does not belong?",
+      "Which symbol is different from the ones we've seen before?"
+    ],
+    [
+      "#t005FinalAlert .next-signal-label",
+      "MYSTERY SIGNAL FOUND",
+      "WARNING // UNKNOWN SIGNAL"
+    ],
+    [
+      "#t005FinalAlert > h3",
+      "Something strange is here!",
+      "Something else has entered the connection."
+    ],
+    [
+      "#t005FinalAlert > p:nth-of-type(1)",
+      "The black shape was not in the other messages.",
+      "The black symbol doesn't match any of the messages we found before."
+    ],
+    [
+      "#t005FinalAlert > p:nth-of-type(2)",
+      "It came from somewhere else. We need to learn who sent it. Our mission is not over!",
+      "The strange symbol appeared between their world and ours. Until we discover where it came from, the Portal Protocol must stay active."
+    ],
+    [
+      "#t005FinalAlert .overseer p",
+      "That shape did not come from them. We did not send it either. Someone else is listening!",
+      "That symbol wasn't sent by them. We didn't send it either. Something else has been listening to our messages."
+    ]
+  ];
+
+  // Dynamic messages from the existing game engine.
+  const messages = {
+    "SELECT A SYMBOL": [
+      "PICK A SHAPE",
+      "CHOOSE A SYMBOL"
+    ],
+    "ISOLATE SIGNAL": [
+      "CHECK MY ANSWER",
+      "CHECK THE SYMBOL"
+    ],
+    "SIGNAL MISMATCH": [
+      "TRY AGAIN",
+      "WRONG SYMBOL"
+    ],
+    "That symbol belongs to the known language.": [
+      "We have seen that shape before!",
+      "That symbol was in an earlier message."
+    ],
+    "Compare the transmission with the symbols recovered from the earlier signals.": [
+      "Look at the shapes again. Find the new one!",
+      "Compare these symbols with the earlier messages. Which one is new?"
+    ],
+    "FOREIGN SIGNAL ISOLATED": [
+      "MYSTERY SHAPE FOUND!",
+      "UNKNOWN SIGNAL FOUND"
+    ],
+    "Do not send it back.": [
+      "Wait! Do not send it!",
+      "Don't send that symbol back."
+    ],
+    "The black symbol does not match any known transmission. It entered the connection somewhere between their world and ours.": [
+      "You found it! The black shape is new. We don't know who sent it!",
+      "Correct! The black symbol was never in the earlier messages. It came from somewhere between their world and ours."
+    ],
+    "SIGNAL ISOLATED": [
+      "MISSION COMPLETE!",
+      "UNKNOWN SIGNAL FOUND"
+    ]
+  };
+
+  function initialize() {
+    const mission = document.getElementById(
+      "transmission005"
+    );
+
+    if (!mission) return;
+
+    // Adapt static story, guidance, and final alert.
+    staticContent.forEach(function (entry) {
+      const node = mission.querySelector(entry[0]);
+
+      if (node) {
+        node.textContent = entry[index + 1];
+      }
+    });
+
+    // Adapt feedback written during gameplay.
+    const dynamicSelectors = [
+      "#t005DecodeButton",
+      "#t005ResultStatus",
+      "#t005ResultTitle",
+      "#t005ResultCopy"
+    ];
+
+    function translateNode(node) {
+      const original = node.textContent
+        .trim()
+        .replace(/\s+/g, " ");
+
+      const options = messages[original];
+
+      if (!options) return;
+
+      const translated = options[index];
+
+      if (node.textContent !== translated) {
+        node.textContent = translated;
+      }
+    }
+
+    dynamicSelectors.forEach(function (selector) {
+      const node = mission.querySelector(selector);
+      if (!node) return;
+
+      translateNode(node);
+
+      const observer = new MutationObserver(function () {
+        translateNode(node);
+      });
+
+      observer.observe(node, {
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initialize
+    );
+  } else {
+    initialize();
+  }
+})();
+</script>
+
 
 </body>
 
