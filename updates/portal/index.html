@@ -4125,6 +4125,210 @@ if (feedbackArea) {
 </script>
 
 
+<!-- TRANSMISSION 004 — AGE-ADAPTIVE LANGUAGE v1.0 -->
+<script>
+(function () {
+  "use strict";
+
+  const KEY = "meheartme-reading-level";
+  const allowed = ["4-6", "7-9", "10+"];
+  const incoming = new URLSearchParams(
+    window.location.search
+  ).get("reading");
+
+  let level = "10+";
+
+  if (allowed.includes(incoming)) {
+    level = incoming;
+  } else {
+    try {
+      const saved = localStorage.getItem(KEY);
+      if (allowed.includes(saved)) level = saved;
+    } catch (_) {}
+  }
+
+  // Preserve original 10+ wording.
+  if (level === "10+") return;
+
+  const index = level === "4-6" ? 0 : 1;
+
+  // Static content: [selector, ages 4-6, ages 7-9]
+  const staticContent = [
+    [
+      ".transmission-title",
+      "The Secret Door",
+      "The Door"
+    ],
+    [
+      ".overseer > p",
+      "Look! The shapes keep coming in the same order. Someone wants us to see this clue!",
+      "The next message repeats the same shapes in the same order. Whoever sent it wants us to notice the pattern."
+    ],
+    [
+      ".question .question-label",
+      "SOLVE THE CLUE",
+      "DECODE THE MESSAGE"
+    ],
+    [
+      ".question h3",
+      "What shape comes next?",
+      "Which shape completes the repeated pattern?"
+    ],
+    [
+      "#t004LocalSignal > p",
+      "We found another clue from Earth!",
+      "Another message from Earth appeared while we solved the pattern."
+    ],
+    [
+      "#t004LocalSignal .overseer p",
+      "I found a group on Earth called W.A.R Empire. They say W.A.R means We Ain't Regular! Earth names can be funny.",
+      "I found another clue from Earth. It points to a veterans' motorist club called W.A.R Empire. They say W.A.R means We Ain't Regular. Earth groups certainly choose interesting names!"
+    ],
+    [
+      "#t004LocalSignal > h3",
+      "Who is hosting the Medieval Trunk-or-Treat?",
+      "Which group is hosting the Medieval Trunk-or-Treat?"
+    ]
+  ];
+
+  // Dynamic game messages: [ages 4-6, ages 7-9]
+  const messages = {
+    "SELECT A SYMBOL": [
+      "PICK A SHAPE",
+      "CHOOSE A SYMBOL"
+    ],
+    "DECIPHER TRANSMISSION": [
+      "CHECK MY ANSWER",
+      "CHECK THE PATTERN"
+    ],
+    "SIGNAL MISMATCH": [
+      "TRY AGAIN",
+      "PATTERN DOES NOT MATCH"
+    ],
+    "That symbol breaks the cluster.": [
+      "Not quite!",
+      "That shape doesn't complete the pattern."
+    ],
+    "Review the repeated sequence and try again.": [
+      "Look at the shapes again. You can try again!",
+      "Look at the repeating shapes and try another answer."
+    ],
+    "TRANSLATION FRAGMENT RECOVERED": [
+      "CLUE FOUND!",
+      "MESSAGE PART RECOVERED"
+    ],
+    "One word survived.": [
+      "We found a word!",
+      "One word was discovered!"
+    ],
+    "The pattern reconstructed successfully. The translation system recovered a single concept from the repeated cluster: DOOR.": [
+      "Great job! The shapes helped us find a secret word: DOOR!",
+      "You completed the pattern! The message contains an important word: DOOR."
+    ],
+    "TRANSMISSION COMPLETE": [
+      "MISSION COMPLETE!",
+      "TRANSMISSION COMPLETE"
+    ],
+    "VERIFY LOCAL SIGNAL": [
+      "CHECK MY ANSWER",
+      "CHECK THE LOCAL CLUE"
+    ],
+    "That organization does not match.": [
+      "That's not the group. Try again!",
+      "That isn't the correct organization."
+    ],
+    "Review the intercepted Earth signal and try again.": [
+      "Look at the Earth clue again. You can try!",
+      "Read the Earth message again and try another answer."
+    ],
+    "LOCAL SIGNAL VERIFIED": [
+      "EARTH CLUE FOUND!",
+      "LOCAL SIGNAL VERIFIED"
+    ],
+    "Portal Key 004 recovered.": [
+      "You found Portal Key 4!",
+      "Portal Key 004 has been recovered!"
+    ],
+    "W.A.R Empire confirmed as the host of the Medieval Trunk-or-Treat. We Ain't Regular... noted. Adding this to the Earth itinerary.": [
+      "You found it! W.A.R Empire is the host. I'll add them to my Earth travel list!",
+      "Correct! W.A.R Empire is hosting the Medieval Trunk-or-Treat. I'll add that to my Earth travel plans!"
+    ]
+  };
+
+  function initialize() {
+    const mission = document.getElementById(
+      "transmission004"
+    );
+
+    if (!mission) return;
+
+    // Update static dialogue and instructions.
+    staticContent.forEach(function (entry) {
+      const node = mission.querySelector(entry[0]);
+
+      if (node) {
+        node.textContent = entry[index + 1];
+      }
+    });
+
+    // Only observe text elements changed by gameplay.
+    const dynamicSelectors = [
+      "#t004DecodeButton",
+      "#t004ResultStatus",
+      "#t004ResultTitle",
+      "#t004ResultCopy",
+      "#t004BusinessVerifyButton",
+      "#t004BusinessResultStatus",
+      "#t004BusinessResultTitle",
+      "#t004BusinessResultCopy"
+    ];
+
+    function translateNode(node) {
+      const original = node.textContent
+        .trim()
+        .replace(/\s+/g, " ");
+
+      const versions = messages[original];
+
+      if (!versions) return;
+
+      const translated = versions[index];
+
+      if (node.textContent !== translated) {
+        node.textContent = translated;
+      }
+    }
+
+    dynamicSelectors.forEach(function (selector) {
+      const node = mission.querySelector(selector);
+      if (!node) return;
+
+      translateNode(node);
+
+      const observer = new MutationObserver(function () {
+        translateNode(node);
+      });
+
+      observer.observe(node, {
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      initialize
+    );
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+
 
 </body>
 
