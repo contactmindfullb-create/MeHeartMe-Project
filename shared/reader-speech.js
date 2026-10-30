@@ -131,7 +131,15 @@
     stopBtn.addEventListener('click', stop);
     const observer = new MutationObserver(() => {
       if (speaking && (findRoot() !== activeRoot || !visible(activeRoot))) stop();
-      if (config.showLevel) levelEl.textContent = 'Reading: Ages ' + selectedLevel();
+      
+if (config.showLevel) {
+  const label = 'Reading: Ages ' + selectedLevel();
+
+  if (levelEl.textContent !== label) {
+    levelEl.textContent = label;
+  }
+}
+
     });
     observer.observe(document.body, {subtree:true,childList:true,attributes:true,attributeFilter:['class','hidden','style']});
     document.addEventListener('visibilitychange', () => {if(document.hidden) stop();});
