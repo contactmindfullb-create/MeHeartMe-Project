@@ -639,11 +639,6 @@ const visibleEvents = events.filter(event => {
   return now >= revealTime && now < expiration;
 });
 
-const eventCount = document.getElementById("visitors-detected");
-
-if (eventCount) {
-  eventCount.textContent = visibleEvents.length;
-}
 const currentEventDisplay = document.getElementById("latest-detection");
 
 if (currentEventDisplay) {
