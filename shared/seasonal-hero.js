@@ -47,6 +47,31 @@
 
   function applySeason() {
     const today = getDate();
+    
+const countdown =
+  document.getElementById("countdown-container");
+
+function updateCountdownDecoration(stage) {
+  if (!countdown) return;
+
+  // Decorations stop when the Christmas event arrives.
+  // The countdown itself remains unchanged.
+  const eventHasStarted = today >= "2026-12-19";
+
+  if (
+    !stage ||
+    !stage.decoration ||
+    eventHasStarted
+  ) {
+    countdown.removeAttribute("data-decoration");
+    return;
+  }
+
+  countdown.setAttribute(
+    "data-decoration",
+    stage.decoration
+  );
+}
 
     const stage = config.stages.find(function (item) {
       return today >= item.start && today < item.end;
@@ -56,9 +81,12 @@
       root.style.removeProperty(variable);
     });
 
-    if (!stage) {
-      root.removeAttribute("data-me-season");
-      return;
+    updateCountdownDecoration(stage);
+
+if (!stage) {
+  root.removeAttribute("data-me-season");
+  return;
+}
     }
 
     Object.entries(cssVariables).forEach(function (entry) {
