@@ -9,6 +9,7 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-02",
       end: "2026-11-09",
       name: "Warm Harvest",
+      decoration: "🍂 🍁 🍂",
       colors: {
         night: "#392C34",
         panel: "#754A43",
@@ -22,6 +23,7 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-09",
       end: "2026-11-16",
       name: "Harvest Gathering",
+      decoration: "🍁 🍂 🍁",
       colors: {
         night: "#473B3A",
         panel: "#936C58",
@@ -35,6 +37,7 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-16",
       end: "2026-11-23",
       name: "First Winter Hints",
+      decoration: "🌿 ✨ 🌿",
       colors: {
         night: "#354450",
         panel: "#57717E",
@@ -48,6 +51,7 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-23",
       end: "2026-11-30",
       name: "Winter Wonder Begins",
+      decoration: "❄️ ✨ ❄️",
       colors: {
         night: "#284760",
         panel: "#496E8A",
@@ -61,6 +65,7 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-30",
       end: "2026-12-26",
       name: "Christmas",
+      decoration: "❄️ ⭐ ❄️",
       colors: {
         night: "#203F61",
         panel: "#466D91",
@@ -74,6 +79,7 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-12-26",
       end: "2027-01-02",
       name: "New Year's",
+      decoration: "✨ ⭐ ✨",
       colors: {
         night: "#101723",
         panel: "#18375B",
