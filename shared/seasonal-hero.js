@@ -87,7 +87,6 @@ if (!stage) {
   root.removeAttribute("data-me-season");
   return;
 }
-    }
 
     Object.entries(cssVariables).forEach(function (entry) {
       const color = stage.colors[entry[0]];
