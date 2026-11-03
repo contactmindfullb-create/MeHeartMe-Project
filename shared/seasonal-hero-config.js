@@ -27,7 +27,7 @@ window.MeHeartMeSeasonConfig = {
       name: "Harvest Gathering",
       image: "assets/images/Mhm-default-bg.PNG",
       overlay: "assets/images/mhm_harvest_gathering_overlay.PNG"
-      countdownOverlay: "assets/images/autumn_leaves_storybook_frame.PNG",
+      countdownOverlay:"assets/images/autumn_leaves_storybook_frame.PNG",
       decoration: "🍁 🍂 🍁",
       colors: {
         night: "#473B3A",
