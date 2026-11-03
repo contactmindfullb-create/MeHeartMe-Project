@@ -20,10 +20,19 @@
   ] : [
     ['.welcome h2', ['COME PLAY WITH US!', 'COME EXPLORE WITH US!']],
     ['.welcome p', ['Watch stories. Play games. Find fun surprises!', 'Explore stories, games, events, and fun experiences with your family.']],
-    ['.event-message h2', ['A GHOSTLY ADVENTURE!', 'A GHOSTLY ADVENTURE AWAITS!']],
-    ['.event-message p', ['Ready for ghostly fun? Go to Watch to see our event!', 'Join the Majestic Ghostly adventure. Go to Watch to see the event announcement!']],
-    ['.event-button[href="events/majestic-ghostly/"]', ['SEE THE EVENT', 'EXPLORE THE EVENT']],
-    ['.signal-tracker h2', ['GHOST NEWS', 'LATEST GHOSTLY SIGNALS']],
+    ['.event-message h2', ['THE ADVENTURE CONTINUES!', 'MORE FUN IS COMING']],
+    
+['.event-message h2', [
+  'MORE FUN IS COMING!',
+  'THE ADVENTURE CONTINUES!'
+]],
+
+['.event-message p', [
+  'Watch our ghostly stories! More fun is on the way.',
+  'Catch up on the Majestic Ghostly adventure on Watch. New surprises are coming soon!'
+]],
+
+    ['.signal-tracker h2', ['HOLIDAY NEWS', 'LATEST UPDATES']],
     ['.transmission-button', ['SEE WHAT’S NEW →', 'SEE LATEST NEWS →']]
   ];
 
