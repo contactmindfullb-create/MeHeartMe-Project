@@ -8,6 +8,76 @@
   if (!config || !Array.isArray(config.stages)) return;
 
   const root = document.documentElement;
+  
+/* Seasonal background and overlay renderer */
+
+const heroImage = document.querySelector(".event-banner");
+let heroOverlay = null;
+let imageVersion = 0;
+
+if (heroImage) {
+  const heroWrapper = document.createElement("div");
+  heroWrapper.className = "seasonal-visual";
+
+  heroImage.parentNode.insertBefore(heroWrapper, heroImage);
+  heroWrapper.appendChild(heroImage);
+
+  heroOverlay = document.createElement("img");
+  heroOverlay.className = "seasonal-overlay";
+  heroOverlay.alt = "";
+  heroOverlay.setAttribute("aria-hidden", "true");
+  heroOverlay.hidden = true;
+
+  heroWrapper.appendChild(heroOverlay);
+}
+
+const defaultHeroImage = heroImage
+  ? heroImage.getAttribute("src")
+  : "";
+
+function loadSeasonalImages(stage) {
+  if (!heroImage) return;
+
+  const version = ++imageVersion;
+  const background = stage?.image || defaultHeroImage;
+  const overlayPath = stage?.overlay;
+
+  // Apply background only after successful loading.
+  const backgroundTest = new Image();
+
+  backgroundTest.onload = function () {
+    if (version === imageVersion) {
+      heroImage.src = background;
+    }
+  };
+
+  backgroundTest.onerror = function () {
+    if (version === imageVersion) {
+      heroImage.src = defaultHeroImage;
+    }
+  };
+
+  backgroundTest.src = background;
+
+  // Reset the previous overlay.
+  heroOverlay.hidden = true;
+  heroOverlay.removeAttribute("src");
+
+  if (!overlayPath) return;
+
+  // Show decoration only after successful loading.
+  const overlayTest = new Image();
+
+  overlayTest.onload = function () {
+    if (version === imageVersion) {
+      heroOverlay.src = overlayPath;
+      heroOverlay.hidden = false;
+    }
+  };
+
+  overlayTest.src = overlayPath;
+}
+
 
   const cssVariables = {
     night: "--event-night",
