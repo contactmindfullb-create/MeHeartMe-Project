@@ -450,6 +450,51 @@
   display: none;
 }
 
+/* Seasonal countdown illustrated frame */
+
+#countdown-container {
+  position: relative;
+  isolation: isolate;
+}
+
+#countdown-container .countdown-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#countdown-container .countdown-art[hidden] {
+  display: none;
+}
+
+/* Keep timer numbers above the decoration */
+#countdown-container .countdown,
+#countdown-container .countdown-title {
+  position: relative;
+  z-index: 2;
+}
+
+/* Give the illustrated frame breathing room */
+#countdown-container.has-countdown-image {
+  padding: 38px 28px;
+}
+
+/* Hide emoji decorations only when PNG is loaded */
+#countdown-container.has-countdown-image::before,
+#countdown-container.has-countdown-image::after {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  #countdown-container.has-countdown-image {
+    padding: 28px 12px;
+  }
+}
+
   </style>
 </head>
 
