@@ -9,6 +9,8 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-02",
       end: "2026-11-09",
       name: "Warm Harvest",
+      image: "assets/images/Mhm-default-bg.PNG",
+      overlay: "assets/images/
       decoration: "🍂 🍁 🍂",
       colors: {
         night: "#392C34",
@@ -23,6 +25,7 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-09",
       end: "2026-11-16",
       name: "Harvest Gathering",
+      image: "assets/images/mhm-xmhero.PNG",
       decoration: "🍁 🍂 🍁",
       colors: {
         night: "#473B3A",
@@ -37,6 +40,8 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-16",
       end: "2026-11-23",
       name: "First Winter Hints",
+      image: "assets/images/Mhm-default-bg.PNG",
+      overlay: "assets/images/mhm_harvest_gathering_overlay.PNG",
       decoration: "🌿 ✨ 🌿",
       colors: {
         night: "#354450",
@@ -51,6 +56,8 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-23",
       end: "2026-11-30",
       name: "Winter Wonder Begins",
+      image: "assets/images/Mhm-default-bg.PNG",
+      overlay: "assets/images/mhm_holiday_magic_overlay.PNG",
       decoration: "❄️ ✨ ❄️",
       colors: {
         night: "#284760",
@@ -65,6 +72,8 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-11-30",
       end: "2026-12-26",
       name: "Christmas",
+      image: "assets/images/Mhm-default-bg.PNG",
+      overlay: "assets/images/mhm_christmas_is_coming_overlay.PNG",
       decoration: "❄️ ⭐ ❄️",
       colors: {
         night: "#203F61",
@@ -79,6 +88,8 @@ window.MeHeartMeSeasonConfig = {
       start: "2026-12-26",
       end: "2027-01-02",
       name: "New Year's",
+      image: "assets/images/Mhm-default-bg.PNG",
+      overlay: "assets/images/mhm_christmas_wonderland_overlay.PNG",
       decoration: "✨ ⭐ ✨",
       colors: {
         night: "#101723",
