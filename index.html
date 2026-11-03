@@ -424,6 +424,32 @@
   }
 }
 
+/* MeHeartMe seasonal image layers */
+
+.seasonal-visual {
+  position: relative;
+  width: min(100%, 1000px);
+  margin: 0 auto;
+}
+
+.seasonal-visual .event-banner {
+  width: 100%;
+  display: block;
+}
+
+.seasonal-visual .seasonal-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.seasonal-overlay[hidden] {
+  display: none;
+}
+
   </style>
 </head>
 
