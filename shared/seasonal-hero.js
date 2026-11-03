@@ -152,6 +152,7 @@ function updateCountdownDecoration(stage) {
     });
 
     updateCountdownDecoration(stage);
+loadSeasonalImages(stage);
 
 if (!stage) {
   root.removeAttribute("data-me-season");
