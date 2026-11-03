@@ -79,6 +79,55 @@ function loadSeasonalImages(stage) {
 }
 
 
+/* Seasonal countdown image overlay */
+
+const countdownBox =
+  document.getElementById("countdown-container");
+
+let countdownArt = null;
+let currentCountdownPath = null;
+let countdownImageVersion = 0;
+
+if (countdownBox) {
+  countdownArt = document.createElement("img");
+  countdownArt.className = "countdown-art";
+  countdownArt.alt = "";
+  countdownArt.setAttribute("aria-hidden", "true");
+  countdownArt.hidden = true;
+  countdownBox.prepend(countdownArt);
+}
+
+function updateCountdownOverlay(stage, today) {
+  if (!countdownBox || !countdownArt) return;
+
+  const path =
+    today < "2026-12-19" && stage
+      ? stage.countdownOverlay || ""
+      : "";
+
+  if (path === currentCountdownPath) return;
+  currentCountdownPath = path;
+
+  const version = ++countdownImageVersion;
+
+  countdownArt.hidden = true;
+  countdownBox.classList.remove("has-countdown-image");
+
+  if (!path) return;
+
+  const testImage = new Image();
+
+  testImage.onload = function () {
+    if (version !== countdownImageVersion) return;
+
+    countdownArt.src = path;
+    countdownArt.hidden = false;
+    countdownBox.classList.add("has-countdown-image");
+  };
+
+  testImage.src = path;
+}
+
   const cssVariables = {
     night: "--event-night",
     panel: "--event-purple",
@@ -152,7 +201,8 @@ function updateCountdownDecoration(stage) {
     });
 
     updateCountdownDecoration(stage);
-loadSeasonalImages(stage);
+    updateCountdownOverlay(stage, today);
+    loadSeasonalImages(stage);
 
 if (!stage) {
   root.removeAttribute("data-me-season");
