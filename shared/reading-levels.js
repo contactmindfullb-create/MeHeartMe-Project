@@ -22,10 +22,6 @@
     ['.welcome p', ['Watch stories. Play games. Find fun surprises!', 'Explore stories, games, events, and fun experiences with your family.']],
     ['.event-message h2', ['THE ADVENTURE CONTINUES!', 'MORE FUN IS COMING']],
     
-['.event-message h2', [
-  'MORE FUN IS COMING!',
-  'THE ADVENTURE CONTINUES!'
-]],
 
 ['.event-message p', [
   'Watch our ghostly stories! More fun is on the way.',
