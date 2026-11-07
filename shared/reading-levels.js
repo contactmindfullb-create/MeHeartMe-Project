@@ -18,8 +18,17 @@
     ['.game-card:nth-child(2) .game-button', ['LET’S PLAY →', 'CHOOSE YOUR PATH →']],
     ['.library-footer', ['More games are coming!', 'More adventures are coming soon.']]
   ] : [
-    ['.welcome h2', ['COME PLAY WITH US!', 'COME EXPLORE WITH US!']],
-    ['.welcome p', ['Watch stories. Play games. Find fun surprises!', 'Explore stories, games, events, and fun experiences with your 
+ 
+['.welcome h2', [
+  'COME PLAY WITH US!',
+  'COME EXPLORE WITH US!'
+]],
+
+['.welcome p', [
+  "Let's have fun learning! Play games, read stories, and discover something new.",
+  'Explore fun games, enjoy stories, and discover new things as you learn and grow.'
+]],
+
 ['.event-message h2', [
   'MORE FUN IS COMING!',
   'THE ADVENTURE CONTINUES!'
