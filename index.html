@@ -810,35 +810,6 @@ document.getElementById("next-transmission").textContent =
 
   </script>
   
-<script type="module">
-  import { events } from "./shared/mystical-events.js";
-
-  const now = new Date();
-
-const visibleEvents = events.filter(event => {
-  const revealTime = new Date(event.publicRevealAt);
-
-  const eventDate = event.date;
-  const eventDay = new Date(eventDate + " 00:00:00");
-
-  const expiration = new Date(eventDay);
-  expiration.setDate(expiration.getDate() + 1);
-
-  return now >= revealTime && now < expiration;
-});
-
-const currentEventDisplay = document.getElementById("latest-detection");
-
-if (currentEventDisplay) {
-  if (visibleEvents.length > 0) {
-    currentEventDisplay.textContent =
-      visibleEvents[0].name;
-  } else {
-    currentEventDisplay.textContent =
-      "No active event signals. Stay tuned.";
-  }
-}
-</script>
 
  <script src="./shared/reading-levels.js" defer></script>
 
