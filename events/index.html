@@ -48,12 +48,30 @@
       outline-offset: 4px;
     }
 
-    header {
-      padding: 22px;
-      text-align: center;
-      background: var(--cream);
-      color: var(--ink);
-    }
+    
+header {
+  padding: 22px;
+  text-align: center;
+  background: var(--event-purple);
+  color: var(--season-text);
+  border-bottom: 3px solid var(--event-gold);
+}
+
+nav a {
+  color: var(--season-text);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background: var(--event-orange);
+  color: var(--season-button-text);
+  text-decoration: underline;
+}
+
 
     .logo {
       width: min(240px, 75%);
