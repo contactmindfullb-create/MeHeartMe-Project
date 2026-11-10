@@ -328,21 +328,27 @@
 
 <body>
 
-  <header class="site-header">
+  
+<header class="site-header">
 
+  <a href="../../../" aria-label="MeHeartMe Home">
     <img
       class="brand-logo"
-      src="../../assets/images/MeHeartMe.png"
+      src="../../../assets/images/MeHeartMe.png"
       alt="MeHeartMe"
     >
+  </a>
 
-    <nav class="navigation">
-      <a href="../../index.html">Home</a>
-      <a href="../../index.html#events">Events</a>
-      <a href="../../updates/">Transmissions</a>
-    </nav>
+  <nav class="navigation" aria-label="Main navigation">
+    <a href="../../../">Home</a>
+    <a href="../../">Events</a>
+    <a href="../../../updates/">What's New</a>
+    <a href="../../../play/">Play ☃️</a>
+    <a href="../../../watch/">Watch</a>
+  </nav>
 
-  </header>
+</header>
+
 
 
   <main>
@@ -366,7 +372,7 @@
 
       <img
         class="event-banner"
-        src="../../assets/images/majestic-ghostly-banner.jpeg.png"
+        src="../../../assets/images/majestic-ghostly-banner.jpeg.png"
         alt="Majestic Ghostly Trick-or-Treat"
       >
 
@@ -505,21 +511,35 @@
       <div class="button-row">
 
         <!-- Replace this RSVP URL only if your WordPress RSVP permalink differs -->
-        <a
-          class="button rsvp-button"
-          href="https://meheartme.com"
-          target="_blank"
-          rel="noopener"
-        >
-          Past Event-Registration Closed
-        </a>
+         <span class="button rsvp-button"
 
-        <a
-          class="button transmission-button"
-          href="../../updates/"
-        >
-          ACCESS LATEST TRANSMISSIONS
-        </a>
+        aria-label="Past event, registration closed">
+
+    Past Event — Registration Closed
+
+  </span>
+
+  <a
+
+    class="button transmission-button"
+
+    href="../../../updates/">
+
+    EXPLORE LATEST UPDATES
+
+  </a>
+
+</div>
+
+<a
+
+  class="button home-button"
+
+  href="../../">
+
+  ← Back to Seasonal Transitions
+
+</a>
 
       </div>
 
