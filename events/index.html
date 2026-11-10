@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+
+  <title>Seasonal Transitions | Me❤️Me</title>
+
+  <style>
+    
+:root {
+  /* Fallback colors only */
+  --event-night: #203f61;
+  --event-purple: #466d91;
+  --event-gold: #f7d984;
+  --event-orange: #dcecf8;
+  --season-button-text: #203f61;
+  --season-text: #fffaf4;
+
+  /* Shared seasonal color connections */
+  --night: var(--event-night);
+  --panel: var(--event-purple);
+  --accent: var(--event-gold);
+  --cream: var(--season-text);
+  --ink: var(--season-button-text);
+  --muted: var(--season-text);
+  --heart: #d83a56;
+}
+
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--night);
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    header {
+      padding: 22px;
+      text-align: center;
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    .logo {
+      width: min(240px, 75%);
+      height: auto;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    nav a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    main {
+      width: min(100% - 32px, 1050px);
+      margin: auto;
+    }
+
+    .hero {
+      padding: 65px 15px 45px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(32px, 7vw, 58px);
+      line-height: 1.15;
+    }
+
+    h2 {
+      font-size: clamp(24px, 5vw, 36px);
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 35px 0;
+      text-align: center;
+    }
+
+    .section p {
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .learning-card {
+      padding: 35px 24px;
+      border: 2px solid var(--accent);
+      border-radius: 22px;
+      background: var(--panel);
+    }
+
+    .learning-icon {
+      font-size: 54px;
+    }
+
+    .video-placeholder {
+      max-width: 650px;
+      margin: 25px auto;
+      padding: 28px;
+      border: 1px dashed var(--accent);
+      border-radius: 14px;
+      color: var(--muted);
+    }
+    
+.video-section {
+  max-width: 760px;
+  margin: 25px auto;
+  text-align: center;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 2px solid var(--event-gold);
+  border-radius: 16px;
+  background: var(--event-night);
+}
+
+.video-container iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-section a {
+  color: var(--event-gold);
+  font-weight: bold;
+}
+
+
+    .activity {
+      margin: 20px auto 0;
+      padding: 18px;
+      max-width: 560px;
+      border-radius: 12px;
+      background: rgba(0,0,0,.2);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .card {
+      padding: 28px 22px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 18px;
+      background: var(--panel);
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    
+.button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 13px 22px;
+  border-radius: 12px;
+
+  background: var(--event-orange);
+  color: var(--season-button-text);
+
+  text-decoration: none;
+  font-weight: bold;
+  min-height: 44px;
+}
+
+
+    .archive {
+      margin: 25px 0 55px;
+      padding: 32px 22px;
+      background: rgba(255,255,255,.07);
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    footer {
+      padding: 25px;
+      background: #142b43;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="../" aria-label="MeHeartMe home">
+      <img class="logo"
+           src="../assets/images/MeHeartMe.png"
+           alt="MeHeartMe">
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="../">Home</a>
+      <a href="../play/">Play ☃️</a>
+      <a href="../watch/">Watch</a>
+      <a href="../updates/">What's New</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- SEASONAL WELCOME -->
+    <section class="hero">
+      <div class="eyebrow">
+        Me❤️Me | Seasonal Discoveries
+      </div>
+
+      <h1>
+        Seasons Change.<br>
+        The Adventure Continues!
+      </h1>
+
+      <p>
+        Every season brings something new to discover.
+        Explore stories, enjoy activities, and learn
+        something wonderful as the world around us
+        changes.
+      </p>
+    </section>
+
+    <!-- SCIENCE AND SHAPES -->
+    <section class="section" id="discover">
+      <div class="learning-card">
+        <div class="learning-icon"
+             aria-hidden="true">🔵</div>
+
+        <h2>
+          Discover Something New:<br>
+          Let's Explore Circles!
+        </h2>
+
+        <p>
+          Circles are all around us!
+          Let's learn about this special shape
+          and see where we can find it.
+        </p>
+
+        <!--
+          VIDEO PENDING:
+          Insert the verified Fun with Science
+          and Shapes circle video here after
+          educational and safeguarding review.
+        -->
+       
+<!-- FUN WITH SCIENCE AND SHAPES VIDEO PLAYLIST -->
+<div class="video-section">
+
+  <h3>🎬 Fun with Science and Shapes</h3>
+
+  <p>
+    Let's explore shapes together!
+    Watch, discover, and have fun learning.
+  </p>
+
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/videoseries?list=PLCEjMhD26kx0"
+      title="Fun with Science and Shapes Video Playlist"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <p>
+    <a
+      href="https://youtube.com/playlist?list=PLCEjMhD26kx0"
+      target="_blank"
+      rel="noopener noreferrer">
+      View the Full Playlist on YouTube
+    </a>
+  </p>
+
+</div>
+
+
+        <div class="activity">
+          <strong>Try This Together!</strong>
+          <p>
+            Can you find three circles around you?
+            Look at toys, dishes, or things
+            you see every day.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLORE -->
+    <section class="section">
+      <h2>Keep Exploring!</h2>
+
+      <p>
+        There is always another story to watch,
+        a game to explore, or something new
+        to discover.
+      </p>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>🎮 Play</h3>
+          <p>
+            Choose an adventure.
+            Follow clues and have fun!
+          </p>
+          <a class="button" href="../play/">
+            Explore Play
+          </a>
+        </article>
+
+        <article class="card">
+          <h3>📺 Watch</h3>
+          <p>
+            Enjoy stories, videos,
+            and creative experiences.
+          </p>
+          <a class="button" href="../watch/">
+            Explore Watch
+          </a>
+        </article>
+
+        <article class="card">
+          <h3>✨ What's New?</h3>
+          <p>
+            See updates and discover what
+            we're preparing next.
+          </p>
+          <a class="button" href="../updates/">
+            See What's New
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- PAST ADVENTURES -->
+    <section class="archive">
+      <h2>Explore Past Adventures</h2>
+
+      <p>
+        Some adventures become wonderful memories!
+        Revisit our Majestic Ghostly 2026 story
+        and explore the world we created.
+      </p>
+
+      <p>
+        Past event — registration closed.
+      </p>
+
+      <a class="button"
+         href="./archive/majestic-ghostly-2026/">
+        Visit Past Adventures
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 MeHeartMe.
+    Play. Discover. Experience.
+  </footer>
+
+<!-- MeHeartMe Shared Seasonal Color Engine -->
+<script src="../shared/seasonal-hero-config.js"></script>
+<script src="../shared/seasonal-hero.js"></script>
+
+</body>
+</html>
