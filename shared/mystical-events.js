@@ -24,6 +24,8 @@ export const events = [
     eventEndsAt: "2026-10-21T18:00:00-04:00",
     rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "RSVP to participate in the giveaway."
+    seasonCategory: "Autumn 2026 — Majestic Ghostly",
+
   },
   {
     id: "majestic-trick-or-treat",
@@ -38,6 +40,8 @@ export const events = [
     eventEndsAt: "2026-10-23T20:00:00-04:00",
     rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "Remember to RSVP for giveaway participation."
+    seasonCategory: "Autumn 2026 — Majestic Ghostly",
+
   },
   {
     id: "medieval-trick-or-treat",
@@ -52,6 +56,8 @@ export const events = [
     eventEndsAt: "2026-10-24T21:00:00-04:00",
     rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "Check event registration details and RSVP if required."
+    seasonCategory: "Autumn 2026 — Majestic Ghostly",
+
   },
   {
     id: "scarecrow-stroll",
@@ -66,6 +72,8 @@ export const events = [
     eventEndsAt: "2026-10-30T21:00:00-04:00",
     rsvpUrl: "https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "Check event registration details and RSVP if required."
+    seasonCategory: "Autumn 2026 — Majestic Ghostly",
+
   },
   {
     id: "midway-fall-festival",
@@ -80,5 +88,7 @@ export const events = [
     eventEndsAt: "2026-10-31T16:00:00-04:00",
     rsvpUrl:"https://celestinecodeamor.com/majestic-ghostly-halloween-trick-or-treat-rsvp",
     rsvpReminder: "Check event registration details and RSVP if required."
+    seasonCategory: "Autumn 2026 — Majestic Ghostly",
+
   }
 ];
