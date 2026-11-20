@@ -596,6 +596,38 @@
   text-align: center;
 }
 
+
+/* MYSTICAL BOX SEASONAL CATEGORIES */
+
+.seasonal-category {
+  margin: 28px 0;
+  padding: 18px;
+  border: 1px solid var(--gold);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.seasonal-category-title {
+  margin: 0 0 18px;
+  color: var(--gold);
+  font-size: clamp(1.25rem, 4vw, 1.8rem);
+}
+
+.seasonal-event-list {
+  display: grid;
+  gap: 14px;
+}
+
+.seasonal-event-list .event-card {
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .seasonal-category {
+    padding: 12px;
+  }
+}
+
   </style>
 </head>
 
