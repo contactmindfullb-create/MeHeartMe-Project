@@ -605,7 +605,30 @@ function renderEventBoard() {
     return;
   }
 
-  events.forEach(event => {
+  
+const seasonalSections = new Map();
+
+events.forEach(event => {
+  const categoryName =
+    event.seasonCategory || "Other Adventures";
+
+  if (!seasonalSections.has(categoryName)) {
+    const section = document.createElement("section");
+    section.className = "seasonal-category";
+
+    const heading = document.createElement("h2");
+    heading.className = "seasonal-category-title";
+    heading.textContent = categoryName;
+
+    const collection = document.createElement("div");
+    collection.className = "seasonal-event-list";
+
+    section.append(heading, collection);
+    board.appendChild(section);
+
+    seasonalSections.set(categoryName, collection);
+  }
+
     const missionUnlocked =
       isMissionCompleted(event.missionId);
 
@@ -664,7 +687,7 @@ function renderEventBoard() {
     // RSVP reminder and button for Majestic events.
     // Available regardless of mission completion
     // or public announcement status.
-    if (event.rsvpUrl) {
+    if (event.rsvpUrl && !archived) {
       const reminder = document.createElement("p");
 
       reminder.textContent =
@@ -700,7 +723,7 @@ function renderEventBoard() {
       card.appendChild(archiveNote);
     }
 
-    board.appendChild(card);
+    seasonalSections.get(categoryName).appendChild(card);
   });
   
 }
