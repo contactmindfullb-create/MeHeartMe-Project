@@ -1038,6 +1038,100 @@
 
     }
 
+/* =========================================
+   ME❤️ME SHARED SEASONAL WATCH THEME
+   ========================================= */
+
+:root {
+  /* Shared seasonal engine inputs */
+  --event-night: #203f61;
+  --event-purple: #466d91;
+  --event-gold: #f7d984;
+  --event-orange: #dcecf8;
+  --season-text: #fffaf4;
+  --season-button-text: #203f61;
+
+  /* Map Watch's existing theme variables */
+  --night: var(--event-night);
+  --purple: var(--event-purple);
+  --deep-purple: var(--event-night);
+  --gold: var(--event-gold);
+  --yellow: var(--event-gold);
+  --cream: var(--season-text);
+  --muted: var(--season-text);
+}
+
+body {
+  background: var(--event-night);
+  color: var(--season-text);
+}
+
+.watch-topbar {
+  border-bottom: 1px solid var(--event-gold);
+}
+
+.back-link,
+.watch-tagline,
+.featured-copy,
+.section-heading p {
+  color: var(--season-text);
+}
+
+.featured,
+.category-card,
+.status-card {
+  background: var(--event-purple);
+  color: var(--season-text);
+  border-color: var(--event-gold);
+}
+
+.watch-button.primary {
+  background: var(--event-orange);
+  color: var(--season-button-text);
+  box-shadow: none;
+}
+
+.watch-button.secondary {
+  background: var(--event-purple);
+  color: var(--season-text);
+  border: 1px solid var(--event-gold);
+}
+
+.category-link {
+  color: var(--event-gold);
+}
+
+/* Previously fixed-color Halloween section */
+#virtual-event {
+  background: var(--event-purple) !important;
+  color: var(--season-text) !important;
+}
+
+#virtual-event h2 {
+  color: var(--event-gold) !important;
+}
+
+/* Accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--event-gold);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .watch-button {
+    transition: none;
+  }
+
+  .watch-button:hover {
+    transform: none;
+  }
+}
+
   </style>
 
 </head>
