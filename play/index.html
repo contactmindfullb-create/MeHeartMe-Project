@@ -161,6 +161,88 @@
         margin-bottom: 45px;
       }
     }
+    
+    
+/* =========================================
+   ME❤️ME SHARED SEASONAL PLAY THEME
+   ========================================= */
+
+:root {
+  /* Seasonal engine fallbacks */
+  --event-night: #203f61;
+  --event-purple: #466d91;
+  --event-gold: #f7d984;
+  --event-orange: #dcecf8;
+  --season-text: #fffaf4;
+  --season-button-text: #203f61;
+
+  /* Connect existing Play variables */
+  --night: var(--event-night);
+  --purple: var(--event-purple);
+  --deep-purple: var(--event-night);
+  --gold: var(--event-gold);
+  --yellow: var(--event-gold);
+  --cream: var(--season-text);
+}
+
+body {
+  background: var(--event-night);
+  color: var(--season-text);
+}
+
+.topbar {
+  border-bottom: 1px solid var(--event-gold);
+  padding-bottom: 18px;
+}
+
+.topbar a,
+.play-label {
+  color: var(--event-gold);
+}
+
+.play-hero p,
+.game-card p,
+.library-footer {
+  color: var(--season-text);
+}
+
+.game-card {
+  background: var(--event-purple);
+  border: 1px solid var(--event-gold);
+}
+
+.game-card h2,
+.game-tag {
+  color: var(--event-gold);
+}
+
+.game-button {
+  background: var(--event-orange);
+  color: var(--season-button-text);
+  border: 1px solid var(--event-gold);
+}
+
+.game-button:hover,
+.game-button:focus-visible {
+  filter: brightness(1.08);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--event-gold);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-card,
+  .game-button {
+    transition: none;
+  }
+
+  .game-card:hover {
+    transform: none;
+  }
+}
+
   </style>
 </head>
 
@@ -319,6 +401,10 @@
 })();
 </script>
 
+
+<!-- Me❤️Me Shared Seasonal Color Engine -->
+<script src="../shared/seasonal-hero-config.js"></script>
+<script src="../shared/seasonal-hero.js"></script>
 
 
 </body>
